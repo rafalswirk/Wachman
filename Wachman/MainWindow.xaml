@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wachman"
         mc:Ignorable="d"
-        Title="MainWindow" Height="86.739" Width="128.587" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseLeftButtonDown="Window_MouseLeftButtonDown">
-
+        Title="MainWindow" Height="86.739" Width="150" Topmost="True" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" IsHitTestVisible="True"  >
     <Grid Background="Transparent">
-        <Label x:Name="label" Content="45:00" Foreground="Red" FontSize="40" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="00:00" Foreground="DarkRed" Opacity="0.1" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTime" Content="45:00" Foreground="Red" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnStart" Content="Start"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="btnStart_Click"/>
+
+
 
     </Grid>
 </Window>
