@@ -9,7 +9,7 @@
     <Grid Background="Transparent">
 
         <Label Content="00:00" Foreground="DarkRed" Opacity="0.1" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTime" Content="45:00" Foreground="Red" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTime" Content="60:00" Foreground="Red" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnStart" Content="Start"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="btnStart_Click"/>
 
 
