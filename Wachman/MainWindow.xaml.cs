@@ -66,6 +66,7 @@ namespace Wachman
             startTime = DateTime.Now;
             timer.Start();
             btnStart.Visibility = Visibility.Hidden;
+            lblActivity.Visibility = Visibility.Visible;
             UpdateClock();
         }
 

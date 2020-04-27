@@ -7,10 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="86.739" Width="150" Topmost="True" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" IsHitTestVisible="True"  >
     <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
 
-        <Label Content="00:00" Foreground="DarkRed" Opacity="0.1" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTime" Content="60:00" Foreground="Red" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnStart" Content="Start"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="btnStart_Click"/>
+        <Label Content="00:00" Foreground="DarkRed" Opacity="0.1" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <Label x:Name="lblTime" Grid.Row="0" Content="60:00" Foreground="Red" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"/>
+        <Viewbox Grid.Row="1" >
+            <Label x:Name="lblActivity" Content="Current activity" Visibility="Hidden" Foreground="Red" Background="Black" FontSize="20" FontFamily="./Fonts/#DIGITAL-7 Mono"/>
+        </Viewbox>
+        <Button x:Name="btnStart" Content="Start"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="btnStart_Click" Margin="61,0" Grid.Row="1"/>
 
 
 
