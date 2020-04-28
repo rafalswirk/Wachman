@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Wachman.Utils.TimeCamp;
 
 namespace Wachman
 {
@@ -21,6 +22,7 @@ namespace Wachman
     /// </summary>
     public partial class MainWindow : Window
     {
+        private TimeCampStatusReader timeCampStatusReader;
         DispatcherTimer timer;
         DateTime startTime;
         TimeSpan workingTime = TimeSpan.FromMinutes(45);
@@ -29,6 +31,10 @@ namespace Wachman
         public MainWindow()
         {
             InitializeComponent();
+
+            timeCampStatusReader = new TimeCampStatusReader("");
+            
+
             timer = new DispatcherTimer()
             {
                 Interval = TimeSpan.FromSeconds(1)
@@ -37,6 +43,18 @@ namespace Wachman
             {
                 UpdateClock();
             };
+
+            Task.Run(async () => 
+            {
+                while(true)
+                {
+                    await Task.Delay(2000);
+                    await lblActivity.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action( ()=> 
+                    {
+                        lblActivity.Content = timeCampStatusReader.GetCurrentJob();
+                    }));
+                }
+            });
         }
 
         private void UpdateClock()
