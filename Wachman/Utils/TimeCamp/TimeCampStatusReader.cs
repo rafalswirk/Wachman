@@ -4,23 +4,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Wachman.Utils.TimeCamp
 {
     class TimeCampStatusReader
     {
+        //17ca75bd9affa8a93a555bae72
         private readonly string apiKey;
-
+        private RestClient client;
         public TimeCampStatusReader(string apiKey)
         {
             this.apiKey = apiKey;
+            client = new RestClient(@"https://www.timecamp.com/third_party/api");
         }
 
         internal string GetCurrentJob()
         {
-            var client = new RestClient(@"https://www.timecamp.com/third_party/api");
-            var request = new RestRequest(Method.GET);
-            throw new NotImplementedException();
+
+            try
+            {
+                var request = new RestRequest(Method.GET)
+                {
+                    Resource = $"/timer/api_token/{apiKey}"
+                };
+                request.AddParameter("action", "status", ParameterType.GetOrPost);
+                var response = client.Post(request);
+                XmlDocument xmldoc = new XmlDocument();
+                xmldoc.LoadXml(response.Content);
+                var status = xmldoc.GetElementsByTagName("name");
+
+                return status[0].InnerText;
+            }
+            catch (Exception)
+            {
+                return "";
+            }
         }
     }
 }
