@@ -23,7 +23,7 @@ namespace Wachman
     {
         DispatcherTimer timer;
         DateTime startTime;
-        TimeSpan workingTime = TimeSpan.FromHours(1);
+        TimeSpan workingTime = TimeSpan.FromMinutes(45);
         int complitedWorkingSessions;
 
         public MainWindow()
