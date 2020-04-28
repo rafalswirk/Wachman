@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,8 @@ namespace Wachman.Utils.TimeCamp
 
         internal string GetCurrentJob()
         {
+            var client = new RestClient(@"https://www.timecamp.com/third_party/api");
+            var request = new RestRequest(Method.GET);
             throw new NotImplementedException();
         }
     }
