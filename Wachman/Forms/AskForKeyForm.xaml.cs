@@ -19,10 +19,22 @@ namespace Wachman.Forms
     /// </summary>
     public partial class AskForKeyForm : Window
     {
-        public string ApiKey { get; private set; }
+        public string ApiKey { get; set; }
         public AskForKeyForm()
         {
             InitializeComponent();
+        }
+
+        private void btnOk_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
         }
     }
 }

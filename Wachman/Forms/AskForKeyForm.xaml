@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wachman.Forms"
         mc:Ignorable="d"
-        Title="AskForKeyForm" Height="450" Width="800">
+        Title="Wachman" ResizeMode="NoResize" WindowStyle="ToolWindow" Height="113.75" Width="461.25" Name="form">
     <Grid>
-        
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,10,0,0"><Run Text="API key:"/></TextBlock>
+        <Button x:Name="btnOk" Content="Ok" Margin="0,0,10,10" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom" Click="btnOk_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" Margin="0,0,90,10" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom" Click="btnCancel_Click"/>
+        <TextBox TextWrapping="Wrap" Text="{Binding ApiKey, ElementName=form}" Margin="57,9,11,0" Height="23" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
