@@ -32,8 +32,7 @@ namespace Wachman
         {
             InitializeComponent();
 
-            timeCampStatusReader = new TimeCampStatusReader("17ca75bd9affa8a93a555bae72");
-            
+            timeCampStatusReader = new TimeCampStatusReader(new ApiKeyProvider().GetKey());
 
             timer = new DispatcherTimer()
             {
