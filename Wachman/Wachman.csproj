@@ -58,7 +58,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\AskForKeyForm.xaml.cs">
+      <DependentUpon>AskForKeyForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\TimeCamp\ApiKeyProvider.cs" />
+    <Compile Include="Utils\TimeCamp\IApiKeyProvider.cs" />
     <Compile Include="Utils\TimeCamp\TimeCampStatusReader.cs" />
+    <Page Include="Forms\AskForKeyForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

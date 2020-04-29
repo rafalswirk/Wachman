@@ -32,7 +32,7 @@ namespace Wachman
         {
             InitializeComponent();
 
-            timeCampStatusReader = new TimeCampStatusReader("");
+            timeCampStatusReader = new TimeCampStatusReader("17ca75bd9affa8a93a555bae72");
             
 
             timer = new DispatcherTimer()

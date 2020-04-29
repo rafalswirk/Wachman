@@ -10,7 +10,6 @@ namespace Wachman.Utils.TimeCamp
 {
     class TimeCampStatusReader
     {
-        //17ca75bd9affa8a93a555bae72
         private readonly string apiKey;
         private RestClient client;
         public TimeCampStatusReader(string apiKey)
