@@ -12,8 +12,8 @@
             <RowDefinition Height="25*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="45:00" Foreground="DarkRed" Opacity="0.1" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center"/>
-        <Label x:Name="lblTime" Grid.Row="0" Content="45:00" Foreground="Red" FontSize="60" VerticalAlignment="Center" FontFamily="./Fonts/#DIGITAL-7 Mono"/>
+        <Label Content="00:00" Foreground="DarkRed" Opacity="0.1" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center"/>
+        <Label x:Name="lblTime" Grid.Row="0" Content="25:00" Foreground="Red" FontSize="60" VerticalAlignment="Center" FontFamily="./Fonts/#DIGITAL-7 Mono"/>
         <Grid Grid.Row="1"  Background="Black">
             <Viewbox>
                 <Label x:Name="lblActivity" Content="Current activity" Visibility="Hidden" Foreground="Red" Background="Black" FontSize="20" FontFamily="./Fonts/#DIGITAL-7 Mono"/>

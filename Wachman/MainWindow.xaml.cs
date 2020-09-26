@@ -25,7 +25,7 @@ namespace Wachman
         private TimeCampStatusReader timeCampStatusReader;
         DispatcherTimer timer;
         DateTime startTime;
-        TimeSpan workingTime = TimeSpan.FromMinutes(45);
+        TimeSpan workingTime = TimeSpan.FromMinutes(25);
         int complitedWorkingSessions;
 
         public MainWindow()
