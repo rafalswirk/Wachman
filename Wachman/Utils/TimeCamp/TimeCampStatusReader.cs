@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -14,6 +15,8 @@ namespace Wachman.Utils.TimeCamp
         private RestClient client;
         public TimeCampStatusReader(string apiKey)
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             this.apiKey = apiKey;
             client = new RestClient(@"https://www.timecamp.com/third_party/api");
         }
