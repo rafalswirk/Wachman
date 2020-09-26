@@ -47,10 +47,11 @@ namespace Wachman
             {
                 while(true)
                 {
-                    await Task.Delay(2000);
+                    await Task.Delay(3000);
+                    var activeTask = timeCampStatusReader.GetCurrentJob();
                     await lblActivity.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action( ()=> 
                     {
-                        lblActivity.Content = timeCampStatusReader.GetCurrentJob();
+                        lblActivity.Content = activeTask;
                     }));
                 }
             });
