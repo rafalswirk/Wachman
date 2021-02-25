@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,8 @@ namespace Wachman
         DateTime startTime;
         TimeSpan workingTime = TimeSpan.FromMinutes(25);
         int complitedWorkingSessions;
+        private double lastTop;
+        private double lastLeft;
 
         public MainWindow()
         {
@@ -96,6 +99,21 @@ namespace Wachman
         private void Window_MouseLeave(object sender, MouseEventArgs e)
         {
             Background = Brushes.Transparent;
+        }
+
+        private void Window_LocationChanged(object sender, EventArgs e)
+        {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+            {
+                lastTop = Top;
+                lastLeft = Left;
+            }
+
+            if (Mouse.LeftButton != MouseButtonState.Pressed)
+            {
+                Top = lastTop;
+                Left = lastLeft;
+            }
         }
     }
 }
