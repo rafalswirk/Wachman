@@ -35,7 +35,8 @@ namespace Wachman.Utils.TimeCamp
                 XmlDocument xmldoc = new XmlDocument();
                 xmldoc.LoadXml(response.Content);
                 var status = xmldoc.GetElementsByTagName("name");
-
+                if (status.Count == 0)
+                    return string.Empty;
                 return status[0].InnerText;
             }
             catch (Exception)
