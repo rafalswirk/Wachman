@@ -5,50 +5,19 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using Wachman.Utils;
 using Wachman.Utils.TimeCamp;
 
 namespace Wachman
 {
-    internal enum AccentState
-    {
-        ACCENT_DISABLED = 0,
-        ACCENT_ENABLE_GRADIENT = 1,
-        ACCENT_ENABLE_TRANSPARENTGRADIENT = 2,
-        ACCENT_ENABLE_BLURBEHIND = 3,
-        ACCENT_INVALID_STATE = 4
-    }
+    
 
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct AccentPolicy
-    {
-        public AccentState AccentState;
-        public int AccentFlags;
-        public int GradientColor;
-        public int AnimationId;
-    }
 
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct WindowCompositionAttributeData
-    {
-        public WindowCompositionAttribute Attribute;
-        public IntPtr Data;
-        public int SizeOfData;
-    }
-
-    internal enum WindowCompositionAttribute
-    {
-        // ...
-        WCA_ACCENT_POLICY = 19
-        // ...
-    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        [DllImport("user32.dll")]
-        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
-
         private TimeCampStatusReader timeCampStatusReader;
         DispatcherTimer timer;
         DateTime startTime;
@@ -86,28 +55,6 @@ namespace Wachman
             });
         }
 
-        internal void EnableBlur(bool enabled)
-        {
-            var windowHelper = new WindowInteropHelper(this);
-
-            var accent = new AccentPolicy();
-            accent.AccentState = enabled ? AccentState.ACCENT_ENABLE_BLURBEHIND : AccentState.ACCENT_DISABLED;
-
-            var accentStructSize = Marshal.SizeOf(accent);
-
-            var accentPtr = Marshal.AllocHGlobal(accentStructSize);
-            Marshal.StructureToPtr(accent, accentPtr, false);
-
-            var data = new WindowCompositionAttributeData();
-            data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
-            data.SizeOfData = accentStructSize;
-            data.Data = accentPtr;
-
-            SetWindowCompositionAttribute(windowHelper.Handle, ref data);
-
-            Marshal.FreeHGlobal(accentPtr);
-        }
-
         private void UpdateClock()
         {
             var ellpasedTime = workingTime - (DateTime.Now - startTime);
@@ -141,12 +88,12 @@ namespace Wachman
 
         private void Window_MouseEnter(object sender, MouseEventArgs e)
         {
-            EnableBlur(true);
+            AeroGlassHelper.EnableBlur(this, true);
         }
 
         private void Window_MouseLeave(object sender, MouseEventArgs e)
         {
-            EnableBlur(false);
+            AeroGlassHelper.EnableBlur(this, false);
         }
 
         private void Window_LocationChanged(object sender, EventArgs e)
@@ -166,7 +113,7 @@ namespace Wachman
 
         private void AcrylicWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            EnableBlur(false);
+            AeroGlassHelper.EnableBlur(this, false);
         }
     }
 }
