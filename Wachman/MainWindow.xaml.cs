@@ -1,23 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Interop;
 using System.Windows.Threading;
+using Wachman.Utils;
 using Wachman.Utils.TimeCamp;
 
 namespace Wachman
 {
+    
+
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -93,12 +88,12 @@ namespace Wachman
 
         private void Window_MouseEnter(object sender, MouseEventArgs e)
         {
-            Background = Brushes.White;
+            AeroGlassHelper.EnableBlur(this, true);
         }
 
         private void Window_MouseLeave(object sender, MouseEventArgs e)
         {
-            Background = Brushes.Transparent;
+            AeroGlassHelper.EnableBlur(this, false);
         }
 
         private void Window_LocationChanged(object sender, EventArgs e)
@@ -114,6 +109,11 @@ namespace Wachman
                 Top = lastTop;
                 Left = lastLeft;
             }
+        }
+
+        private void AcrylicWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            AeroGlassHelper.EnableBlur(this, false);
         }
     }
 }

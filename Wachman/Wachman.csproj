@@ -61,6 +61,7 @@
     <Compile Include="Forms\AskForKeyForm.xaml.cs">
       <DependentUpon>AskForKeyForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\AeroGlassHelper.cs" />
     <Compile Include="Utils\TimeCamp\ApiKeyProvider.cs" />
     <Compile Include="Utils\TimeCamp\IApiKeyProvider.cs" />
     <Compile Include="Utils\TimeCamp\TimeCampStatusReader.cs" />
