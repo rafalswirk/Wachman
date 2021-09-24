@@ -5,13 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wachman"
         mc:Ignorable="d"
-        Title="MainWindow" Height="86.739" Width="150" Topmost="True" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="Transparent" LocationChanged="Window_LocationChanged" MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" IsHitTestVisible="True"  >
-    <Grid Background="Transparent">
+        Title="MainWindow" 
+        Height="86.739" Width="150" 
+        Topmost="True" ResizeMode="NoResize" WindowStyle="None" 
+        AllowsTransparency="True" Background="Transparent" 
+        LocationChanged="Window_LocationChanged" MouseLeftButtonDown="Window_MouseLeftButtonDown" 
+        MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" IsHitTestVisible="True" Loaded="AcrylicWindow_Loaded" >
+    <!--<Grid Background="Transparent">-->
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="62*"/>
             <RowDefinition Height="25*"/>
         </Grid.RowDefinitions>
-
+        <!--<Grid x:Name="grdBackground" Grid.Row="0" Grid.RowSpan="2" Background="Green"/>-->
         <Label Content="00:00" Foreground="DarkRed" Opacity="0.1" FontSize="60" FontFamily="./Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center"/>
         <Label x:Name="lblTime" Grid.Row="0" Content="25:00" Foreground="Red" FontSize="60" VerticalAlignment="Center" FontFamily="./Fonts/#DIGITAL-7 Mono"/>
         <Grid Grid.Row="1"  Background="Black">
