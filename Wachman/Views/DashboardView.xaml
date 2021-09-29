@@ -6,7 +6,22 @@
         xmlns:local="clr-namespace:Wachman.Views"
         mc:Ignorable="d"
         Title="DashboardView" Height="450" Width="800">
-    <Grid>
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="377*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Grid.Row="0" Grid.Column="0">
+            <Label Content="WACHMAN" FontFamily="../Fonts/#DIGITAL-7 Mono" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Viewbox>
+        <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" Margin="10 0 10 0"/>
+        <Grid Background="LightGray" Grid.Column="1" Grid.RowSpan="2">
         
+        </Grid>
+
     </Grid>
 </Window>
