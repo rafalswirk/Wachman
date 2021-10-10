@@ -23,7 +23,12 @@
         <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" Margin="10,0,10,0"/>
         <StackPanel Background="LightGray" Grid.Column="1" Grid.RowSpan="2" >
             <DockPanel LastChildFill="True">
-                <Button DockPanel.Dock="Right" Content="Create new" Margin="10"/>
+                <Button DockPanel.Dock="Right" Margin="10">
+                    <DockPanel>
+                        <materialDesign:PackIcon Kind="Plus" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                        <TextBlock Text="Create new" Margin="10 0 0 0"/>
+                    </DockPanel>
+                </Button>
                 <Border CornerRadius="5" BorderBrush="White" Background="White" Margin="10" BorderThickness="1">
                     <TextBox Text="ToDo" Background="Transparent" IsHitTestVisible="True" VerticalContentAlignment="Center" />
                 </Border>
