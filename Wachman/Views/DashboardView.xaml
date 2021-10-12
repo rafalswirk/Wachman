@@ -33,7 +33,7 @@
                             </DockPanel>
                         </Button>
                         <Border CornerRadius="5" BorderBrush="White" Background="White" Margin="10" BorderThickness="1">
-                            <TextBox Text="ToDo" Margin="10 0 10 5" Background="Transparent" IsHitTestVisible="True" VerticalContentAlignment="Center" />
+                            <TextBox Text="" materialDesign:HintAssist.Hint="ToDo" Margin="10 0 10 5" Background="Transparent" IsHitTestVisible="True" VerticalContentAlignment="Center" />
                         </Border>
                     </DockPanel>
                     <DataGrid CanUserAddRows="False" Background="Transparent" Foreground="Red" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
