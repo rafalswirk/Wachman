@@ -70,6 +70,7 @@
     <Compile Include="Forms\AskForKeyForm.xaml.cs">
       <DependentUpon>AskForKeyForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Jobs\Job.cs" />
     <Compile Include="Utils\AeroGlassHelper.cs" />
     <Compile Include="Utils\TimeCamp\ApiKeyProvider.cs" />
     <Compile Include="Utils\TimeCamp\IApiKeyProvider.cs" />

@@ -36,11 +36,11 @@
                             <TextBox Text="" materialDesign:HintAssist.Hint="ToDo" Margin="10 0 10 5" Background="Transparent" IsHitTestVisible="True" VerticalContentAlignment="Center" />
                         </Border>
                     </DockPanel>
-                    <DataGrid CanUserAddRows="False" Background="Transparent" Foreground="Red" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
+                    <DataGrid Name="dataGrid" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Task name" Foreground="Green" MinWidth="250" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                            <DataGridTextColumn Header="Start" MaxWidth="100" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"/>
-                            <DataGridTextColumn Header="Stop" MaxWidth="100" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"/>
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Task name"  MinWidth="250" />
+                            <DataGridTextColumn Binding="{Binding Start}" Header="Start" MaxWidth="350" />
+                            <DataGridTextColumn Binding="{Binding Stop}" Header="Stop" MaxWidth="350" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>
