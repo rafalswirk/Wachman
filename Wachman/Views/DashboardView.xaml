@@ -39,8 +39,10 @@
                     <DataGrid Name="dataGrid" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Name}" Header="Task name"  MinWidth="250" />
+                            <DataGridTextColumn Binding="{Binding Description}" Header="Description" MaxWidth="350" />
                             <DataGridTextColumn Binding="{Binding Start}" Header="Start" MaxWidth="350" />
                             <DataGridTextColumn Binding="{Binding Stop}" Header="Stop" MaxWidth="350" />
+                            <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" MaxWidth="350" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>
