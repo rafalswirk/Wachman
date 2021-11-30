@@ -20,7 +20,10 @@
             <ColumnDefinition Width="533*"/>
         </Grid.ColumnDefinitions>
         <ToggleButton Style="{StaticResource CustomStyle}" Content="Foo" Grid.Column="1" Margin="266,272,128,77"/>
-        <Controls:ToggleImageButton Content="ToggleImageButton" Width="200" Height="100" Grid.Column="1" HorizontalAlignment="Left" Margin="33,167,0,167" d:LayoutOverrides="Width"/>
+        <StackPanel Grid.Column="1" Width="200" HorizontalAlignment="Left">
+            <Controls:ToggleImageButton Content="ToggleImageButton" BorderBrush="Coral"/>
+            <Controls:ToggleImageButton Content="ToggleImageButton"/>
+        </StackPanel>
         <StackPanel>
             <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="10"/>
             <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="10"/>
