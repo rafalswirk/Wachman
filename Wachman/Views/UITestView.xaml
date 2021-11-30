@@ -22,9 +22,11 @@
         <ToggleButton Style="{StaticResource CustomStyle}" Content="Foo" Grid.Column="1" Margin="266,272,128,77"/>
         <Controls:ToggleImageButton Content="ToggleImageButton" Width="200" Height="100" Grid.Column="1" HorizontalAlignment="Left" Margin="33,167,0,167" d:LayoutOverrides="Width"/>
         <StackPanel>
-            <RadioButton Content="Fooo1" Style="{StaticResource CustomStyle}" Margin="10"/>
-            <RadioButton Content="Fooo1" Style="{StaticResource CustomStyle}" Margin="10"/>
-            <RadioButton Content="Fooo1" Style="{StaticResource CustomStyle}" Margin="10"/>
+            <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="10"/>
+            <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="10"/>
+            <RadioButton Style="{StaticResource CustomStyle}" Margin="10"/>
+            <RadioButton Style="{StaticResource CustomStyle}" Margin="10"/>
+            <RadioButton Style="{StaticResource CustomStyle}" Margin="10"/>
         </StackPanel>
 
     </Grid>
