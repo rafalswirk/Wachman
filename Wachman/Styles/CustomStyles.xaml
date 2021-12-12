@@ -3,7 +3,7 @@
     xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
     xmlns:converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf">
 
-    <Style x:Key="CustomStyle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MaterialDesignFlatButton}">
+    <Style x:Key="MenuToggle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MaterialDesignFlatButton}">
         <Setter Property="Background" Value="{StaticResource PrimaryHueMidBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource PrimaryHueMidBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource PrimaryHueMidForegroundBrush}"/>
@@ -13,7 +13,6 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="16 4 16 4"/>
         <Setter Property="Height" Value="32"/>
         <Setter Property="Content">
             <Setter.Value>

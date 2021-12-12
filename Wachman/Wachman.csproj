@@ -81,7 +81,7 @@
     <Compile Include="Views\UITestView.xaml.cs">
       <DependentUpon>UITestView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Fooo1.xaml">
+    <Page Include="Styles\CustomStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
