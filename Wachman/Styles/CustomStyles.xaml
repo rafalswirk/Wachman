@@ -4,9 +4,9 @@
     xmlns:converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf">
 
     <Style x:Key="MenuToggle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MaterialDesignFlatButton}">
-        <Setter Property="Background" Value="{StaticResource PrimaryHueMidBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource PrimaryHueMidBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource PrimaryHueMidForegroundBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="Gray"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontWeight" Value="Medium"/>
         <Setter Property="FontSize" Value="14"/>
@@ -14,6 +14,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Height" Value="32"/>
+        <Setter Property="Focusable" Value="False"/>
         <Setter Property="Content">
             <Setter.Value>
                 <WrapPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
@@ -24,8 +25,13 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="Red"/>
+                <Setter Property="Foreground" Value="Red"/>
+                <Setter Property="Background" Value="WhiteSmoke"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Gray"/>
             </Trigger>
         </Style.Triggers>
+        
     </Style>
 </ResourceDictionary>
