@@ -77,6 +77,14 @@
                         <TextBlock Text="Settings" />
                     </StackPanel>
                 </RadioButton>
+                <StackPanel Grid.Column="2" Grid.RowSpan="2" >
+                    <Label Content="Daily progress:" Margin="5 10 0 0"/>
+                    <ProgressBar Margin="10" Height="10" IsIndeterminate="True"/>
+                    
+                    <Label Content="Monthly progress:" Margin="5 10 0 0"/>
+                    <ProgressBar Margin="10" Height="10" IsIndeterminate="True"/>
+
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>
