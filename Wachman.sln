@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wachman", "Wachman\Wachman.csproj", "{88C09717-68D4-4299-A516-B2F2859E3A18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{4FCC60E2-D72B-411B-AF8A-8BB6B878BA8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{88C09717-68D4-4299-A516-B2F2859E3A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88C09717-68D4-4299-A516-B2F2859E3A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88C09717-68D4-4299-A516-B2F2859E3A18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FCC60E2-D72B-411B-AF8A-8BB6B878BA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FCC60E2-D72B-411B-AF8A-8BB6B878BA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FCC60E2-D72B-411B-AF8A-8BB6B878BA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FCC60E2-D72B-411B-AF8A-8BB6B878BA8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {93FA2FE8-A639-4C6E-B20C-A66E4302F0D3}
 	EndGlobalSection
 EndGlobal
