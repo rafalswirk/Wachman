@@ -21,7 +21,7 @@ namespace TimeTrackingService.TimeCampAPI
             client = new RestClient(@"https://www.timecamp.com/third_party/api");
         }
 
-        public string GetCurrentJob()
+        public async Task<string> GetCurrentJobAsync()
         {
 
             try
@@ -32,10 +32,9 @@ namespace TimeTrackingService.TimeCampAPI
                     Method = Method.Get
                 };
                 request.AddParameter("action", "status", ParameterType.GetOrPost);
-                var response = client.PostAsync(request);
-                response.Wait();
+                var response = await client.PostAsync(request);
                 XmlDocument xmldoc = new XmlDocument();
-                xmldoc.LoadXml(response.Result.Content);
+                xmldoc.LoadXml(response.Content);
                 var status = xmldoc.GetElementsByTagName("name");
                 if (status.Count == 0)
                     return string.Empty;

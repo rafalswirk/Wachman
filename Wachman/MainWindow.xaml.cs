@@ -47,7 +47,7 @@ namespace Wachman
                 while(true)
                 {
                     await Task.Delay(3000);
-                    var activeTask = timeCampStatusReader.GetCurrentJob();
+                    var activeTask = await timeCampStatusReader.GetCurrentJobAsync();
                     await lblActivity.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action( ()=> 
                     {
                         lblActivity.Content = activeTask;
