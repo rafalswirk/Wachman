@@ -5,8 +5,9 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using TimeTrackingService.TimeCampAPI;
 using Wachman.Utils;
-using Wachman.Utils.TimeCamp;
+using Wachman.Utils.DataStorage;
 
 namespace Wachman
 {

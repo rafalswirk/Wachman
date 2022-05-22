@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wachman.Forms;
 
-namespace Wachman.Utils.TimeCamp
+namespace Wachman.Utils.DataStorage
 {
     class ApiKeyProvider : IApiKeyProvider
     {
