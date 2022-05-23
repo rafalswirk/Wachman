@@ -1,0 +1,10 @@
+{
+    "rest-client.enableTelemetry": false,
+    "rest-client.environmentVariables": {
+
+        "$shared": 
+        {
+            "apiKey": "xxx"
+        }
+    }
+}
