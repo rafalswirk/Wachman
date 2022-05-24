@@ -1,3 +1,5 @@
-GET https://app.timecamp.com/third_party/api/entries?from=2022-05-19&to=2022-05-19 HTTP/1.1
+GET https://app.timecamp.com/third_party/api/entries?
+&from=2022-05-15
+&to=2022-05-19 HTTP/1.1
 Authorization: Bearer {{apiKey}}
-Content-Type: application/json
+Accept: application/json
