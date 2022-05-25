@@ -32,8 +32,9 @@ namespace TimeTrackingService.TimeCampAPI
                     Resource = $"/entries",
                     Method = Method.Get
                 };
-                request.AddParameter("from", "2022-05-18");
-                request.AddParameter("to", "2022-05-19");
+                var today = DateTime.Now.ToString("yyyy-MM-dd");
+                request.AddParameter("from", today);
+                request.AddParameter("to", today);
                 var response = await _client.ExecuteAsync<IEnumerable<EntriesDTO>>(request);
                 if (!response.IsSuccessful)
                     return null;
