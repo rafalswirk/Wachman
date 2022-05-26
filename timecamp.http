@@ -1,5 +1,20 @@
-GET https://app.timecamp.com/third_party/api/entries?
-&from=2022-05-15
-&to=2022-05-19 HTTP/1.1
+@apiBaseAddress = https://app.timecamp.com/third_party/api
+
+GET {{apiBaseAddress}}/entries?
+&from=2022-05-26
+&to=2022-05-26 HTTP/1.1
 Authorization: Bearer {{apiKey}}
 Accept: application/json
+###
+GET {{apiBaseAddress}}/timer_running
+Authorization: Bearer {{apiKey}}
+Accept: application/json
+###
+Post {{apiBaseAddress}}/timer
+Authorization: Bearer {{apiKey}}
+Accept: application/json
+
+{
+  "action": "status"
+}
+###
