@@ -43,7 +43,7 @@
                             <TextBox Text="" materialDesign:HintAssist.Hint="ToDo" Margin="10 0 10 5" Background="Transparent" IsHitTestVisible="True" VerticalContentAlignment="Center" />
                         </Border>
                     </DockPanel>
-                    <DataGrid Name="dataGrid" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
+                    <DataGrid Name="dataGrid" ItemsSource="{Binding DailyJobs}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Name}" Header="Task name"  MinWidth="100" />
                             <DataGridTextColumn Binding="{Binding Description}" Header="Description" />

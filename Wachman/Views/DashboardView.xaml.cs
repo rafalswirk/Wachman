@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using TimeTrackingService.TimeCampAPI;
 using TimeTrackingService.TimeCampAPI.Client;
 using Wachman.Utils.DataStorage;
+using Wachman.ViewModels;
 
 namespace Wachman.Views
 {
@@ -23,10 +24,14 @@ namespace Wachman.Views
     /// </summary>
     public partial class DashboardView : Window
     {
-        private const bool HardcodedValues = false;
+        private const bool HardcodedValues = true;
+        private DashboardViewModel _dataContext;
+
         public DashboardView()
         {
             InitializeComponent();
+            _dataContext = new DashboardViewModel();
+            DataContext = _dataContext;
             if(HardcodedValues)
             {
                 var dataItems = new List<Job>()
@@ -36,7 +41,7 @@ namespace Wachman.Views
                     new Job{ Name = "Tea time", Description = "Green tea", Start = new DateTime(2021, 11, 1, 12, 3, 22), Stop = new DateTime(2021, 11, 1, 13, 3, 22), Duration = TimeSpan.FromSeconds(320)}
                 };
 
-                dataGrid.ItemsSource = dataItems;
+                _dataContext.DailyJobs = dataItems;
             }
             else
             {
@@ -45,7 +50,7 @@ namespace Wachman.Views
                 {
                     var dailyJobs = new GetDailyJobs(TimeCampApiClient.Instance);
                     var jobs = await dailyJobs.ExecuteAsync();
-                    dataGrid.ItemsSource = jobs;
+                    _dataContext.DailyJobs = jobs;
                 });
             }           
         }
