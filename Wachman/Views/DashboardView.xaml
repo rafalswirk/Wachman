@@ -4,10 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wachman.Views"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:viewmodels="clr-namespace:Wachman.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:DashboardViewModel}"
         Background="{DynamicResource MaterialDesignPaper}"
+        Name="dashboard"
         mc:Ignorable="d"
-        Title="Wachman" Height="450" Width="900">
+        Title="Wachman" Height="450" Width="900" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -43,7 +46,7 @@
                             <TextBox Text="" materialDesign:HintAssist.Hint="ToDo" Margin="10 0 10 5" Background="Transparent" IsHitTestVisible="True" VerticalContentAlignment="Center" />
                         </Border>
                     </DockPanel>
-                    <DataGrid Name="dataGrid" ItemsSource="{Binding DailyJobs}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
+                    <DataGrid Name="dataGrid" ItemsSource="{Binding DailyJobs}" d:ItemsSource="{d:SampleData}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Name}" Header="Task name"  MinWidth="100" />
                             <DataGridTextColumn Binding="{Binding Description}" Header="Description" />
