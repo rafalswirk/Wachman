@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controls", "Controls\Contro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataModels", "DataModels\DataModels.csproj", "{694FB643-CDE1-4A28-A78D-CBB0EE4C9FC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTrackingService", "TimeTrackingService\TimeTrackingService.csproj", "{CE6A1B4E-E2F3-4415-B362-C232983D3D62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTrackingService", "TimeTrackingService\TimeTrackingService.csproj", "{CE6A1B4E-E2F3-4415-B362-C232983D3D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wachman.Tests", "Wachman.Tests\Wachman.Tests.csproj", "{BFF71DFB-6509-428C-A765-BABCDA2DDBA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CE6A1B4E-E2F3-4415-B362-C232983D3D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE6A1B4E-E2F3-4415-B362-C232983D3D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE6A1B4E-E2F3-4415-B362-C232983D3D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFF71DFB-6509-428C-A765-BABCDA2DDBA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFF71DFB-6509-428C-A765-BABCDA2DDBA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFF71DFB-6509-428C-A765-BABCDA2DDBA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFF71DFB-6509-428C-A765-BABCDA2DDBA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
