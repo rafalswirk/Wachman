@@ -16,7 +16,7 @@ namespace Wachman.Tests.TimeTrackingServiceTests.Mocks
         public RestClientMock()
         {
             endpoints = new Dictionary<string, string>();
-            endpoints.Add($"{RestUrl}/entires", MockResponses.EntriesResponse);
+            endpoints.Add($"{RestUrl}/entries", MockResponses.EntriesResponse);
         }
         internal RestClient GetRestClient()
         {
@@ -32,6 +32,7 @@ namespace Wachman.Tests.TimeTrackingServiceTests.Mocks
                 ConfigureMessageHandler = handler => mockHttp
             };
             var client = new RestClient(options);
+            client.AddDefaultHeader("Accept", "application/json");
 
             return client;
         }
