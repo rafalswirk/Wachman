@@ -47,8 +47,8 @@ namespace TimeTrackingService.TimeCampAPI
                     {
                         Description = dto.Description,
                         Name = dto.Name,
-                        Start = DateTime.ParseExact(dto.Start_Time, "HH:mm:ss", null),
-                        Stop = DateTime.ParseExact(dto.End_Time, "HH:mm:ss", null)
+                        Start = DateTime.ParseExact($"{dto.Date.ToString("yyyy-MM-dd")} {dto.Start_Time}" , "yyyy-MM-dd HH:mm:ss", null),
+                        Stop = DateTime.ParseExact($"{dto.Date.ToString("yyyy-MM-dd")} {dto.End_Time}", "yyyy-MM-dd HH:mm:ss", null)
                     };
                     job.Duration = job.Stop - job.Start;
                     result.Add(job);
