@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TimeTrackingService.DummyAPI;
 using TimeTrackingService.TimeCampAPI;
 using TimeTrackingService.TimeCampAPI.Client;
 using Wachman.Utils.DataStorage;
@@ -29,8 +30,10 @@ namespace Wachman.Views
         public DashboardView()
         {
             InitializeComponent();
-            TimeCampApiClient.Initialize(new ApiKeyProvider().GetKey());
-            _dataContext = new DashboardViewModel();
+            bool useDummyService = true;
+            _dataContext = new DashboardViewModel(useDummyService ?
+                new DummyTrackingService()
+                : new TimeCampService(new ApiKeyProvider().GetKey()));
             DataContext = _dataContext;      
         }
 

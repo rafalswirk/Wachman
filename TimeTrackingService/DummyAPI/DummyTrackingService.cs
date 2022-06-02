@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TimeTrackingService.DummyAPI
 {
-    internal class DummyTrackingService : ITimeTrackingService
+    public class DummyTrackingService : ITimeTrackingService
     {
         public Task<bool> InitializeAsync() => Task.FromResult(true);
 

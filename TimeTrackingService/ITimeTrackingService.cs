@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TimeTrackingService
 {
-    internal interface ITimeTrackingService
+    public interface ITimeTrackingService
     {
         Task<bool> InitializeAsync();
         Task<List<Job>?> GetDailyJobsAsync();
