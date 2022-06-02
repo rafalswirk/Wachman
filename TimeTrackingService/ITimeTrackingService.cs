@@ -10,6 +10,7 @@ namespace TimeTrackingService
     internal interface ITimeTrackingService
     {
         Task<bool> InitializeAsync();
-        Task<List<Job>> GetDailyJobsAsync();
+        Task<List<Job>?> GetDailyJobsAsync();
+        Task<string> GetCurrentJobName();
     }
 }
