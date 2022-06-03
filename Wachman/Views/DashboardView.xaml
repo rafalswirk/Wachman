@@ -18,8 +18,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Background="LightGray">
+    <Grid Background="Gray">
         <Border Margin="10" CornerRadius="10" Background="WhiteSmoke">
+            <Border.Effect>
+                <DropShadowEffect/>
+            </Border.Effect>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>
