@@ -5,8 +5,9 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using TimeTrackingService.TimeCampAPI;
 using Wachman.Utils;
-using Wachman.Utils.TimeCamp;
+using Wachman.Utils.DataStorage;
 
 namespace Wachman
 {
@@ -46,7 +47,7 @@ namespace Wachman
                 while(true)
                 {
                     await Task.Delay(3000);
-                    var activeTask = timeCampStatusReader.GetCurrentJob();
+                    var activeTask = await timeCampStatusReader.GetCurrentJobAsync();
                     await lblActivity.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action( ()=> 
                     {
                         lblActivity.Content = activeTask;

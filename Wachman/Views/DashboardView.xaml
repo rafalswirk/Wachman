@@ -4,10 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wachman.Views"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:viewmodels="clr-namespace:Wachman.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:DashboardViewModel}"
         Background="{DynamicResource MaterialDesignPaper}"
+        Name="dashboard"
         mc:Ignorable="d"
-        Title="Wachman" Height="450" Width="800">
+        Title="Wachman" Height="450" Width="900" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,8 +18,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Background="LightGray">
+    <Grid Background="Gray">
         <Border Margin="10" CornerRadius="10" Background="WhiteSmoke">
+            <Border.Effect>
+                <DropShadowEffect/>
+            </Border.Effect>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>
@@ -43,13 +49,22 @@
                             <TextBox Text="" materialDesign:HintAssist.Hint="ToDo" Margin="10 0 10 5" Background="Transparent" IsHitTestVisible="True" VerticalContentAlignment="Center" />
                         </Border>
                     </DockPanel>
-                    <DataGrid Name="dataGrid" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
+                    <DataGrid Name="dataGrid" ItemsSource="{Binding DailyJobs}" d:ItemsSource="{d:SampleData}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Name}" Header="Task name"  MinWidth="250" />
-                            <DataGridTextColumn Binding="{Binding Description}" Header="Description" MaxWidth="350" />
-                            <DataGridTextColumn Binding="{Binding Start}" Header="Start" MaxWidth="350" />
-                            <DataGridTextColumn Binding="{Binding Stop}" Header="Stop" MaxWidth="350" />
-                            <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" MaxWidth="350" />
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Task name"  MinWidth="100" />
+                            <DataGridTextColumn Binding="{Binding Description}" Header="Description" />
+                            <DataGridTextColumn Binding="{Binding Start, StringFormat=hh\\:mm}" Header="Start" MinWidth="60" MaxWidth="350" />
+                            <DataGridTextColumn Binding="{Binding Stop, StringFormat=hh\\:mm}" Header="Stop" MinWidth="60" MaxWidth="350" />
+                            <DataGridTextColumn Binding="{Binding Duration, StringFormat=hh\\:mm}" Header="Duration" MinWidth="60" MaxWidth="350" />
+                            <DataGridTemplateColumn Header="" MinWidth="60" MaxWidth="85">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Height="20" Padding="0">
+                                            <materialDesign:PackIcon Kind="Play" />
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>

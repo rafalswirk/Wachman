@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataModels.Jobs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Wachman.Models.Jobs;
+using TimeTrackingService.DummyAPI;
+using TimeTrackingService.TimeCampAPI;
+using TimeTrackingService.TimeCampAPI.Client;
+using Wachman.Utils.DataStorage;
+using Wachman.ViewModels;
 
 namespace Wachman.Views
 {
@@ -20,17 +25,21 @@ namespace Wachman.Views
     /// </summary>
     public partial class DashboardView : Window
     {
+        private DashboardViewModel _dataContext;
+
         public DashboardView()
         {
             InitializeComponent();
-            var dataItems = new List<Job>()
-            {
-                new Job{ Name = "ProgrammingKata", Description = "Making fancy algorithm", Start = new DateTime(2021, 11, 1, 12, 3, 22), Stop = new DateTime(2021, 11, 1, 13, 3, 22), Duration = TimeSpan.FromMinutes(25)},
-                new Job{ Name = "Mailing", Description = "Mail to office", Start = new DateTime(2021, 11, 1, 13, 3, 22), Stop = new DateTime(2021, 11, 1, 13, 3, 22), Duration = TimeSpan.FromMinutes(72)},
-                new Job{ Name = "Tea time", Description = "Green tea", Start = new DateTime(2021, 11, 1, 12, 3, 22), Stop = new DateTime(2021, 11, 1, 13, 3, 22), Duration = TimeSpan.FromSeconds(320)}
-            };
+            bool useDummyService = true;
+            _dataContext = new DashboardViewModel(useDummyService ?
+                new DummyTrackingService()
+                : new TimeCampService(new ApiKeyProvider().GetKey()));
+            DataContext = _dataContext;      
+        }
 
-            dataGrid.ItemsSource = dataItems;
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await _dataContext.OnLoaded();
         }
     }
 }

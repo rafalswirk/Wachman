@@ -1,4 +1,4 @@
-﻿namespace Wachman.Utils.TimeCamp
+﻿namespace Wachman.Utils.DataStorage
 {
     internal interface IApiKeyProvider
     {

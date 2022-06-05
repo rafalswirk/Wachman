@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace Wachman.Utils.TimeCamp
+namespace TimeTrackingService.TimeCampAPI
 {
-    class TimeCampStatusReader
+    public class TimeCampStatusReader
     {
         private readonly string apiKey;
         private RestClient client;
@@ -21,17 +21,18 @@ namespace Wachman.Utils.TimeCamp
             client = new RestClient(@"https://www.timecamp.com/third_party/api");
         }
 
-        internal string GetCurrentJob()
+        public async Task<string> GetCurrentJobAsync()
         {
 
             try
             {
-                var request = new RestRequest(Method.GET)
+                var request = new RestRequest
                 {
-                    Resource = $"/timer/api_token/{apiKey}"
+                    Resource = $"/timer/api_token/{apiKey}",
+                    Method = Method.Get
                 };
                 request.AddParameter("action", "status", ParameterType.GetOrPost);
-                var response = client.Post(request);
+                var response = await client.PostAsync(request);
                 XmlDocument xmldoc = new XmlDocument();
                 xmldoc.LoadXml(response.Content);
                 var status = xmldoc.GetElementsByTagName("name");
