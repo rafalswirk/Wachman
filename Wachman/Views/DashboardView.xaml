@@ -56,11 +56,11 @@
                             <DataGridTextColumn Binding="{Binding Start, StringFormat=hh\\:mm}" Header="Start" MinWidth="60" MaxWidth="350" />
                             <DataGridTextColumn Binding="{Binding Stop, StringFormat=hh\\:mm}" Header="Stop" MinWidth="60" MaxWidth="350" />
                             <DataGridTextColumn Binding="{Binding Duration, StringFormat=hh\\:mm}" Header="Duration" MinWidth="60" MaxWidth="350" />
-                            <DataGridTemplateColumn Header="" MinWidth="60" MaxWidth="350">
+                            <DataGridTemplateColumn Header="" MinWidth="60" MaxWidth="85">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button>
-                                            <materialDesign:PackIcon Kind="Play" Margin="0 0 10 0" />
+                                        <Button Height="20" Padding="0">
+                                            <materialDesign:PackIcon Kind="Play" />
                                         </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
