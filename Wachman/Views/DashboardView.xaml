@@ -59,9 +59,14 @@
                             <DataGridTemplateColumn Header="" MinWidth="60" MaxWidth="85">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Height="20" Padding="0">
+                                        <Button Name="btnJobAction" Height="20" Padding="0" Visibility="Hidden">
                                             <materialDesign:PackIcon Kind="Play" />
                                         </Button>
+                                        <DataTemplate.Triggers>
+                                            <DataTrigger Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource AncestorType=DataGridRow}}" Value="True">
+                                                <Setter Property="Visibility" TargetName="btnJobAction" Value="Visible"/>
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
