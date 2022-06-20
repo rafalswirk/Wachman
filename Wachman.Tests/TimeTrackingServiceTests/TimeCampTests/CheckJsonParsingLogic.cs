@@ -22,12 +22,13 @@ namespace Wachman.Tests.TimeTrackingServiceTests.TimeCampTests
 
             jobs.Should().NotBeNull();
             jobs.Count.Should().Be(11);
-            jobs.First().GetType().Properties().Count().Should().Be(5);
+            jobs.First().GetType().Properties().Count().Should().Be(6);
             jobs.First().Name.Should().Be("Wachman");
             jobs.First().Description.Should().Be("Demo");
             jobs.First().Duration.Should().Be(new TimeSpan(1, 0, 26));
             jobs.First().Start.Should().Be(new DateTime(2022, 5, 26, 5, 19, 34));
             jobs.First().Stop.Should().Be(new DateTime(2022, 5, 26, 6, 20, 0));
+            jobs.First().IsRunning.Should().Be(false);
         }
     }
 }
