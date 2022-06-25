@@ -18,7 +18,8 @@
                 <ResourceDictionary Source="../Styles/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Key="JobNotRunningTemplate">
-                <Button Name="btnJobAction" BorderBrush="Transparent" Height="20" Padding="0" Visibility="Hidden">
+                <Button Name="btnJobAction" Command="{Binding DataContext.ChangeJobStatus, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" 
+                         CommandParameter="{Binding}" BorderBrush="Transparent" Height="20" Padding="0" Visibility="Hidden">
                     <materialDesign:PackIcon Kind="Play" />
                 </Button>
                 <DataTemplate.Triggers>
@@ -28,7 +29,7 @@
                 </DataTemplate.Triggers>
             </DataTemplate>
             <DataTemplate x:Key="JobRunningTemplate">
-                <Button Name="btnJobAction" Background="Red" BorderBrush="Transparent" Height="20" Padding="0">
+                <Button Name="btnJobAction" Command="{Binding ChangeJobStatus}" CommandParameter="{Binding}" Background="Red" BorderBrush="Transparent" Height="20" Padding="0">
                     <materialDesign:PackIcon Kind="Stop" />
                 </Button>
             </DataTemplate>
