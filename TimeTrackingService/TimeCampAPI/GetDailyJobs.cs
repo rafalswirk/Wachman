@@ -51,6 +51,10 @@ namespace TimeTrackingService.TimeCampAPI
                         Stop = DateTime.ParseExact($"{dto.Date.ToString("yyyy-MM-dd")} {dto.End_Time}", "yyyy-MM-dd HH:mm:ss", null)
                     };
                     job.Duration = job.Stop - job.Start;
+                    if (dto == response.Data.Last() && job.Duration == TimeSpan.Zero)
+                        job.IsRunning = true;
+
+
                     result.Add(job);
                 }
 

@@ -1,10 +1,12 @@
 ﻿using DataModels.Jobs;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TimeTrackingService;
 using TimeTrackingService.TimeCampAPI;
 using TimeTrackingService.TimeCampAPI.Client;
@@ -22,9 +24,15 @@ namespace Wachman.ViewModels
             set => SetProperty(ref _dailyJobs, value);
         }
 
+        public ICommand ChangeJobStatus { get; private set; }
+
         public DashboardViewModel(ITimeTrackingService timeTrackingService)
         {
             _timeTrackingService = timeTrackingService;
+            ChangeJobStatus = new RelayCommand<Job>(job => 
+            {
+                job.IsRunning = true;
+            });
         }
 
         internal async Task OnLoaded()
