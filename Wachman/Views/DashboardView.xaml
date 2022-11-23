@@ -8,6 +8,7 @@
         xmlns:viewmodels="clr-namespace:Wachman.ViewModels" 
         xmlns:templateSelectors="clr-namespace:Wachman.DataTemplateSelectors"
         xmlns:subviews="clr-namespace:Wachman.Views.Subviews"
+        xmlns:viewModels="clr-namespace:Wachman.ViewModels"
         d:DataContext="{d:DesignInstance Type=viewmodels:DashboardViewModel}"
         Background="{DynamicResource MaterialDesignPaper}"
         Name="dashboard"
@@ -18,6 +19,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Styles/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type viewModels:CurrentDayViewModel}">
+                <subviews:CurrentDayView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:PomodoroViewModel}">
+                <subviews:PomodoroTimerView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
     <Grid Background="Gray">
@@ -38,7 +45,8 @@
                     <Label Content="WACHMAN" FontFamily="../Fonts/#DIGITAL-7 Mono" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Viewbox>
                 <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" Margin="10,0,10,0"/>
-                <subviews:CurrentDayView Grid.Column="1" Grid.RowSpan="2"/>
+                <ContentControl Grid.Column="1" Grid.RowSpan="2" Content="{Binding SelectedViewModel, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--<subviews:PomodoroTimerView Grid.Column="1" Grid.RowSpan="2"/>-->
                 
                 <StackPanel Grid.Row="1">
                     <materialDesign:Chip Content="Joe Doe" HorizontalAlignment="Center" Width="120" Margin="0 10 0 0" Background="LightGray"/>

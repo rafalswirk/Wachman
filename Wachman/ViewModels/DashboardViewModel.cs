@@ -17,12 +17,23 @@ namespace Wachman.ViewModels
     {
         private const bool HardcodedValues = true;
         private readonly ITimeTrackingService _timeTrackingService;
+        private PomodoroViewModel _promodoroViewModel = new();
+        private CurrentDayViewModel _currentDayViewModel = new();
+
         private List<Job> _dailyJobs;
         public List<Job> DailyJobs
         {
             get => _dailyJobs;
             set => SetProperty(ref _dailyJobs, value);
         }
+
+        private ObservableObject _selectedViewModel;
+        public ObservableObject SelectedViewModel
+        {
+            get => _selectedViewModel;
+            set => SetProperty(ref _selectedViewModel, value);
+        }
+
 
         public ICommand ChangeJobStatus { get; private set; }
 
@@ -39,6 +50,7 @@ namespace Wachman.ViewModels
         {
             await _timeTrackingService.InitializeAsync();
             DailyJobs = await _timeTrackingService.GetDailyJobsAsync();
+            SelectedViewModel = _currentDayViewModel;
         }
 
     }
