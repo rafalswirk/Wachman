@@ -36,6 +36,8 @@ namespace Wachman.ViewModels
 
 
         public ICommand ChangeJobStatus { get; private set; }
+        public ICommand SwitchToCurrentDay { get; set; }
+        public ICommand SwitchPomodoroTimer { get; set; }
 
         public DashboardViewModel(ITimeTrackingService timeTrackingService)
         {
@@ -44,6 +46,8 @@ namespace Wachman.ViewModels
             {
                 job.IsRunning = true;
             });
+            SwitchToCurrentDay = new RelayCommand(() => SelectedViewModel = _currentDayViewModel);
+            SwitchPomodoroTimer = new RelayCommand(() => SelectedViewModel = _promodoroViewModel);
         }
 
         internal async Task OnLoaded()
