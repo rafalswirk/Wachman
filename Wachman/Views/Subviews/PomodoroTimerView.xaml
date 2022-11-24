@@ -7,7 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Calendar Margin="10,10,10,10"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="208"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Work session duration: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Short break duration: " HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" ToolTip="Work session duration in minutes" Margin="10,9,0,0" TextWrapping="Wrap" Text="45" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" ToolTip="Break duration in minutes" Margin="10,38,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="120"/>
+        <Button Grid.Column="1" Command="{Binding RunTimer}" Content="Start work" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>
