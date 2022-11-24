@@ -12,13 +12,14 @@ namespace Wachman.ViewModels
 {
     public class PomodoroViewModel : ObservableObject
     {
+        public int WorkSessionDuration { get; set; } = 30;
         public ICommand RunTimer { get; set; }
 
         public PomodoroViewModel()
         {
             RunTimer = new RelayCommand(() => 
             {
-                var dialog = new MicroTimerView();
+                var dialog = new MicroTimerView(WorkSessionDuration);
                 dialog.ShowDialog();
             });
         }

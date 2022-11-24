@@ -31,10 +31,15 @@ namespace Wachman.Views
         private double lastTop;
         private double lastLeft;
 
-        public MicroTimerView()
+        public MicroTimerView(int minutes)
         {
             InitializeComponent();
 
+            if (minutes > 99)
+                throw new ArgumentException("Number of minutes cannot be greater than 99");
+
+            workingTime = TimeSpan.FromMinutes(minutes);
+            lblTime.Content = $"{minutes}:00";
             timeCampStatusReader = new TimeCampStatusReader(new ApiKeyProvider().GetKey());
 
             timer = new DispatcherTimer()
