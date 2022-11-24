@@ -63,6 +63,8 @@ namespace Wachman.Views
                     }));
                 }
             });
+
+            StartTimer();
         }
 
         private void UpdateClock()
@@ -71,7 +73,7 @@ namespace Wachman.Views
             if (ellpasedTime.TotalSeconds < 0)
             {
                 complitedWorkingSessions++;
-                MessageBox.Show($"Przerwa. Ukończone sesje: {complitedWorkingSessions}.");
+                MessageBox.Show($"Time for a break. Finished sessions: {complitedWorkingSessions}.");
                 timer.Stop();
                 btnStart.Visibility = Visibility.Visible;
             }
@@ -88,6 +90,11 @@ namespace Wachman.Views
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            StartTimer();
+        }
+
+        private void StartTimer()
         {
             startTime = DateTime.Now;
             timer.Start();
