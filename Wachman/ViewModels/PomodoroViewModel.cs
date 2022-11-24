@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using Wachman.Views;
 
@@ -21,6 +22,7 @@ namespace Wachman.ViewModels
             {
                 var dialog = new MicroTimerView(WorkSessionDuration);
                 dialog.Show();
+                Application.Current.MainWindow.WindowState = WindowState.Minimized;
             });
         }
     }
