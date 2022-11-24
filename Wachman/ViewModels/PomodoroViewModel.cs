@@ -20,7 +20,7 @@ namespace Wachman.ViewModels
             RunTimer = new RelayCommand(() => 
             {
                 var dialog = new MicroTimerView(WorkSessionDuration);
-                dialog.ShowDialog();
+                dialog.Show();
             });
         }
     }
