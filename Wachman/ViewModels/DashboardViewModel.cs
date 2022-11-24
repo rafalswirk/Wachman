@@ -43,7 +43,7 @@ namespace Wachman.ViewModels
         internal async Task OnLoaded()
         {
             await _currentDayViewModel.InitializeAsync();
-            SelectedViewModel = _currentDayViewModel;
+            SelectedViewModel = _promodoroViewModel;
         }
 
     }
