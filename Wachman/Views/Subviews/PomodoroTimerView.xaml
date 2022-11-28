@@ -8,14 +8,21 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="208"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Work session duration: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Short break duration: " HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" ToolTip="Work session duration in minutes" Margin="10,9,0,0" TextWrapping="Wrap" Text="{Binding WorkSessionDuration}" VerticalAlignment="Top" Width="120"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" ToolTip="Break duration in minutes" Margin="10,38,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="120"/>
-        <Button Grid.Column="1" Command="{Binding RunTimer}" Content="Start work" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-
+        <Grid Background="LightGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="149"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Work session duration: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="132"/>
+            <Label Content="Short break duration: " HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="24" Width="123"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" ToolTip="Work session duration in minutes" Margin="10,9,0,0" TextWrapping="Wrap" Text="{Binding WorkSessionDuration}" VerticalAlignment="Top" Width="120" Height="25"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" ToolTip="Break duration in minutes" Margin="10,38,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="120" Height="25"/>
+            <Button Grid.Column="1" Command="{Binding RunTimer}" Content="Start work" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Height="32" Width="98"/>
+        </Grid>
+        <Label Grid.Column="2" Content="Completed sessions:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="116"/>
+        <Label Grid.Column="2" Content="{Binding NumberOfWorkingSessions}" d:Content="5" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Height="24" Width="14"/>
     </Grid>
 </UserControl>

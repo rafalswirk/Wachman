@@ -31,6 +31,8 @@ namespace Wachman.Views
         private double lastTop;
         private double lastLeft;
 
+        public event EventHandler OnTimerFinished;
+
         public MicroTimerView(int minutes)
         {
             InitializeComponent();
@@ -76,6 +78,7 @@ namespace Wachman.Views
                 MessageBox.Show($"Time for a break. Finished sessions: {complitedWorkingSessions}.");
                 timer.Stop();
                 btnStart.Visibility = Visibility.Visible;
+                OnTimerFinished?.Invoke(this, EventArgs.Empty);
             }
 
             lblTime.Content = $"{ellpasedTime.Minutes:00}:{ellpasedTime.Seconds:00}";

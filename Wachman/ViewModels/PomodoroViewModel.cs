@@ -13,17 +13,39 @@ namespace Wachman.ViewModels
 {
     public class PomodoroViewModel : ObservableObject
     {
+        private MicroTimerView _dialog;
+
+        private int _numberOfWorkingSessions;
+
+        public int NumberOfWorkingSessions
+        {
+            get => _numberOfWorkingSessions;
+            set => SetProperty(ref _numberOfWorkingSessions, value);
+        }
+
+
         public int WorkSessionDuration { get; set; } = 30;
         public ICommand RunTimer { get; set; }
 
         public PomodoroViewModel()
         {
+            NumberOfWorkingSessions = 0;
             RunTimer = new RelayCommand(() => 
             {
-                var dialog = new MicroTimerView(WorkSessionDuration);
-                dialog.Show();
+                if(_dialog is not null)
+                {
+                    _dialog.OnTimerFinished -= _dialog_OnTimerFinished;
+                }
+                _dialog = new MicroTimerView(WorkSessionDuration);
+                _dialog.OnTimerFinished += _dialog_OnTimerFinished;
+                _dialog.Show();
                 Application.Current.MainWindow.WindowState = WindowState.Minimized;
             });
+        }
+
+        private void _dialog_OnTimerFinished(object sender, EventArgs e)
+        {
+            NumberOfWorkingSessions++;
         }
     }
 }
