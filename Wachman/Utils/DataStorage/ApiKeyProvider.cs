@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wachman.Forms;
+using Wachman.Windows;
 
 namespace Wachman.Utils.DataStorage
 {
@@ -13,7 +13,7 @@ namespace Wachman.Utils.DataStorage
         {
             if (string.IsNullOrEmpty(Properties.Settings.Default.ApiKey))
             {
-                var form = new AskForKeyForm();
+                var form = new AskForKeyWindow();
                 if (form.ShowDialog() != true)
                     return "";
                 Properties.Settings.Default.ApiKey = form.ApiKey;

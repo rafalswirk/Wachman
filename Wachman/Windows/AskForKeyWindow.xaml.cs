@@ -12,15 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Wachman.Forms
+namespace Wachman.Windows
 {
     /// <summary>
     /// Interaction logic for AskForKeyForm.xaml
     /// </summary>
-    public partial class AskForKeyForm : Window
+    public partial class AskForKeyWindow : Window
     {
         public string ApiKey { get; set; }
-        public AskForKeyForm()
+        public AskForKeyWindow()
         {
             InitializeComponent();
         }
