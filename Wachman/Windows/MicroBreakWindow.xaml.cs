@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wachman.Utils;
 
 namespace Wachman.Windows
 {
@@ -22,6 +23,11 @@ namespace Wachman.Windows
         public MicroBreakWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            AeroGlassHelper.EnableBlur(this, true);
         }
     }
 }

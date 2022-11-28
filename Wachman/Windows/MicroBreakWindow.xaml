@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wachman.Windows"
-        mc:Ignorable="d"
-        Title="Break time!" WindowStyle="ToolWindow" Height="450" Width="800" Topmost="True">
+        mc:Ignorable="d" AllowsTransparency="True"
+        Title="Break time!" WindowStyle="None" Height="450" Width="800" Background="Transparent" WindowStartupLocation="CenterScreen" Topmost="True" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -19,9 +19,11 @@
         <Button Content="Take a break" Height="125" VerticalAlignment="Center" HorizontalAlignment="Center" Width="280" />
         <Button Content="Skip break" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Height="125" Width="280"/>
         <Button Content="Postpone 5 minutes" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Height="125" Width="280" Margin="10,0,0,0"/>
-        <Viewbox Grid.Column="1" Grid.RowSpan="3">
-            <ProgressBar Grid.Column="1" Style="{StaticResource MaterialDesignCircularProgressBar}" VerticalAlignment="Center" d:IsIndeterminate="True" Margin="10,0,10,0"/>
-        </Viewbox>
+        <Border Background="LightGray" Grid.Column="1" Grid.RowSpan="3">
+            <Viewbox>
+                    <ProgressBar Grid.Column="1" Style="{StaticResource MaterialDesignCircularProgressBar}" VerticalAlignment="Center" IsIndeterminate="True" Margin="10,0,10,0"/>
+            </Viewbox>
+        </Border>
 
     </Grid>
 </Window>
