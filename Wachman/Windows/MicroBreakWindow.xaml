@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wachman.Windows"
         mc:Ignorable="d" AllowsTransparency="True"
+        xmlns:converters="clr-namespace:Wachman.Converters"
         Title="Break time!" WindowStyle="None" Height="450" Width="800" Background="Transparent" WindowStartupLocation="CenterScreen" Topmost="True" Loaded="Window_Loaded">
+    <Window.Resources>
+        <converters:VisibilityNegationConverter x:Key="visibilityNegation"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -16,14 +20,14 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Content="Take a break" Height="125" VerticalAlignment="Center" HorizontalAlignment="Center" Width="280" />
+        <Button Content="Take a break" Command="{Binding TakeBreak}" Height="125" VerticalAlignment="Center" HorizontalAlignment="Center" Width="280" />
         <Button Content="Skip break" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Height="125" Width="280"/>
         <Button Content="Postpone 5 minutes" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Height="125" Width="280" Margin="10,0,0,0"/>
         <Border Background="LightGray" Grid.Column="1" Grid.RowSpan="3">
             <Viewbox>
-                    <ProgressBar Grid.Column="1" Style="{StaticResource MaterialDesignCircularProgressBar}" VerticalAlignment="Center" IsIndeterminate="True" Margin="10,0,10,0"/>
+                <ProgressBar Visibility="{Binding ElementName=lblMessage, Path=Visibility, Converter={StaticResource visibilityNegation}}" Grid.Column="1" Style="{StaticResource MaterialDesignCircularProgressBar}" VerticalAlignment="Center" IsIndeterminate="True" Margin="10,0,10,0"/>
             </Viewbox>
         </Border>
-
+        <Label Name="lblMessage" Visibility="{Binding IsMessageVisible, Converter={StaticResource BooleanToVisibilityConverter}}" Content="You can take 5 minutes break" FontSize="20" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>
