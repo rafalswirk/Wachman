@@ -25,9 +25,9 @@
         <Button Content="Postpone 5 minutes" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Height="125" Width="280" Margin="10,0,0,0"/>
         <Border Background="LightGray" Grid.Column="1" Grid.RowSpan="3">
             <Viewbox>
-                <ProgressBar Visibility="{Binding ElementName=lblMessage, Path=Visibility, Converter={StaticResource visibilityNegation}}" Grid.Column="1" Style="{StaticResource MaterialDesignCircularProgressBar}" VerticalAlignment="Center" IsIndeterminate="True" Margin="10,0,10,0"/>
+                <ProgressBar Visibility="{Binding IsBreakModeEnabled, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Column="1" Style="{StaticResource MaterialDesignCircularProgressBar}" VerticalAlignment="Center" IsIndeterminate="True" Margin="10,0,10,0"/>
             </Viewbox>
         </Border>
-        <Label Name="lblMessage" Visibility="{Binding IsMessageVisible, Converter={StaticResource BooleanToVisibilityConverter}}" Content="You can take 5 minutes break" FontSize="20" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Name="lblMessage" Visibility="{Binding IsMessageVisible, Converter={StaticResource BooleanToVisibilityConverter}}" Content="{Binding UserMessage}" FontSize="20" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>

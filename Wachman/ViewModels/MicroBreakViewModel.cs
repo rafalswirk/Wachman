@@ -5,18 +5,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Input;
 
 namespace Wachman.ViewModels
 {
     public class MicroBreakViewModel: ObservableObject
     {
+        private Timer _timer = new();
+
         private bool _isMessageVisible;
-        public bool IsMessageVisible
+        private DateTime _startTime;
+        private TimeSpan breakTime = TimeSpan.FromMinutes(5);
+
+        public bool IsBreakModeEnabled
         {
             get => _isMessageVisible;
             set => SetProperty(ref _isMessageVisible, value);
         }
+
+        private string _userMessage;
+        public string UserMessage
+        {
+            get => _userMessage;
+            set => SetProperty(ref _userMessage, value);
+        }
+
 
         public ICommand TakeBreak { get; set; }
         public ICommand SkipBreak { get; set; }
@@ -27,10 +41,20 @@ namespace Wachman.ViewModels
 
         public MicroBreakViewModel()
         {
-            IsMessageVisible = true;
+            UserMessage = "You can take 5 minutes break";
             TakeBreak = new RelayCommand(() => 
             {
-                IsMessageVisible = false;
+                IsBreakModeEnabled = true;
+                UserMessage = $"{breakTime.Minutes:00}:{breakTime.Seconds:00}";
+                _startTime = DateTime.Now;
+                _timer.Interval = 1000;
+                _timer.Elapsed += (o, e) => 
+                {
+                    var elpassedTime = DateTime.Now - _startTime;
+                    var timeToFinish = breakTime - elpassedTime;
+                    UserMessage = $"{timeToFinish.Minutes:00}:{timeToFinish.Seconds:00}";
+                };
+                _timer.Start();
             });
 
             SkipBreak = new RelayCommand(() => 
