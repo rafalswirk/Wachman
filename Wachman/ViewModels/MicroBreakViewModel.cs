@@ -45,12 +45,12 @@ namespace Wachman.ViewModels
         public ICommand SkipBreak { get; set; }
         public ICommand PostponeBreak { get; set; }
 
-        public event EventHandler OnBreakSkipped;
+        public event EventHandler OnBreakFinished;
         public event EventHandler OnBreakPostponed;
 
         public MicroBreakViewModel()
         {
-            UserMessage = "You can take 5 minutes break";
+            UserMessage = $"You can take {breakTime.Minutes} minutes break";
             TakeBreak = new RelayCommand(() => 
             {
                 IsBreakModeEnabled = true;
@@ -64,13 +64,21 @@ namespace Wachman.ViewModels
                     var timeToFinish = breakTime - elpassedTime;
                     UserMessage = $"{timeToFinish.Minutes:00}:{timeToFinish.Seconds:00}";
                     BreakProgress = (int)(100 - (elpassedTime.TotalSeconds * 100) / breakTime.TotalSeconds);
+                    if (timeToFinish <= TimeSpan.Zero)
+                    {
+                        var timer = o as Timer;
+                        timer.Stop();
+                        timer.Dispose();
+                        UserMessage = $"Get back to work!!!";
+                        OnBreakFinished?.Invoke(this, EventArgs.Empty);
+                    }
                 };
                 _timer.Start();
             });
 
             SkipBreak = new RelayCommand(() => 
             {
-                OnBreakSkipped?.Invoke(this, EventArgs.Empty);
+                OnBreakFinished?.Invoke(this, EventArgs.Empty);
             });
 
             PostponeBreak = new RelayCommand(() => 
