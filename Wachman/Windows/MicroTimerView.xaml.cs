@@ -75,7 +75,6 @@ namespace Wachman.Views
             if (ellpasedTime.TotalSeconds < 0)
             {
                 complitedWorkingSessions++;
-                MessageBox.Show($"Time for a break. Finished sessions: {complitedWorkingSessions}.");
                 timer.Stop();
                 btnStart.Visibility = Visibility.Visible;
                 OnTimerFinished?.Invoke(this, EventArgs.Empty);

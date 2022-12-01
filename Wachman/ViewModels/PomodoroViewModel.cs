@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Wachman.Views;
+using Wachman.Windows;
 
 namespace Wachman.ViewModels
 {
     public class PomodoroViewModel : ObservableObject
     {
-        private MicroTimerView _dialog;
+        private MicroTimerView _timerDialog;
 
         private int _numberOfWorkingSessions;
 
@@ -32,20 +33,33 @@ namespace Wachman.ViewModels
             NumberOfWorkingSessions = 0;
             RunTimer = new RelayCommand(() => 
             {
-                if(_dialog is not null)
+                if(_timerDialog is not null)
                 {
-                    _dialog.OnTimerFinished -= _dialog_OnTimerFinished;
+                    _timerDialog.OnTimerFinished -= _dialog_OnTimerFinished;
                 }
-                _dialog = new MicroTimerView(WorkSessionDuration);
-                _dialog.OnTimerFinished += _dialog_OnTimerFinished;
-                _dialog.Show();
+                _timerDialog = new MicroTimerView(WorkSessionDuration);
+                _timerDialog.OnTimerFinished += _dialog_OnTimerFinished;
+                _timerDialog.Show();
                 Application.Current.MainWindow.WindowState = WindowState.Minimized;
             });
         }
 
         private void _dialog_OnTimerFinished(object sender, EventArgs e)
         {
+            _timerDialog.Close();
             NumberOfWorkingSessions++;
+            var dialog = new MicroBreakWindow();
+            var breakViewModel = new MicroBreakViewModel();
+            breakViewModel.OnBreakFinished += (o, e) =>
+            {
+                Application.Current.Dispatcher.BeginInvoke(new Action(() => 
+                {
+                    dialog.Close();
+                    Application.Current.MainWindow.WindowState = WindowState.Normal;
+                }));
+            };
+            dialog.DataContext = breakViewModel;
+            dialog.Show();
         }
     }
 }
