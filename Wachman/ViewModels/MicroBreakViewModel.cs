@@ -13,10 +13,9 @@ namespace Wachman.ViewModels
     public class MicroBreakViewModel: ObservableObject
     {
         private Timer _timer = new();
-
         private bool _isMessageVisible;
         private DateTime _startTime;
-        private TimeSpan breakTime = TimeSpan.FromMinutes(5);
+        private TimeSpan _breakTime = TimeSpan.FromMinutes(5);
 
         public bool IsBreakModeEnabled
         {
@@ -48,22 +47,23 @@ namespace Wachman.ViewModels
         public event EventHandler OnBreakFinished;
         public event EventHandler OnBreakPostponed;
 
-        public MicroBreakViewModel()
+        public MicroBreakViewModel(TimeSpan breakTime)
         {
-            UserMessage = $"You can take {breakTime.Minutes} minutes break";
+            _breakTime = breakTime;
+            UserMessage = $"You can take {_breakTime.Minutes} minutes break";
             TakeBreak = new RelayCommand(() => 
             {
                 IsBreakModeEnabled = true;
                 BreakProgress = 100;
-                UserMessage = $"{breakTime.Minutes:00}:{breakTime.Seconds:00}";
+                UserMessage = $"{_breakTime.Minutes:00}:{_breakTime.Seconds:00}";
                 _startTime = DateTime.Now;
                 _timer.Interval = 1000;
                 _timer.Elapsed += (o, e) => 
                 {
                     var elpassedTime = DateTime.Now - _startTime;
-                    var timeToFinish = breakTime - elpassedTime;
+                    var timeToFinish = _breakTime - elpassedTime;
                     UserMessage = $"{timeToFinish.Minutes:00}:{timeToFinish.Seconds:00}";
-                    BreakProgress = (int)(100 - (elpassedTime.TotalSeconds * 100) / breakTime.TotalSeconds);
+                    BreakProgress = (int)(100 - (elpassedTime.TotalSeconds * 100) / _breakTime.TotalSeconds);
                     if (timeToFinish <= TimeSpan.Zero)
                     {
                         var timer = o as Timer;

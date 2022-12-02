@@ -26,6 +26,7 @@ namespace Wachman.ViewModels
 
 
         public int WorkSessionDuration { get; set; } = 30;
+        public int BreakTimeDuration { get; set; } = 5;
         public ICommand RunTimer { get; set; }
 
         public PomodoroViewModel()
@@ -49,7 +50,7 @@ namespace Wachman.ViewModels
             _timerDialog.Close();
             NumberOfWorkingSessions++;
             var dialog = new MicroBreakWindow();
-            var breakViewModel = new MicroBreakViewModel();
+            var breakViewModel = new MicroBreakViewModel(TimeSpan.FromMinutes(BreakTimeDuration));
             breakViewModel.OnBreakFinished += (o, e) =>
             {
                 Application.Current.Dispatcher.BeginInvoke(new Action(() => 
