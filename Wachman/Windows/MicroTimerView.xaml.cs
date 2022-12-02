@@ -37,6 +37,11 @@ namespace Wachman.Views
         {
             InitializeComponent();
 
+            RunTimer(minutes);
+        }
+
+        public void RunTimer(int minutes)
+        {
             if (minutes > 99)
                 throw new ArgumentException("Number of minutes cannot be greater than 99");
 

@@ -47,7 +47,7 @@ namespace Wachman.ViewModels
 
         private void _dialog_OnTimerFinished(object sender, EventArgs e)
         {
-            _timerDialog.Close();
+            _timerDialog.WindowState = WindowState.Minimized;
             NumberOfWorkingSessions++;
             var dialog = new MicroBreakWindow();
             var breakViewModel = new MicroBreakViewModel(TimeSpan.FromMinutes(BreakTimeDuration));
@@ -55,9 +55,17 @@ namespace Wachman.ViewModels
             {
                 Application.Current.Dispatcher.BeginInvoke(new Action(() => 
                 {
+                    _timerDialog.Close();
                     dialog.Close();
                     Application.Current.MainWindow.WindowState = WindowState.Normal;
                 }));
+            };
+            breakViewModel.OnBreakPostponed += (o, e) =>
+            {
+                NumberOfWorkingSessions--;
+                _timerDialog.RunTimer(5);
+                _timerDialog.WindowState = WindowState.Normal;
+                dialog.Close();
             };
             dialog.DataContext = breakViewModel;
             dialog.Show();
