@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using MaterialDesignThemes.Wpf;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace Wachman.ViewModels
 {
-    public class MicroBreakViewModel: ObservableObject
+    public class MicroBreakViewModel : ObservableObject
     {
         private Timer _timer = new();
         private bool _isMessageVisible;
@@ -38,27 +39,34 @@ namespace Wachman.ViewModels
             set => SetProperty(ref _breakProgress, value);
         }
 
-
+        private bool _isTopmost;
+        public bool IsTopmost 
+        { 
+            get => _isTopmost; 
+            set => SetProperty(ref _isTopmost, value); 
+        }
 
         public ICommand TakeBreak { get; set; }
         public ICommand SkipBreak { get; set; }
         public ICommand PostponeBreak { get; set; }
+        public ICommand UnlockWindow { get; set; }
 
         public event EventHandler OnBreakFinished;
         public event EventHandler OnBreakPostponed;
 
         public MicroBreakViewModel(TimeSpan breakTime)
         {
+            IsTopmost = true;
             _breakTime = breakTime;
             UserMessage = $"You can take {_breakTime.Minutes} minutes break";
-            TakeBreak = new RelayCommand(() => 
+            TakeBreak = new RelayCommand(() =>
             {
                 IsBreakModeEnabled = true;
                 BreakProgress = 100;
                 UserMessage = $"{_breakTime.Minutes:00}:{_breakTime.Seconds:00}";
                 _startTime = DateTime.Now;
                 _timer.Interval = 1000;
-                _timer.Elapsed += (o, e) => 
+                _timer.Elapsed += (o, e) =>
                 {
                     var elpassedTime = DateTime.Now - _startTime;
                     var timeToFinish = _breakTime - elpassedTime;
@@ -76,14 +84,19 @@ namespace Wachman.ViewModels
                 _timer.Start();
             });
 
-            SkipBreak = new RelayCommand(() => 
+            SkipBreak = new RelayCommand(() =>
             {
                 OnBreakFinished?.Invoke(this, EventArgs.Empty);
             });
 
-            PostponeBreak = new RelayCommand(() => 
+            PostponeBreak = new RelayCommand(() =>
             {
                 OnBreakPostponed?.Invoke(this, EventArgs.Empty);
+            });
+
+            UnlockWindow = new RelayCommand(() => 
+            {
+                IsTopmost = !IsTopmost;
             });
         }
     }
