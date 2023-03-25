@@ -15,13 +15,13 @@
     <!--<Grid Background="Transparent">-->
     <DockPanel Background="Transparent" IsHitTestVisible="True">
         <StackPanel Name="stackPanelControl" Background="Black"  DockPanel.Dock="Right" Visibility="Collapsed" d:Visibility="Visible" Width="25">
-            <Button Padding="0" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
+            <Button Padding="0" ToolTip="Pause timer" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
                 <materialDesign:PackIcon Kind="Pause" />
             </Button>
-            <Button Padding="0" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
+            <Button Padding="0" ToolTip="Stop timer" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
                 <materialDesign:PackIcon Kind="Stop" />
             </Button>
-            <Button Padding="0" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
+            <Button Padding="0" ToolTip="Restart timer" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
                 <materialDesign:PackIcon Kind="Reply" />
             </Button>
         </StackPanel>
