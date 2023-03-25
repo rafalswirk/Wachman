@@ -18,7 +18,7 @@
             </Grid.ColumnDefinitions>
             <Label Content="Work session duration: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="132"/>
             <Label Content="Short break duration: " HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="24" Width="123"/>
-            <TextBox d:Text="30" Grid.Column="1" HorizontalAlignment="Left" ToolTip="Work session duration in minutes" Margin="10,9,0,0" TextWrapping="Wrap" Text="{Binding WorkSessionDuration}" VerticalAlignment="Top" Width="120" Height="25"/>
+            <xctk:IntegerUpDown d:Value="25" Value="25" Grid.Column="1" HorizontalAlignment="Left" ToolTip="Work session duration in minutes" Margin="10,9,0,0" VerticalAlignment="Top" Increment="5" Width="120" Height="25"/>
             <TextBox d:Text="5" Grid.Column="1" HorizontalAlignment="Left" ToolTip="Break duration in minutes" Margin="10,38,0,0" TextWrapping="Wrap" Text="{Binding BreakTimeDuration}" VerticalAlignment="Top" Width="120" Height="25"/>
             <Button Grid.Column="1" Command="{Binding RunTimer}" Content="Start work" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Height="32" Width="98"/>
         </Grid>
