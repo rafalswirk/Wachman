@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Wachman"
+        xmlns:local="clr-namespace:Wachman" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="86.739" Width="150" 
@@ -12,22 +13,39 @@
         LocationChanged="Window_LocationChanged" MouseLeftButtonDown="Window_MouseLeftButtonDown" 
         MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" IsHitTestVisible="True" Loaded="AcrylicWindow_Loaded" >
     <!--<Grid Background="Transparent">-->
-    <Grid Background="Transparent" IsHitTestVisible="True">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="62*"/>
-            <RowDefinition Height="25*"/>
-        </Grid.RowDefinitions>
-        <!--<Grid x:Name="grdBackground" Grid.Row="0" Grid.RowSpan="2" Background="Green"/>-->
-        <Label Content="00:00" Foreground="DarkRed" Opacity="0.1" FontSize="60" FontFamily="../Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center"/>
-        <Label x:Name="lblTime" Grid.Row="0" Content="25:00" Foreground="Red" FontSize="60" VerticalAlignment="Center" FontFamily="../Fonts/#DIGITAL-7 Mono"/>
-        <Grid Grid.Row="1"  Background="Black" >
-            <Viewbox>
-                <Label x:Name="lblActivity" Content="Current activity" Visibility="Hidden" Foreground="Red" Background="Black" FontSize="20" FontFamily="../Fonts/#DIGITAL-7 Mono"/>
-            </Viewbox>
+    <DockPanel Background="Transparent" IsHitTestVisible="True">
+        <StackPanel Name="stackPanelControl" Background="Black"  DockPanel.Dock="Right" Visibility="Collapsed" d:Visibility="Visible" Width="25">
+            <Button Padding="0" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
+                <materialDesign:PackIcon Kind="Pause" />
+            </Button>
+            <Button Padding="0" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
+                <materialDesign:PackIcon Kind="Stop" />
+            </Button>
+            <Button Padding="0" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
+                <materialDesign:PackIcon Kind="Reply" />
+            </Button>
+        </StackPanel>
+        <Grid>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="62*"/>
+                    <RowDefinition Height="25*"/>
+                </Grid.RowDefinitions>
+                <!--<Grid x:Name="grdBackground" Grid.Row="0" Grid.RowSpan="2" Background="Green"/>-->
+                <Viewbox>
+                    <Grid>
+                        <Label Content="00:00" Foreground="DarkRed" Opacity="0.1" FontSize="60" FontFamily="../Fonts/#DIGITAL-7 Mono"  HorizontalAlignment="Center"/>
+                        <Label x:Name="lblTime" Grid.Row="0" Content="25:00" Foreground="Red" FontSize="60" VerticalAlignment="Center" FontFamily="../Fonts/#DIGITAL-7 Mono"/>
+                    </Grid>
+                </Viewbox>
+                <Grid Grid.Row="1"  Background="Black" >
+                    <Viewbox>
+                        <Label x:Name="lblActivity" Content="Current activity" Visibility="Hidden" Foreground="Red" Background="Black" FontSize="20" FontFamily="../Fonts/#DIGITAL-7 Mono"/>
+                    </Viewbox>
+                </Grid>
+                <Button x:Name="btnStart" Content="Start"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="btnStart_Click" Margin="61,0" Grid.Row="1" Height="20" Width="28"/>
+                <Grid Background="Gray" Opacity="0.01"/>
+            </Grid>
         </Grid>
-        <Button x:Name="btnStart" Content="Start"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="btnStart_Click" Margin="61,0" Grid.Row="1" Height="20" Width="28"/>
-        <Grid Background="Gray" Opacity="0.01"/>
-
-
-    </Grid>
+    </DockPanel>
 </Window>

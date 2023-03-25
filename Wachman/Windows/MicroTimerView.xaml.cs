@@ -113,11 +113,13 @@ namespace Wachman.Views
         private void Window_MouseEnter(object sender, MouseEventArgs e)
         {
             AeroGlassHelper.EnableBlur(this, true);
+            stackPanelControl.Visibility = Visibility.Visible;
         }
 
         private void Window_MouseLeave(object sender, MouseEventArgs e)
         {
             AeroGlassHelper.EnableBlur(this, false);
+            stackPanelControl.Visibility = Visibility.Collapsed;
         }
 
         private void Window_LocationChanged(object sender, EventArgs e)
