@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="Wachman.Views.Subviews.CurrentDayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wachman.Views.Subviews"
+             xmlns:templateSelectors="clr-namespace:Wachman.DataTemplateSelectors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Styles/CustomStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="JobNotRunningTemplate">
+                <Button Name="btnJobAction" Command="{Binding DataContext.ChangeJobStatus, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" 
+                         CommandParameter="{Binding}" BorderBrush="Transparent" Height="20" Padding="0" Visibility="Hidden">
+                    <materialDesign:PackIcon Kind="Play" />
+                </Button>
+                <DataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource AncestorType=DataGridRow}}" Value="True">
+                        <Setter Property="Visibility" TargetName="btnJobAction" Value="Visible"/>
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+            <DataTemplate x:Key="JobRunningTemplate">
+                <Button Name="btnJobAction" Command="{Binding ChangeJobStatus}" CommandParameter="{Binding}" Background="Red" BorderBrush="Transparent" Height="20" Padding="0">
+                    <materialDesign:PackIcon Kind="Stop" />
+                </Button>
+            </DataTemplate>
+            <templateSelectors:JobRunningTemplateSelector x:Key="JobStatusTemplates" 
+                                                          JobRunningTemplate="{StaticResource JobRunningTemplate}"
+                                                          JobNotRunningTemplate="{StaticResource JobNotRunningTemplate}"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="LightGray" Grid.Column="0" >
+            <DockPanel LastChildFill="True">
+                <Button DockPanel.Dock="Right" Margin="10">
+                    <DockPanel>
+                        <materialDesign:PackIcon Kind="Plus" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                        <TextBlock Text="Create new" Margin="10 0 0 0"/>
+                    </DockPanel>
+                </Button>
+                <Border CornerRadius="5" BorderBrush="White" Background="White" Margin="10" BorderThickness="1">
+                    <TextBox Text="" materialDesign:HintAssist.Hint="ToDo" Margin="10 0 10 5" Background="Transparent" IsHitTestVisible="True" VerticalContentAlignment="Center" />
+                </Border>
+            </DockPanel>
+            <DataGrid Name="dataGrid" ItemsSource="{Binding DailyJobs}" d:ItemsSource="{d:SampleData}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Task name"  MinWidth="100" />
+                    <DataGridTextColumn Binding="{Binding Description}" Header="Description" />
+                    <DataGridTextColumn Binding="{Binding Start, StringFormat=hh\\:mm}" Header="Start" MinWidth="60" MaxWidth="350" />
+                    <DataGridTextColumn Binding="{Binding Stop, StringFormat=hh\\:mm}" Header="Stop" MinWidth="60" MaxWidth="350" />
+                    <DataGridTextColumn Binding="{Binding Duration, StringFormat=hh\\:mm}" Header="Duration" MinWidth="60" MaxWidth="350" />
+                    <DataGridTemplateColumn Header="" MinWidth="60" MaxWidth="85" CellTemplateSelector="{StaticResource JobStatusTemplates}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel  Grid.Column="2" Grid.RowSpan="2" >
+            <Label Content="Daily progress:" Margin="5 10 0 0"/>
+            <ProgressBar Margin="10" Height="10" IsIndeterminate="True"/>
+            <Label Content="Monthly progress:" Margin="5 10 0 0"/>
+            <ProgressBar Margin="10" Height="10" IsIndeterminate="True"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

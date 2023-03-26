@@ -7,6 +7,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:viewmodels="clr-namespace:Wachman.ViewModels" 
         xmlns:templateSelectors="clr-namespace:Wachman.DataTemplateSelectors"
+        xmlns:subviews="clr-namespace:Wachman.Views.Subviews"
+        xmlns:viewModels="clr-namespace:Wachman.ViewModels"
         d:DataContext="{d:DesignInstance Type=viewmodels:DashboardViewModel}"
         Background="{DynamicResource MaterialDesignPaper}"
         Name="dashboard"
@@ -17,25 +19,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Styles/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate x:Key="JobNotRunningTemplate">
-                <Button Name="btnJobAction" Command="{Binding DataContext.ChangeJobStatus, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" 
-                         CommandParameter="{Binding}" BorderBrush="Transparent" Height="20" Padding="0" Visibility="Hidden">
-                    <materialDesign:PackIcon Kind="Play" />
-                </Button>
-                <DataTemplate.Triggers>
-                    <DataTrigger Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource AncestorType=DataGridRow}}" Value="True">
-                        <Setter Property="Visibility" TargetName="btnJobAction" Value="Visible"/>
-                    </DataTrigger>
-                </DataTemplate.Triggers>
+            <DataTemplate DataType="{x:Type viewModels:CurrentDayViewModel}">
+                <subviews:CurrentDayView/>
             </DataTemplate>
-            <DataTemplate x:Key="JobRunningTemplate">
-                <Button Name="btnJobAction" Command="{Binding ChangeJobStatus}" CommandParameter="{Binding}" Background="Red" BorderBrush="Transparent" Height="20" Padding="0">
-                    <materialDesign:PackIcon Kind="Stop" />
-                </Button>
+            <DataTemplate DataType="{x:Type viewModels:PomodoroViewModel}">
+                <subviews:PomodoroTimerView/>
             </DataTemplate>
-            <templateSelectors:JobRunningTemplateSelector x:Key="JobStatusTemplates" 
-                                                          JobRunningTemplate="{StaticResource JobRunningTemplate}"
-                                                          JobNotRunningTemplate="{StaticResource JobNotRunningTemplate}"/>
         </ResourceDictionary>
     </Window.Resources>
     <Grid Background="Gray">
@@ -51,50 +40,35 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
                 <Viewbox Grid.Row="0" Grid.Column="0">
                     <Label Content="WACHMAN" FontFamily="../Fonts/#DIGITAL-7 Mono" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Viewbox>
                 <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" Margin="10,0,10,0"/>
-                <StackPanel Background="LightGray" Grid.Column="1" Grid.RowSpan="2" >
-                    <DockPanel LastChildFill="True">
-                        <Button DockPanel.Dock="Right" Margin="10">
-                            <DockPanel>
-                                <materialDesign:PackIcon Kind="Plus" DockPanel.Dock="Left" VerticalAlignment="Center"/>
-                                <TextBlock Text="Create new" Margin="10 0 0 0"/>
-                            </DockPanel>
-                        </Button>
-                        <Border CornerRadius="5" BorderBrush="White" Background="White" Margin="10" BorderThickness="1">
-                            <TextBox Text="" materialDesign:HintAssist.Hint="ToDo" Margin="10 0 10 5" Background="Transparent" IsHitTestVisible="True" VerticalContentAlignment="Center" />
-                        </Border>
-                    </DockPanel>
-                    <DataGrid Name="dataGrid" ItemsSource="{Binding DailyJobs}" d:ItemsSource="{d:SampleData}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Name}" Header="Task name"  MinWidth="100" />
-                            <DataGridTextColumn Binding="{Binding Description}" Header="Description" />
-                            <DataGridTextColumn Binding="{Binding Start, StringFormat=hh\\:mm}" Header="Start" MinWidth="60" MaxWidth="350" />
-                            <DataGridTextColumn Binding="{Binding Stop, StringFormat=hh\\:mm}" Header="Stop" MinWidth="60" MaxWidth="350" />
-                            <DataGridTextColumn Binding="{Binding Duration, StringFormat=hh\\:mm}" Header="Duration" MinWidth="60" MaxWidth="350" />
-                            <DataGridTemplateColumn Header="" MinWidth="60" MaxWidth="85" CellTemplateSelector="{StaticResource JobStatusTemplates}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </StackPanel>
+                <ContentControl Grid.Column="1" Grid.RowSpan="2" Content="{Binding SelectedViewModel, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--<subviews:PomodoroTimerView Grid.Column="1" Grid.RowSpan="2"/>-->
+                
                 <StackPanel Grid.Row="1">
                     <materialDesign:Chip Content="Joe Doe" HorizontalAlignment="Center" Width="120" Margin="0 10 0 0" Background="LightGray"/>
 
                     <Label Content="Logout →" Foreground="Gray" Cursor="Hand" Margin="10" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top"/>
                     <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" Margin="10 0 10 0" />
-                    <RadioButton Style="{StaticResource MenuToggle}" Margin="10 10 -1 0" materialDesign:ButtonAssist.CornerRadius="10 0 0 10">
+                    <RadioButton Style="{StaticResource MenuToggle}" Command="{Binding SwitchToCurrentDay}" IsChecked="False" Margin="10 10 -1 0" materialDesign:ButtonAssist.CornerRadius="10 0 0 10">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                             <materialDesign:PackIcon Kind="ViewDashboard" Margin="0 0 10 0" />
                             <TextBlock Text="Current day" />
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton Style="{StaticResource MenuToggle}" Margin="10 10 -1 0" materialDesign:ButtonAssist.CornerRadius="10 0 0 10">
+                    <RadioButton Style="{StaticResource MenuToggle}" IsEnabled="False" Margin="10 10 -1 0" materialDesign:ButtonAssist.CornerRadius="10 0 0 10">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                             <materialDesign:PackIcon Kind="FileChart" Margin="0 0 10 0" />
                             <TextBlock Text="Reports" />
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton IsChecked="True" Style="{StaticResource MenuToggle}" Command="{Binding SwitchPomodoroTimer}" Margin="10 10 -1 0" materialDesign:ButtonAssist.CornerRadius="10 0 0 10">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                            <materialDesign:PackIcon Kind="Timer" Margin="0 0 10 0" />
+                            <TextBlock Text="Pomodoro" />
                         </StackPanel>
                     </RadioButton>
                 </StackPanel>
@@ -104,14 +78,6 @@
                         <TextBlock Text="Settings" />
                     </StackPanel>
                 </RadioButton>
-                <StackPanel Grid.Column="2" Grid.RowSpan="2" >
-                    <Label Content="Daily progress:" Margin="5 10 0 0"/>
-                    <ProgressBar Margin="10" Height="10" IsIndeterminate="True"/>
-                    
-                    <Label Content="Monthly progress:" Margin="5 10 0 0"/>
-                    <ProgressBar Margin="10" Height="10" IsIndeterminate="True"/>
-
-                </StackPanel>
             </Grid>
         </Border>
     </Grid>

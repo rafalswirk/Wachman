@@ -11,30 +11,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wachman.Utils;
 
-namespace Wachman.Forms
+namespace Wachman.Windows
 {
     /// <summary>
-    /// Interaction logic for AskForKeyForm.xaml
+    /// Interaction logic for MicroBreakWindow.xaml
     /// </summary>
-    public partial class AskForKeyForm : Window
+    public partial class MicroBreakWindow : Window
     {
-        public string ApiKey { get; set; }
-        public AskForKeyForm()
+        public MicroBreakWindow()
         {
             InitializeComponent();
         }
 
-        private void btnOk_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
-            Close();
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = false;
-            Close();
+            AeroGlassHelper.EnableBlur(this, true);
         }
     }
 }

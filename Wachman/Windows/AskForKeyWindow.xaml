@@ -1,9 +1,9 @@
-﻿<Window x:Class="Wachman.Forms.AskForKeyForm"
+﻿<Window x:Class="Wachman.Windows.AskForKeyWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Wachman.Forms"
+        xmlns:local="clr-namespace:Wachman.Windows"
         mc:Ignorable="d"
         Title="Wachman" ResizeMode="NoResize" WindowStyle="ToolWindow" Height="113.75" Width="461.25" Name="form">
     <Grid>
