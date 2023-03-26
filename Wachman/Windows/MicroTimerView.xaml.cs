@@ -15,6 +15,8 @@ using System.Windows.Threading;
 using TimeTrackingService.TimeCampAPI;
 using Wachman.Utils.DataStorage;
 using Wachman.Utils;
+using System.Threading;
+using Wachman.CustomEventArgs;
 
 namespace Wachman.Views
 {
@@ -30,8 +32,10 @@ namespace Wachman.Views
         int complitedWorkingSessions;
         private double lastTop;
         private double lastLeft;
+        private DateTime pauseTime;
+        private CancellationTokenSource cancellationTokenSource;
 
-        public event EventHandler OnTimerFinished;
+        public event EventHandler<OnSessionFinishedEventArgs> OnTimerFinished;
 
         public MicroTimerView(int minutes)
         {
@@ -58,18 +62,23 @@ namespace Wachman.Views
                 UpdateClock();
             };
 
+            cancellationTokenSource = new CancellationTokenSource();
+
             Task.Run(async () =>
             {
                 while (true)
                 {
                     await Task.Delay(3000);
+                    if(cancellationTokenSource.IsCancellationRequested) 
+                        return;
                     var activeTask = await timeCampStatusReader.GetCurrentJobAsync();
-                    await lblActivity.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                    await lblActivity?.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                     {
-                        lblActivity.Content = activeTask;
+                        if(lblActivity != null)
+                            lblActivity.Content = activeTask;
                     }));
                 }
-            });
+            }, cancellationTokenSource.Token);
 
             StartTimer();
         }
@@ -82,7 +91,7 @@ namespace Wachman.Views
                 complitedWorkingSessions++;
                 timer.Stop();
                 btnStart.Visibility = Visibility.Visible;
-                OnTimerFinished?.Invoke(this, EventArgs.Empty);
+                OnTimerFinished?.Invoke(this, new OnSessionFinishedEventArgs {InterruptedByUser = false });
             }
 
             lblTime.Content = $"{ellpasedTime.Minutes:00}:{ellpasedTime.Seconds:00}";
@@ -142,5 +151,41 @@ namespace Wachman.Views
             AeroGlassHelper.EnableBlur(this, false);
         }
 
+        private void btnPause_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+            btnPause.Visibility = Visibility.Collapsed;
+            btnResume.Visibility = Visibility.Visible;
+            pauseTime = DateTime.Now;
+        }
+
+        private void btnResume_Click(object sender, RoutedEventArgs e)
+        {
+            startTime = startTime + (DateTime.Now - pauseTime);
+            btnPause.Visibility = Visibility.Visible;
+            btnResume.Visibility = Visibility.Collapsed;
+            timer.Start();
+        }
+
+        private void btnStop_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+            Close();
+            OnTimerFinished?.Invoke(this, new OnSessionFinishedEventArgs { InterruptedByUser = true });
+        }
+
+        private void btnRestart_Click(object sender, RoutedEventArgs e)
+        {
+            startTime = DateTime.Now;
+            if (!timer.IsEnabled)
+            {
+                timer.Start();
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            cancellationTokenSource.Cancel();
+        }
     }
 }

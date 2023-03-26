@@ -11,17 +11,20 @@
         Topmost="True" ResizeMode="NoResize" WindowStyle="None" 
         AllowsTransparency="True" Background="Transparent" 
         LocationChanged="Window_LocationChanged" MouseLeftButtonDown="Window_MouseLeftButtonDown" 
-        MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" IsHitTestVisible="True" Loaded="AcrylicWindow_Loaded" >
+        MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" IsHitTestVisible="True" Loaded="AcrylicWindow_Loaded" Closing="Window_Closing">
     <!--<Grid Background="Transparent">-->
     <DockPanel Background="Transparent" IsHitTestVisible="True">
         <StackPanel Name="stackPanelControl" Background="Black"  DockPanel.Dock="Right" Visibility="Collapsed" d:Visibility="Visible" Width="25">
-            <Button Padding="0" ToolTip="Pause timer" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
+            <Button x:Name="btnResume" Visibility="Collapsed" Padding="0" ToolTip="Pause timer" Foreground="Red" Background="Black" BorderBrush="Black" Height="29" Click="btnResume_Click">
+                <materialDesign:PackIcon Kind="Play" />
+            </Button>
+            <Button x:Name="btnPause" Padding="0" ToolTip="Pause timer" Foreground="Red" Background="Black" BorderBrush="Black" Height="29" Click="btnPause_Click">
                 <materialDesign:PackIcon Kind="Pause" />
             </Button>
-            <Button Padding="0" ToolTip="Stop timer" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
+            <Button x:Name="btnStop" Padding="0" ToolTip="Stop timer" Foreground="Red" Background="Black" BorderBrush="Black" Height="29" Click="btnStop_Click">
                 <materialDesign:PackIcon Kind="Stop" />
             </Button>
-            <Button Padding="0" ToolTip="Restart timer" Foreground="Red" Background="Black" BorderBrush="Black" Height="29">
+            <Button x:Name="btnRestart" Padding="0" ToolTip="Restart timer" Foreground="Red" Background="Black" BorderBrush="Black" Height="29" Click="btnRestart_Click">
                 <materialDesign:PackIcon Kind="Reply" />
             </Button>
         </StackPanel>

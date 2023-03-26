@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Wachman.CustomEventArgs;
 using Wachman.Views;
 using Wachman.Windows;
 
@@ -45,8 +46,14 @@ namespace Wachman.ViewModels
             });
         }
 
-        private void _dialog_OnTimerFinished(object sender, EventArgs e)
+        private void _dialog_OnTimerFinished(object sender, OnSessionFinishedEventArgs e)
         {
+            if (e.InterruptedByUser)
+            {
+                Application.Current.MainWindow.WindowState = WindowState.Normal;
+                return;
+            }
+
             _timerDialog.WindowState = WindowState.Minimized;
             NumberOfWorkingSessions++;
             var dialog = new MicroBreakWindow();
