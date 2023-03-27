@@ -3,5 +3,6 @@
     internal interface IApiKeyProvider
     {
         string GetKey();
+        void SetKey(string key);
     }
 }

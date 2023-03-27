@@ -22,5 +22,11 @@ namespace Wachman.Utils.DataStorage
 
             return Properties.Settings.Default.ApiKey;
         }
+
+        public void SetKey(string key)
+        {
+            Properties.Settings.Default.ApiKey = key;
+            Properties.Settings.Default.Save();
+        }
     }
 }
