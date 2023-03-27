@@ -8,7 +8,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-
+        <GroupBox Header="TimeCamp integration">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton x:Name="tglEnabled" IsChecked="{Binding TimeCampIntegrationEnable}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" />
+                    <Label Content="Enable TimeCamp integration"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" IsEnabled="{Binding ElementName=tglEnabled, Path=IsChecked}">
+                    <Label Content="Api key:"/>
+                    <TextBox Text="{Binding ApiKey}" Width="400"/>
+                </StackPanel>
+                <Button Content="Save" IsEnabled="{Binding ElementName=tglEnabled, Path=IsChecked}" Width="200" HorizontalAlignment="Left" Margin="0 10"/>
+            </StackPanel>
+        </GroupBox>
         <materialDesign:RatingBar HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>

@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Wachman.ViewModels
 {
-    public class SettingsViewModel: ObservableObject
+    public class SettingsViewModel: ObservableObject 
     {
+        public string ApiKey { get; set; }
+        public bool TimeCampIntegrationEnabled { get; set; }
     }
 }
