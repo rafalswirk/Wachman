@@ -1,7 +1,8 @@
 ﻿namespace Wachman.Utils.DataStorage
 {
-    internal interface IApiKeyProvider
+    public interface IApiKeyProvider
     {
         string GetKey();
+        void SetKey(string key);
     }
 }
