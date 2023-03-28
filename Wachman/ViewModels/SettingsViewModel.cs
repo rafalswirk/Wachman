@@ -43,9 +43,12 @@ namespace Wachman.ViewModels
             {
                 if (!TimeCampIntegrationEnabled)
                 {
+                    _keyProvider.SetKey("");
+                }
+                else
+                {
                     _keyProvider.SetKey(ApiKey);
                 }
-                _keyProvider.SetKey(ApiKey);
                 IsMessageVisible = true;
             });
         }
