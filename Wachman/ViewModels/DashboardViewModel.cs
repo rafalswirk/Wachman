@@ -10,6 +10,7 @@ using System.Windows.Input;
 using TimeTrackingService;
 using TimeTrackingService.TimeCampAPI;
 using TimeTrackingService.TimeCampAPI.Client;
+using Wachman.Utils.DataStorage;
 
 namespace Wachman.ViewModels
 {
@@ -17,7 +18,7 @@ namespace Wachman.ViewModels
     {
         private PomodoroViewModel _promodoroViewModel = new();
         private CurrentDayViewModel _currentDayViewModel;
-        private SettingsViewModel _settingsViewModel = new();
+        private SettingsViewModel _settingsViewModel; 
 
         private ObservableObject _selectedViewModel;
 
@@ -32,8 +33,9 @@ namespace Wachman.ViewModels
         public ICommand SwitchPomodoroTimer { get; set; }
         public ICommand SwitchToSettings { get; set; }
 
-        public DashboardViewModel(ITimeTrackingService timeTrackingService)
+        public DashboardViewModel(ITimeTrackingService timeTrackingService, IApiKeyProvider apiKeyProvider)
         {
+            _settingsViewModel = new SettingsViewModel(apiKeyProvider);
             _currentDayViewModel = new CurrentDayViewModel(timeTrackingService);
             ChangeJobStatus = new RelayCommand<Job>(job => 
             {

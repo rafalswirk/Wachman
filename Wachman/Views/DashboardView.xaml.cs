@@ -30,10 +30,12 @@ namespace Wachman.Views
         public DashboardView()
         {
             InitializeComponent();
-            bool useDummyService = true;
+            var apiKeyProvider = new ApiKeyProvider();
+            bool useDummyService = string.IsNullOrEmpty(apiKeyProvider.GetKey());
             _dataContext = new DashboardViewModel(useDummyService ?
                 new DummyTrackingService()
-                : new TimeCampService(new ApiKeyProvider().GetKey()));
+                : new TimeCampService(apiKeyProvider.GetKey()),
+                apiKeyProvider);
             DataContext = _dataContext;      
         }
 
