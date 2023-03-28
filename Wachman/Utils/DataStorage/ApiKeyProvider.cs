@@ -11,15 +11,6 @@ namespace Wachman.Utils.DataStorage
     {
         public string GetKey()
         {
-            if (string.IsNullOrEmpty(Properties.Settings.Default.ApiKey))
-            {
-                var form = new AskForKeyWindow();
-                if (form.ShowDialog() != true)
-                    return "";
-                Properties.Settings.Default.ApiKey = form.ApiKey;
-                Properties.Settings.Default.Save();
-            }
-
             return Properties.Settings.Default.ApiKey;
         }
 
