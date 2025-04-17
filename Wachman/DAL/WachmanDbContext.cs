@@ -6,7 +6,7 @@ namespace Wachman.DAL;
 
 public class WachmanDbContext : DbContext
 {
-    public DbSet<PomodoroConfiguration> PomodoroConfigurations { get; set; } = null!;
+    public DbSet<AppSetting> Settings { get; set; } = null!;
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

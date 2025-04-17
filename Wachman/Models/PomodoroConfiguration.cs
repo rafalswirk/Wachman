@@ -1,6 +1,6 @@
 using System;
 
-namespace Wachman.Entities;
+namespace Wachman.Models;
 
 public class PomodoroConfiguration
 {
