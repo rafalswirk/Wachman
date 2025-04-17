@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Wachman.CustomEventArgs;
+using Wachman.DAL;
+using Wachman.DAL.Respositories;
+using Wachman.Models;
 using Wachman.Views;
 using Wachman.Windows;
 
@@ -32,9 +35,16 @@ namespace Wachman.ViewModels
 
         public PomodoroViewModel()
         {
+            LoadSettings();
             NumberOfWorkingSessions = 0;
             RunTimer = new RelayCommand(() => 
             {
+                SaveSettings(new PomodoroConfiguration()
+                {
+                    WorkSessionDuration = WorkSessionDuration,
+                    BreakTimeDuration = BreakTimeDuration,
+                    //DisableBreaks = DisableBreaks
+                });
                 if(_timerDialog is not null)
                 {
                     _timerDialog.OnTimerFinished -= _dialog_OnTimerFinished;
@@ -44,6 +54,28 @@ namespace Wachman.ViewModels
                 _timerDialog.Show();
                 Application.Current.MainWindow.WindowState = WindowState.Minimized;
             });
+
+            LoadSettings();
+        }
+
+        private void LoadSettings()
+        {
+            using WachmanDbContext dbContext = new WachmanDbContext();
+            var configurationRepository = new ConfigurationRepository(dbContext);
+            var configuration = configurationRepository.GetConfigurationAsync().Result;
+            if (configuration != null)
+            {
+                WorkSessionDuration = configuration.WorkSessionDuration;
+                BreakTimeDuration = configuration.BreakTimeDuration;
+                //DisableBreaks = configuration.DisableBreaks;
+            }
+        }
+
+        public void SaveSettings(PomodoroConfiguration configuration)
+        {
+            using WachmanDbContext dbContext = new WachmanDbContext();
+            var configurationRepository = new ConfigurationRepository(dbContext);
+            configurationRepository.SaveConfigurationAsync(configuration).Wait();
         }
 
         private void _dialog_OnTimerFinished(object sender, OnSessionFinishedEventArgs e)
