@@ -18,9 +18,9 @@ public class WachmanDbContext : DbContext
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<AppSetting>().HasData(
-            new AppSetting { SettingsKey = "WorkSessionDuration", SettingsValue = "30" },
-            new AppSetting { SettingsKey = "BreakTimeDuration", SettingsValue = "5" },
-            new AppSetting { SettingsKey = "DisableBreaks", SettingsValue = "0" }
+            new AppSetting { Id = 1, SettingsKey = "WorkSessionDuration", SettingsValue = "30" },
+            new AppSetting { Id = 2, SettingsKey = "BreakTimeDuration", SettingsValue = "5" },
+            new AppSetting { Id = 3, SettingsKey = "DisableBreaks", SettingsValue = "0" }
         );
     }
 }
