@@ -5,13 +5,13 @@ VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wachman", "src\Bootstrapper\FocusForge.Bootstrapper\Wachman.csproj", "{88C09717-68D4-4299-A516-B2F2859E3A18}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controls", "src\Controls\Controls.csproj", "{4FCC60E2-D72B-411B-AF8A-8BB6B878BA8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controls", "src\Shared\FocusForge.UI\Controls.csproj", "{4FCC60E2-D72B-411B-AF8A-8BB6B878BA8E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataModels", "src\DataModels\DataModels.csproj", "{694FB643-CDE1-4A28-A78D-CBB0EE4C9FC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataModels", "src\Shared\FocusForge.DataModels\DataModels.csproj", "{694FB643-CDE1-4A28-A78D-CBB0EE4C9FC4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTrackingService", "src\TimeTrackingService\TimeTrackingService.csproj", "{CE6A1B4E-E2F3-4415-B362-C232983D3D62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTrackingService", "src\Modules\FocusForge.TimeTracker\TimeTrackingService.csproj", "{CE6A1B4E-E2F3-4415-B362-C232983D3D62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wachman.Tests", "src\Wachman.Tests\Wachman.Tests.csproj", "{BFF71DFB-6509-428C-A765-BABCDA2DDBA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wachman.Tests", "src\Shared\FocusForge.Tests\Wachman.Tests.csproj", "{BFF71DFB-6509-428C-A765-BABCDA2DDBA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
