@@ -13,7 +13,7 @@ namespace Wachman.DAL
         public WachmanDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<WachmanDbContext>();
-            optionsBuilder.UseSqlite("Data Source=Wachman.db");
+            optionsBuilder.UseSqlite(ConnectionStringProvider.ConnectionString);
 
             return new WachmanDbContext(optionsBuilder.Options);
 

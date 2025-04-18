@@ -17,7 +17,7 @@ public class WachmanDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=Wachman.db");
+        optionsBuilder.UseSqlite(ConnectionStringProvider.ConnectionString);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
