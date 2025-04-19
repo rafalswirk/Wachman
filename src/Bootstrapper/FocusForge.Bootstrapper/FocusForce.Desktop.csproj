@@ -7,6 +7,12 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Forms\**" />
+    <EmbeddedResource Remove="Forms\**" />
+    <None Remove="Forms\**" />
+    <Page Remove="Forms\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Fonts\digital-7.ttf" />
     <Resource Include="Fonts\digital-7 %28mono%29.ttf" />
   </ItemGroup>
@@ -41,6 +47,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\Migrations\" />
-    <Folder Include="Forms\" />
   </ItemGroup>
 </Project>
