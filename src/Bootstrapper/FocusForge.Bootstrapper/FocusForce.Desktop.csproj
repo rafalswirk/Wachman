@@ -11,9 +11,9 @@
     <Resource Include="Fonts\digital-7 %28mono%29.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Controls\Controls.csproj" />
-    <ProjectReference Include="..\DataModels\DataModels.csproj" />
-    <ProjectReference Include="..\TimeTrackingService\TimeTrackingService.csproj" />
+    <ProjectReference Include="..\..\Modules\FocusForge.TimeTracker\FocusForge.TimeTracker.csproj" />
+    <ProjectReference Include="..\..\Shared\FocusForge.DataModels\FocusForge.DataModels.csproj" />
+    <ProjectReference Include="..\..\Shared\FocusForge.UI\FocusForge.UI.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />

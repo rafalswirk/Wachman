@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TimeTrackingService\TimeTrackingService.csproj" />
+    <ProjectReference Include="..\..\Modules\FocusForge.TimeTracker\FocusForge.TimeTracker.csproj" />
   </ItemGroup>
 
 </Project>
