@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.UnitTests", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.UI", "src\Shared\FocusForge.UI\FocusForge.UI.csproj", "{A427B83B-A1F5-4B67-B7EB-1DCC70E6BD2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.PomodoroTimer", "src\Modules\FocusForge.PomodoroTimer\FocusForge.PomodoroTimer.csproj", "{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{A427B83B-A1F5-4B67-B7EB-1DCC70E6BD2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A427B83B-A1F5-4B67-B7EB-1DCC70E6BD2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A427B83B-A1F5-4B67-B7EB-1DCC70E6BD2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{3F76BA57-FA9F-4237-B022-2AE4EFE8B66C} = {A8579C92-6063-44FD-AC54-EC3CCCA8A2FF}
 		{9DAC3144-8DED-4817-B10B-094E6ED43854} = {46ED950F-8A13-4278-A77C-0A60AF244BF0}
 		{A427B83B-A1F5-4B67-B7EB-1DCC70E6BD2A} = {A8579C92-6063-44FD-AC54-EC3CCCA8A2FF}
+		{16BC46DD-49B2-42D6-8C81-E77DE4619AC9} = {2F17EE01-4244-4683-9EC6-4C09E1B93DAF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {93FA2FE8-A639-4C6E-B20C-A66E4302F0D3}
