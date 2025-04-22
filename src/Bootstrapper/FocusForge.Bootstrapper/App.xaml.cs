@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,16 +17,30 @@ namespace Wachman
     public partial class App : Application
     {
         IHost _host;
-        private void Application_Startup(object sender, StartupEventArgs e)
+
+        protected override void OnStartup(StartupEventArgs e)
         {
             _host = Host.CreateDefaultBuilder()
-                .ConfigureServices((context, services)=> 
+                .ConfigureServices((context, services) =>
                 {
-                
+                    services.AddSingleton<MainWindow>();
                 })
                 .Build();
 
             AutomatedMigrations.Apply();
+            var mainWindow = _host.Services.GetService<MainWindow>();
+            mainWindow.Show();
+
+            base.OnStartup(e);
+        }
+
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            if(_host != null)
+            {
+                await _host.StopAsync();
+            }
+            base.OnExit(e);
         }
     }
 }
