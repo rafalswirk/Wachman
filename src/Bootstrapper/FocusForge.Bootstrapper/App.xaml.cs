@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Hosting;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,8 +15,16 @@ namespace Wachman
     /// </summary>
     public partial class App : Application
     {
+        IHost _host;
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            _host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services)=> 
+                {
+                
+                })
+                .Build();
+
             AutomatedMigrations.Apply();
         }
     }
