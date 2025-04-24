@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using FocusForge.Desktop.ViewModels;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Wachman
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(DashboardViewModel viewModel)
+        public MainWindow(MainWindowViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel;

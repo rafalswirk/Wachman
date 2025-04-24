@@ -1,5 +1,6 @@
 ﻿using FocusForge.Desktop.Utils;
 using FocusForge.Desktop.Utils.UI.Navigation;
+using FocusForge.Desktop.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -32,7 +33,7 @@ namespace Wachman
                 .ConfigureServices((context, services) =>
                 {
                     services.AddSingleton<MainWindow>();
-                    services.AddSingleton<DashboardViewModel>();
+                    services.AddSingleton<MainWindowViewModel>();
                     services.AddSingleton<PomodoroViewModel>();
                     services.AddSingleton<CurrentDayViewModel>();
                     services.AddSingleton<SettingsViewModel>();
