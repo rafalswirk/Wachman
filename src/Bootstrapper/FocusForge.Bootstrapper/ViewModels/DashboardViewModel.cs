@@ -1,7 +1,7 @@
 ﻿using DataModels.Jobs;
 using FocusForge.Desktop.Utils.UI.Navigation;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +51,7 @@ namespace Wachman.ViewModels
             _navigationService = navigationService;
         }
 
-        internal async Task OnLoaded()
+        private async Task OnLoadedAsync()
         {
             await _currentDayViewModel.InitializeAsync();
             SelectedViewModel = _promodoroViewModel;

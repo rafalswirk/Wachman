@@ -42,7 +42,7 @@ namespace Wachman.Views
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            await _dataContext.OnLoaded();
+            //await _dataContext.OnLoaded();
         }
     }
 }
