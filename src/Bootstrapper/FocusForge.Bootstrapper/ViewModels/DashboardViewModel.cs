@@ -17,10 +17,6 @@ namespace Wachman.ViewModels
 {
     public class DashboardViewModel : ObservableObject
     {
-        private PomodoroViewModel _promodoroViewModel = new(null);
-        private CurrentDayViewModel _currentDayViewModel;
-        private SettingsViewModel _settingsViewModel; 
-
         private ObservableObject _selectedViewModel;
         private readonly INavigationService _navigationService;
 
@@ -36,11 +32,10 @@ namespace Wachman.ViewModels
         public ICommand SwitchToCurrentDay { get; set; }
         public ICommand SwitchPomodoroTimer { get; set; }
         public ICommand SwitchToSettings { get; set; }
+        public IAsyncRelayCommand OnLoadCommand { get; set; }
 
         public DashboardViewModel(ITimeTrackingService timeTrackingService, IApiKeyProvider apiKeyProvider, INavigationService navigationService)
         {
-            _settingsViewModel = new SettingsViewModel(apiKeyProvider);
-            _currentDayViewModel = new CurrentDayViewModel(timeTrackingService);
             ChangeJobStatus = new RelayCommand<Job>(job => 
             {
                 job.IsRunning = true;
@@ -50,12 +45,5 @@ namespace Wachman.ViewModels
             SwitchToSettings = new RelayCommand(() => _navigationService.NavigateTo<SettingsViewModel>());
             _navigationService = navigationService;
         }
-
-        private async Task OnLoadedAsync()
-        {
-            await _currentDayViewModel.InitializeAsync();
-            SelectedViewModel = _promodoroViewModel;
-        }
-
     }
 }

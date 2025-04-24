@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TimeTrackingService;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Wachman.ViewModels
 {
@@ -21,9 +22,12 @@ namespace Wachman.ViewModels
             set => SetProperty(ref _dailyJobs, value);
         }
 
+        public IAsyncRelayCommand OnLoad { get; set; }
+
         public CurrentDayViewModel(ITimeTrackingService timeTrackingService)
         {
             _timeTrackingService = timeTrackingService;
+            OnLoad = new AsyncRelayCommand(InitializeAsync);
         }
 
         internal async Task InitializeAsync()

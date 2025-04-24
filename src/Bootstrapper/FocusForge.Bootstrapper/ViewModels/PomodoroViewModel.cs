@@ -37,6 +37,7 @@ namespace Wachman.ViewModels
 
         public PomodoroViewModel(IConfigurationRepository configurationRepository)
         {
+            _configurationRepository = configurationRepository;
             LoadSettings();
             NumberOfWorkingSessions = 0;
             RunTimer = new RelayCommand(() => 
@@ -56,9 +57,6 @@ namespace Wachman.ViewModels
                 _timerDialog.Show();
                 Application.Current.MainWindow.WindowState = WindowState.Minimized;
             });
-
-            LoadSettings();
-            _configurationRepository = configurationRepository;
         }
 
         private void LoadSettings()
