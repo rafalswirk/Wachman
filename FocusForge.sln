@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PomodoroTimer", "PomodoroTi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TimeTracker", "TimeTracker", "{7B0CB0B4-512F-48F5-A90A-BFB64D70D984}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.PomodoroTimer.UI", "src\Modules\PomodoroTimer\FocusForge.PomodoroTimer.UI\FocusForge.PomodoroTimer.UI.csproj", "{B7D5E41E-6901-4B92-8B6B-82EACA27A61C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7D5E41E-6901-4B92-8B6B-82EACA27A61C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D5E41E-6901-4B92-8B6B-82EACA27A61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D5E41E-6901-4B92-8B6B-82EACA27A61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D5E41E-6901-4B92-8B6B-82EACA27A61C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{16BC46DD-49B2-42D6-8C81-E77DE4619AC9} = {FFA737D4-9CEE-474A-8129-0394AD3C6111}
 		{FFA737D4-9CEE-474A-8129-0394AD3C6111} = {2F17EE01-4244-4683-9EC6-4C09E1B93DAF}
 		{7B0CB0B4-512F-48F5-A90A-BFB64D70D984} = {2F17EE01-4244-4683-9EC6-4C09E1B93DAF}
+		{B7D5E41E-6901-4B92-8B6B-82EACA27A61C} = {FFA737D4-9CEE-474A-8129-0394AD3C6111}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {93FA2FE8-A639-4C6E-B20C-A66E4302F0D3}

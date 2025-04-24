@@ -1,7 +1,7 @@
 
 namespace FocusForge.PomodoroTimer
 {
-    public class Class1
+    public static class Extensions
     {
     }
 
