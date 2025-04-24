@@ -1,4 +1,5 @@
 ﻿using DataModels.Jobs;
+using FocusForge.Desktop.Utils.UI.Navigation;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
@@ -21,6 +22,7 @@ namespace Wachman.ViewModels
         private SettingsViewModel _settingsViewModel; 
 
         private ObservableObject _selectedViewModel;
+        private readonly INavigationService _navigationService;
 
         public ObservableObject SelectedViewModel
         {
@@ -28,12 +30,14 @@ namespace Wachman.ViewModels
             set => SetProperty(ref _selectedViewModel, value);
         }
 
+        public INavigationService NavigationService => _navigationService;
+
         public ICommand ChangeJobStatus { get; private set; }
         public ICommand SwitchToCurrentDay { get; set; }
         public ICommand SwitchPomodoroTimer { get; set; }
         public ICommand SwitchToSettings { get; set; }
 
-        public DashboardViewModel(ITimeTrackingService timeTrackingService, IApiKeyProvider apiKeyProvider)
+        public DashboardViewModel(ITimeTrackingService timeTrackingService, IApiKeyProvider apiKeyProvider, INavigationService navigationService)
         {
             _settingsViewModel = new SettingsViewModel(apiKeyProvider);
             _currentDayViewModel = new CurrentDayViewModel(timeTrackingService);
@@ -41,9 +45,10 @@ namespace Wachman.ViewModels
             {
                 job.IsRunning = true;
             });
-            SwitchToCurrentDay = new RelayCommand(() => SelectedViewModel = _currentDayViewModel);
-            SwitchPomodoroTimer = new RelayCommand(() => SelectedViewModel = _promodoroViewModel);
-            SwitchToSettings = new RelayCommand(() => SelectedViewModel = _settingsViewModel);
+            SwitchToCurrentDay = new RelayCommand(() => _navigationService.NavigateTo<CurrentDayViewModel>());
+            SwitchPomodoroTimer = new RelayCommand(() => _navigationService.NavigateTo<PomodoroViewModel>());
+            SwitchToSettings = new RelayCommand(() => _navigationService.NavigateTo<SettingsViewModel>());
+            _navigationService = navigationService;
         }
 
         internal async Task OnLoaded()
