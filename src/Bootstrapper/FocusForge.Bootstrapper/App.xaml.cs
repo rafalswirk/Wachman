@@ -12,6 +12,8 @@ using System.Windows;
 using TimeTrackingService;
 using TimeTrackingService.DummyAPI;
 using Wachman.DAL;
+using Wachman.DAL.Respositories;
+using Wachman.Repositories;
 using Wachman.Utils.DataStorage;
 using Wachman.ViewModels;
 
@@ -37,6 +39,8 @@ namespace Wachman
                     services.AddSingleton<ITimeTrackingService, DummyTrackingService>();
                     services.AddSingleton<IApiKeyProvider, ApiKeyProvider>();
                     services.AddSingleton<INavigationService, NavigationService>();
+                    services.AddScoped<IConfigurationRepository, ConfigurationRepository>();
+                    services.AddScoped<WachmanDbContext>();
                 })
                 .Build();
 

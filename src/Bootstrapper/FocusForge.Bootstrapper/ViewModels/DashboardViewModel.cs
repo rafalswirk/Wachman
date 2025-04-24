@@ -17,7 +17,7 @@ namespace Wachman.ViewModels
 {
     public class DashboardViewModel : ObservableObject
     {
-        private PomodoroViewModel _promodoroViewModel = new();
+        private PomodoroViewModel _promodoroViewModel = new(null);
         private CurrentDayViewModel _currentDayViewModel;
         private SettingsViewModel _settingsViewModel; 
 

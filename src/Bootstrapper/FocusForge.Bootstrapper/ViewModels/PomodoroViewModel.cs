@@ -11,6 +11,7 @@ using Wachman.CustomEventArgs;
 using Wachman.DAL;
 using Wachman.DAL.Respositories;
 using Wachman.Models;
+using Wachman.Repositories;
 using Wachman.Views;
 using Wachman.Windows;
 
@@ -21,6 +22,7 @@ namespace Wachman.ViewModels
         private MicroTimerView _timerDialog;
 
         private int _numberOfWorkingSessions;
+        private readonly IConfigurationRepository _configurationRepository;
 
         public int NumberOfWorkingSessions
         {
@@ -33,7 +35,7 @@ namespace Wachman.ViewModels
         public int BreakTimeDuration { get; set; } = 5;
         public ICommand RunTimer { get; set; }
 
-        public PomodoroViewModel()
+        public PomodoroViewModel(IConfigurationRepository configurationRepository)
         {
             LoadSettings();
             NumberOfWorkingSessions = 0;
@@ -56,13 +58,12 @@ namespace Wachman.ViewModels
             });
 
             LoadSettings();
+            _configurationRepository = configurationRepository;
         }
 
         private void LoadSettings()
         {
-            using WachmanDbContext dbContext = new WachmanDbContext();
-            var configurationRepository = new ConfigurationRepository(dbContext);
-            var configuration = configurationRepository.GetConfigurationAsync().Result;
+            var configuration = _configurationRepository.GetConfigurationAsync().Result;
             if (configuration != null)
             {
                 WorkSessionDuration = configuration.WorkSessionDuration;
@@ -73,9 +74,7 @@ namespace Wachman.ViewModels
 
         public void SaveSettings(PomodoroConfiguration configuration)
         {
-            using WachmanDbContext dbContext = new WachmanDbContext();
-            var configurationRepository = new ConfigurationRepository(dbContext);
-            configurationRepository.SaveConfigurationAsync(configuration).Wait();
+            _configurationRepository.SaveConfigurationAsync(configuration).Wait();
         }
 
         private void _dialog_OnTimerFinished(object sender, OnSessionFinishedEventArgs e)
