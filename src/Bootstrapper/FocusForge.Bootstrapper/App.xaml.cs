@@ -1,6 +1,7 @@
 ﻿using FocusForge.Desktop.Utils;
 using FocusForge.Desktop.Utils.UI.Navigation;
 using FocusForge.Desktop.ViewModels;
+using FocusForge.PomodoroTimer.UI;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -34,7 +35,7 @@ namespace Wachman
                 {
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<MainWindowViewModel>();
-                    services.AddSingleton<PomodoroViewModel>();
+                    services.AddPomodoroTimer();
                     services.AddSingleton<CurrentDayViewModel>();
                     services.AddSingleton<SettingsViewModel>();
                     services.AddSingleton<ITimeTrackingService, DummyTrackingService>();

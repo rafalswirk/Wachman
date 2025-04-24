@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Cors;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
