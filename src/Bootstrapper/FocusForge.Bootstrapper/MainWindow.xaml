@@ -1,21 +1,21 @@
-﻿<Window x:Class="Wachman.MainWindow"
+﻿<Window x:Class="FocusForge.Desktop.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Wachman"
+        xmlns:local="clr-namespace:FocusForge.Desktop"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        xmlns:viewmodels="clr-namespace:Wachman.ViewModels" 
-        xmlns:subviews="clr-namespace:Wachman.Views.Subviews"
-        xmlns:viewModels="clr-namespace:Wachman.ViewModels"
-        xmlns:pomodoroViews="clr-namespace:Wachman.Views.Subviews;assembly=FocusForge.PomodoroTimer.UI"
-        xmlns:pomodoroViewModels="clr-namespace:Wachman.ViewModels;assembly=FocusForge.PomodoroTimer.UI"
-        xmlns:timeTrackerViews="clr-namespace:Wachman.Views.Subviews;assembly=FocusForge.TimeTracker.UI"
-        xmlns:timeTrackerViewModels="clr-namespace:Wachman.ViewModels;assembly=FocusForge.TimeTracker.UI"
+        xmlns:viewmodels="clr-namespace:FocusForge.Desktop.ViewModels" 
+        xmlns:subviews="clr-namespace:FocusForge.Desktop.Views.Subviews"
+        xmlns:viewModels="clr-namespace:FocusForge.Desktop.ViewModels"
+        xmlns:pomodoroViews="clr-namespace:FocusForge.PomodoroTimer.UI.Views;assembly=FocusForge.PomodoroTimer.UI"
+        xmlns:pomodoroViewModels="clr-namespace:FocusForge.PomodoroTimer.UI.ViewModels;assembly=FocusForge.PomodoroTimer.UI"
+        xmlns:timeTrackerViews="clr-namespace:FocusForge.TimeTracker.UI.Views;assembly=FocusForge.TimeTracker.UI"
+        xmlns:timeTrackerViewModels="clr-namespace:FocusForge.TimeTracker.UI.ViewModels;assembly=FocusForge.TimeTracker.UI"
         Background="{DynamicResource MaterialDesignPaper}"
         Name="dashboard"
         mc:Ignorable="d"
-        Title="Wachman" Height="450" Width="900">
+        Title="FocusForge.Desktop" Height="450" Width="900">
     <!--<Grid Background="Transparent">-->
     <Window.Resources>
         <ResourceDictionary>
@@ -48,7 +48,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Viewbox Grid.Row="0" Grid.Column="0">
-                    <Label Content="WACHMAN" FontFamily="../Fonts/#DIGITAL-7 Mono" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label Content="FocusForge.Desktop" FontFamily="../Fonts/#DIGITAL-7 Mono" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Viewbox>
                 <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" Margin="10,0,10,0"/>
                 <ContentControl Grid.Column="1" Grid.RowSpan="2" Content="{Binding NavigationService.ViewModel, UpdateSourceTrigger=PropertyChanged}"/>

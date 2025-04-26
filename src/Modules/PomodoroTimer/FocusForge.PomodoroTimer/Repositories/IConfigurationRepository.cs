@@ -1,8 +1,8 @@
+using FocusForge.PomodoroTimer.Models;
 using System;
 using System.Threading.Tasks;
-using Wachman.Models;
 
-namespace Wachman.Repositories;
+namespace FocusForge.PomodoroTimer.Repositories;
 
 public interface IConfigurationRepository
 {

@@ -12,13 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using Wachman.Utils.DataStorage;
-using Wachman.Utils;
 using System.Threading;
-using Wachman.CustomEventArgs;
 using FocusForge.PomodoroTimer.Services.Integrations.TimeCamp;
+using FocusForge.PomodoroTimer.DataStorage;
+using FocusForge.PomodoroTimer.CustomEventArgs;
+using FocusForge.PomodoroTimer.UI.Utils;
 
-namespace Wachman.Views
+namespace FocusForge.PomodoroTimer.UI.Views
 {
     /// <summary>
     /// Interaction logic for MicroTimerView.xaml

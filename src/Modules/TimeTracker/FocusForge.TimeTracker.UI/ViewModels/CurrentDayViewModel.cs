@@ -1,16 +1,16 @@
-﻿using DataModels.Jobs;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TimeTrackingService;
 using CommunityToolkit.Mvvm.Input;
+using FocusForge.DataModels.Jobs;
+using FocusForge.TimeTracker;
 
-namespace Wachman.ViewModels
+namespace FocusForge.TimeTracker.UI.ViewModels
 {
-    public class CurrentDayViewModel: ObservableObject
+    public class CurrentDayViewModel : ObservableObject
     {
         private ITimeTrackingService _timeTrackingService;
 

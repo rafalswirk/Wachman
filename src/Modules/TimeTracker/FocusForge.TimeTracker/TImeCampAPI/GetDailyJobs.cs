@@ -1,4 +1,6 @@
-﻿using DataModels.Jobs;
+﻿using FocusForge.DataModels.Jobs;
+using FocusForge.TimeTracker.TImeCampAPI.DTO;
+using FocusForge.TimeTracker.TimeTrackingServiceCommand;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Authenticators.OAuth2;
@@ -10,10 +12,8 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-using TimeTrackingService.TimeCampAPI.DTO;
-using TimeTrackingService.TimeTrackingServiceCommand;
 
-namespace TimeTrackingService.TimeCampAPI
+namespace FocusForge.TimeTracker.TImeCampAPI
 {
     public class GetDailyJobs : ITimeTrackingCommand<List<Job>?>
     {
@@ -47,7 +47,7 @@ namespace TimeTrackingService.TimeCampAPI
                     {
                         Description = dto.Description,
                         Name = dto.Name,
-                        Start = DateTime.ParseExact($"{dto.Date.ToString("yyyy-MM-dd")} {dto.Start_Time}" , "yyyy-MM-dd HH:mm:ss", null),
+                        Start = DateTime.ParseExact($"{dto.Date.ToString("yyyy-MM-dd")} {dto.Start_Time}", "yyyy-MM-dd HH:mm:ss", null),
                         Stop = DateTime.ParseExact($"{dto.Date.ToString("yyyy-MM-dd")} {dto.End_Time}", "yyyy-MM-dd HH:mm:ss", null)
                     };
                     job.Duration = job.Stop - job.Start;

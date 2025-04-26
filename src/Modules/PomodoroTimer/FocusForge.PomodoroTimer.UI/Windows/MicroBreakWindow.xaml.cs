@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FocusForge.PomodoroTimer.UI.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Wachman.Utils;
 
-namespace Wachman.Windows
+namespace FocusForge.PomodoroTimer.UI.Windows
 {
     /// <summary>
     /// Interaction logic for MicroBreakWindow.xaml

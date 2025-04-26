@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wachman.DAL
+namespace FocusForge.PomodoroTimer.DAL
 {
     public class WachmanDbContextFactory : IDesignTimeDbContextFactory<WachmanDbContext>
     {

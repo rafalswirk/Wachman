@@ -1,11 +1,10 @@
+using FocusForge.PomodoroTimer.Models;
+using FocusForge.PomodoroTimer.Repositories;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Wachman.Entities;
-using Wachman.Models;
-using Wachman.Repositories;
 
-namespace Wachman.DAL.Respositories;
+namespace FocusForge.PomodoroTimer.DAL.Respositories;
 
 public class ConfigurationRepository : IConfigurationRepository
 {
@@ -23,7 +22,7 @@ public class ConfigurationRepository : IConfigurationRepository
         configuration.WorkSessionDuration = int.Parse(GetValue(nameof(configuration.WorkSessionDuration)));
         configuration.BreakTimeDuration = int.Parse(GetValue(nameof(configuration.BreakTimeDuration)));
         configuration.DisableBreaks = GetValue(nameof(configuration.DisableBreaks)) == "1";
-        
+
         return Task.FromResult(configuration);
     }
 

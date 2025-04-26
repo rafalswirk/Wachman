@@ -1,16 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using DataModels.Jobs;
+using FocusForge.DataModels.Jobs;
 using FocusForge.Desktop.Utils.UI.Navigation;
+using FocusForge.PomodoroTimer.DataStorage;
+using FocusForge.PomodoroTimer.UI.ViewModels;
+using FocusForge.TimeTracker;
+using FocusForge.TimeTracker.UI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using TimeTrackingService;
-using Wachman.Utils.DataStorage;
-using Wachman.ViewModels;
 
 namespace FocusForge.Desktop.ViewModels
 {

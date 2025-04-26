@@ -1,5 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using FocusForge.PomodoroTimer.CustomEventArgs;
+using FocusForge.PomodoroTimer.DataStorage;
+using FocusForge.PomodoroTimer.Models;
+using FocusForge.PomodoroTimer.Repositories;
+using FocusForge.PomodoroTimer.UI.Views;
+using FocusForge.PomodoroTimer.UI.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +13,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Wachman.CustomEventArgs;
-using Wachman.DAL;
-using Wachman.DAL.Respositories;
-using Wachman.Models;
-using Wachman.Repositories;
-using Wachman.Utils.DataStorage;
-using Wachman.Views;
-using Wachman.Windows;
 
-namespace Wachman.ViewModels
+namespace FocusForge.PomodoroTimer.UI.ViewModels
 {
     public class PomodoroViewModel : ObservableObject
     {
@@ -97,7 +95,7 @@ namespace Wachman.ViewModels
             var breakViewModel = new MicroBreakViewModel(TimeSpan.FromMinutes(BreakTimeDuration));
             breakViewModel.OnBreakFinished += (o, e) =>
             {
-                Application.Current.Dispatcher.BeginInvoke(new Action(() => 
+                Application.Current.Dispatcher.BeginInvoke(new Action(() =>
                 {
                     _timerDialog.Close();
                     dialog.Close();

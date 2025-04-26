@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Wachman.Views
+namespace FocusForge.Desktop.Views
 {
     /// <summary>
     /// Interaction logic for UITestView.xaml

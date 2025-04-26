@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;
 
-namespace Wachman.ViewModels
+namespace FocusForge.PomodoroTimer.UI.ViewModels
 {
     public class MicroBreakViewModel : ObservableObject
     {
@@ -40,10 +40,10 @@ namespace Wachman.ViewModels
         }
 
         private bool _isTopmost;
-        public bool IsTopmost 
-        { 
-            get => _isTopmost; 
-            set => SetProperty(ref _isTopmost, value); 
+        public bool IsTopmost
+        {
+            get => _isTopmost;
+            set => SetProperty(ref _isTopmost, value);
         }
 
         public ICommand TakeBreak { get; set; }
@@ -71,7 +71,7 @@ namespace Wachman.ViewModels
                     var elpassedTime = DateTime.Now - _startTime;
                     var timeToFinish = _breakTime - elpassedTime;
                     UserMessage = $"{timeToFinish.Minutes:00}:{timeToFinish.Seconds:00}";
-                    BreakProgress = (int)(100 - (elpassedTime.TotalSeconds * 100) / _breakTime.TotalSeconds);
+                    BreakProgress = (int)(100 - elpassedTime.TotalSeconds * 100 / _breakTime.TotalSeconds);
                     if (timeToFinish <= TimeSpan.Zero)
                     {
                         var timer = o as System.Timers.Timer;
@@ -94,7 +94,7 @@ namespace Wachman.ViewModels
                 OnBreakPostponed?.Invoke(this, EventArgs.Empty);
             });
 
-            UnlockWindow = new RelayCommand(() => 
+            UnlockWindow = new RelayCommand(() =>
             {
                 IsTopmost = !IsTopmost;
             });

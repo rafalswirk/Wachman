@@ -1,14 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using FocusForge.PomodoroTimer.DataStorage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Wachman.Utils.DataStorage;
 
-namespace Wachman.ViewModels
+namespace FocusForge.Desktop.ViewModels
 {
     public class SettingsViewModel : ObservableObject
     {
@@ -17,10 +17,10 @@ namespace Wachman.ViewModels
         private bool _timeCampIntegrationEnabled;
 
         public string ApiKey { get; set; }
-        public bool TimeCampIntegrationEnabled 
-        { 
-            get => _timeCampIntegrationEnabled; 
-            set => SetProperty(ref _timeCampIntegrationEnabled, value); 
+        public bool TimeCampIntegrationEnabled
+        {
+            get => _timeCampIntegrationEnabled;
+            set => SetProperty(ref _timeCampIntegrationEnabled, value);
         }
         public ICommand SaveTimeCampSettings { get; set; }
         public bool IsMessageVisible

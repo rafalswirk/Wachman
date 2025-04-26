@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace TimeTrackingService.TimeCampAPI
+namespace FocusForge.TimeTracker.TImeCampAPI
 {
     public class TimeCampStatusReader
     {

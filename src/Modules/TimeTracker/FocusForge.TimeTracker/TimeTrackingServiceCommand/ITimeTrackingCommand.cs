@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimeTrackingService.TimeTrackingServiceCommand
+namespace FocusForge.TimeTracker.TimeTrackingServiceCommand
 {
     internal interface ITimeTrackingCommand<T>
     {

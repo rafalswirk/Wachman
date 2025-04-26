@@ -1,11 +1,12 @@
-﻿using DataModels.Jobs;
+﻿using FocusForge.DataModels.Jobs;
+using FocusForge.TimeTracker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimeTrackingService.DummyAPI
+namespace FocusForge.TimeTracker.DummyAPI
 {
     public class DummyTrackingService : ITimeTrackingService
     {

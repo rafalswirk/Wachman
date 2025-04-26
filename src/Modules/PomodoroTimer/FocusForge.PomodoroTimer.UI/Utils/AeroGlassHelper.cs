@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace Wachman.Utils
+namespace FocusForge.PomodoroTimer.UI.Utils
 {
     class AeroGlassHelper
     {
@@ -39,12 +39,12 @@ namespace Wachman.Utils
         internal struct WindowCompositionAttributeData
         {
             public WindowCompositionAttribute Attribute;
-            public IntPtr Data;
+            public nint Data;
             public int SizeOfData;
         }
 
         [DllImport("user32.dll")]
-        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+        internal static extern int SetWindowCompositionAttribute(nint hwnd, ref WindowCompositionAttributeData data);
 
         internal static void EnableBlur(Window window, bool enabled)
         {

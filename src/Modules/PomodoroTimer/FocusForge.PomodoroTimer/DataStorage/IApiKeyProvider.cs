@@ -1,4 +1,4 @@
-﻿namespace Wachman.Utils.DataStorage
+﻿namespace FocusForge.PomodoroTimer.DataStorage
 {
     public interface IApiKeyProvider
     {

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using FocusForge.DataModels.Entities;
+using FocusForge.PomodoroTimer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wachman.Entities;
-using Wachman.Models;
 
-namespace Wachman.DAL
+
+namespace FocusForge.PomodoroTimer.DAL
 {
     internal static class SeedDataGenerator
     {

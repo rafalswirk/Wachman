@@ -1,6 +1,6 @@
 
+using FocusForge.PomodoroTimer.UI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
-using Wachman.ViewModels;
 
 namespace FocusForge.PomodoroTimer.UI
 {

@@ -1,13 +1,14 @@
-﻿using DataModels.Jobs;
+﻿using FocusForge.DataModels.Jobs;
+using FocusForge.TimeTracker;
+using FocusForge.TimeTracker.TImeCampAPI.Client;
 using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TimeTrackingService.TimeCampAPI.Client;
 
-namespace TimeTrackingService.TimeCampAPI
+namespace FocusForge.TimeTracker.TImeCampAPI
 {
     public class TimeCampService : ITimeTrackingService
     {
