@@ -3,21 +3,12 @@ using FocusForge.Desktop.Utils.UI.Navigation;
 using FocusForge.Desktop.ViewModels;
 using FocusForge.PomodoroTimer;
 using FocusForge.PomodoroTimer.UI;
+using FocusForge.TimeTracker.UI;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using TimeTrackingService;
 using TimeTrackingService.DummyAPI;
-using Wachman.DAL;
-using Wachman.DAL.Respositories;
-using Wachman.Repositories;
-using Wachman.Utils.DataStorage;
 using Wachman.ViewModels;
 
 namespace Wachman
@@ -37,7 +28,7 @@ namespace Wachman
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<MainWindowViewModel>();
                     services.AddPomodoroTimer();
-                    services.AddSingleton<CurrentDayViewModel>();
+                    services.AddTimeTracker();
                     services.AddSingleton<SettingsViewModel>();
                     services.AddSingleton<ITimeTrackingService, DummyTrackingService>();
                     services.AddSingleton<INavigationService, NavigationService>();

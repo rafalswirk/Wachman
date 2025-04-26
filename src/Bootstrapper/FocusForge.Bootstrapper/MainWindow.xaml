@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:Wachman"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:viewmodels="clr-namespace:Wachman.ViewModels" 
-        xmlns:templateSelectors="clr-namespace:Wachman.DataTemplateSelectors"
         xmlns:subviews="clr-namespace:Wachman.Views.Subviews"
         xmlns:viewModels="clr-namespace:Wachman.ViewModels"
         xmlns:pomodoroViews="clr-namespace:Wachman.Views.Subviews;assembly=FocusForge.PomodoroTimer.UI"
         xmlns:pomodoroViewModels="clr-namespace:Wachman.ViewModels;assembly=FocusForge.PomodoroTimer.UI"
+        xmlns:timeTrackerViews="clr-namespace:Wachman.Views.Subviews;assembly=FocusForge.TimeTracker.UI"
+        xmlns:timeTrackerViewModels="clr-namespace:Wachman.ViewModels;assembly=FocusForge.TimeTracker.UI"
         Background="{DynamicResource MaterialDesignPaper}"
         Name="dashboard"
         mc:Ignorable="d"
@@ -19,10 +20,10 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/CustomStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/FocusForge.UI;component/Styles/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate DataType="{x:Type viewModels:CurrentDayViewModel}">
-                <subviews:CurrentDayView/>
+            <DataTemplate DataType="{x:Type timeTrackerViewModels:CurrentDayViewModel}">
+                <timeTrackerViews:CurrentDayView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type pomodoroViewModels:PomodoroViewModel}">
                 <pomodoroViews:PomodoroTimerView/>
