@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
@@ -17,11 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\FocusForge.UI\FocusForge.UI.csproj" />
     <ProjectReference Include="..\FocusForge.PomodoroTimer\FocusForge.PomodoroTimer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Fonts\digital-7 (mono).ttf" />
-    <Resource Include="Fonts\digital-7.ttf" />
   </ItemGroup>
 
 </Project>

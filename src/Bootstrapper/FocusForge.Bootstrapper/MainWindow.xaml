@@ -48,7 +48,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Viewbox Grid.Row="0" Grid.Column="0">
-                    <Label Content="FocusForge.Desktop" FontFamily="../Fonts/#DIGITAL-7 Mono" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label Content="FocusForge.Desktop" FontFamily="pack://application:,,,/FocusForge.UI;component/Fonts/#DIGITAL-7 Mono" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Viewbox>
                 <Border BorderBrush="DarkGray" BorderThickness="0 0 0 1" Margin="10,0,10,0"/>
                 <ContentControl Grid.Column="1" Grid.RowSpan="2" Content="{Binding NavigationService.ViewModel, UpdateSourceTrigger=PropertyChanged}"/>
