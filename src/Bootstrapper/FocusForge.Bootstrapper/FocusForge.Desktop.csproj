@@ -13,10 +13,6 @@
     <Page Remove="Forms\**" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Fonts\digital-7.ttf" />
-    <Resource Include="Fonts\digital-7 %28mono%29.ttf" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Modules\PomodoroTimer\FocusForge.PomodoroTimer.UI\FocusForge.PomodoroTimer.UI.csproj" />
     <ProjectReference Include="..\..\Modules\TimeTracker\FocusForge.TimeTracker\FocusForge.TimeTracker.csproj" />
     <ProjectReference Include="..\..\Shared\FocusForge.DataModels\FocusForge.DataModels.csproj" />

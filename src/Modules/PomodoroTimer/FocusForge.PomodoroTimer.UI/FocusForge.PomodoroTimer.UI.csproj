@@ -19,4 +19,9 @@
     <ProjectReference Include="..\FocusForge.PomodoroTimer\FocusForge.PomodoroTimer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Resource Include="Fonts\digital-7 (mono).ttf" />
+    <Resource Include="Fonts\digital-7.ttf" />
+  </ItemGroup>
+
 </Project>
