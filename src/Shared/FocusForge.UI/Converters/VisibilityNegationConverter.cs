@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace FocusForge.UI.Converters
 {
-    internal class VisibilityNegationConverter : IValueConverter
+    public class VisibilityNegationConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

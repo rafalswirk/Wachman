@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace FocusForge.UI.Converters
 {
-    internal class BoolToPackIconConverter : IValueConverter
+    public class BoolToPackIconConverter : IValueConverter
     {
         public PackIconKind IsTrueIcon { get; set; }
         public PackIconKind IsFalseIcon { get; set; }

@@ -9,7 +9,8 @@
         xmlns:templateSelectors="clr-namespace:Wachman.DataTemplateSelectors"
         xmlns:subviews="clr-namespace:Wachman.Views.Subviews"
         xmlns:viewModels="clr-namespace:Wachman.ViewModels"
-        d:DataContext="{d:DesignInstance Type=viewmodels:DashboardViewModel}"
+        xmlns:pomodoroViews="clr-namespace:Wachman.Views.Subviews;assembly=FocusForge.PomodoroTimer.UI"
+        xmlns:pomodoroViewModels="clr-namespace:Wachman.ViewModels;assembly=FocusForge.PomodoroTimer.UI"
         Background="{DynamicResource MaterialDesignPaper}"
         Name="dashboard"
         mc:Ignorable="d"
@@ -23,8 +24,8 @@
             <DataTemplate DataType="{x:Type viewModels:CurrentDayViewModel}">
                 <subviews:CurrentDayView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:PomodoroViewModel}">
-                <subviews:PomodoroTimerView/>
+            <DataTemplate DataType="{x:Type pomodoroViewModels:PomodoroViewModel}">
+                <pomodoroViews:PomodoroTimerView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModels:SettingsViewModel}">
                 <subviews:SettingsView/>

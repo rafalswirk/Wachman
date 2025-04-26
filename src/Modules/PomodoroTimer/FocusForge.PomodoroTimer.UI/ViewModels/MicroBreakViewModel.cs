@@ -13,7 +13,7 @@ namespace Wachman.ViewModels
 {
     public class MicroBreakViewModel : ObservableObject
     {
-        private Timer _timer = new();
+        private System.Timers.Timer _timer = new System.Timers.Timer();
         private bool _isMessageVisible;
         private DateTime _startTime;
         private TimeSpan _breakTime = TimeSpan.FromMinutes(5);
@@ -74,7 +74,7 @@ namespace Wachman.ViewModels
                     BreakProgress = (int)(100 - (elpassedTime.TotalSeconds * 100) / _breakTime.TotalSeconds);
                     if (timeToFinish <= TimeSpan.Zero)
                     {
-                        var timer = o as Timer;
+                        var timer = o as System.Timers.Timer;
                         timer.Stop();
                         timer.Dispose();
                         UserMessage = $"Get back to work!!!";

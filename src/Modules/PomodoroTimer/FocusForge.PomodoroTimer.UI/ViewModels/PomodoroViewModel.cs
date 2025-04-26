@@ -12,6 +12,7 @@ using Wachman.DAL;
 using Wachman.DAL.Respositories;
 using Wachman.Models;
 using Wachman.Repositories;
+using Wachman.Utils.DataStorage;
 using Wachman.Views;
 using Wachman.Windows;
 
@@ -23,6 +24,7 @@ namespace Wachman.ViewModels
 
         private int _numberOfWorkingSessions;
         private readonly IConfigurationRepository _configurationRepository;
+        private readonly IApiKeyProvider _keyProvider;
 
         public int NumberOfWorkingSessions
         {
@@ -35,12 +37,18 @@ namespace Wachman.ViewModels
         public int BreakTimeDuration { get; set; } = 5;
         public ICommand RunTimer { get; set; }
 
-        public PomodoroViewModel(IConfigurationRepository configurationRepository)
+        public PomodoroViewModel(IConfigurationRepository configurationRepository, IApiKeyProvider keyProvider)
         {
             _configurationRepository = configurationRepository;
+            _keyProvider = keyProvider;
             LoadSettings();
             NumberOfWorkingSessions = 0;
-            RunTimer = new RelayCommand(() => 
+            InitializeCommands();
+        }
+
+        private void InitializeCommands()
+        {
+            RunTimer = new RelayCommand(() =>
             {
                 SaveSettings(new PomodoroConfiguration()
                 {
@@ -48,11 +56,11 @@ namespace Wachman.ViewModels
                     BreakTimeDuration = BreakTimeDuration,
                     //DisableBreaks = DisableBreaks
                 });
-                if(_timerDialog is not null)
+                if (_timerDialog is not null)
                 {
                     _timerDialog.OnTimerFinished -= _dialog_OnTimerFinished;
                 }
-                _timerDialog = new MicroTimerView(WorkSessionDuration);
+                _timerDialog = new MicroTimerView(WorkSessionDuration, _keyProvider);
                 _timerDialog.OnTimerFinished += _dialog_OnTimerFinished;
                 _timerDialog.Show();
                 Application.Current.MainWindow.WindowState = WindowState.Minimized;

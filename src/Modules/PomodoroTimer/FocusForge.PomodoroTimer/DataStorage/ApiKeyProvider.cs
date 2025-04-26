@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wachman.Windows;
 
 namespace Wachman.Utils.DataStorage
 {
@@ -11,13 +10,14 @@ namespace Wachman.Utils.DataStorage
     {
         public string GetKey()
         {
-            return Properties.Settings.Default.ApiKey;
+            //return Properties.Settings.Default.ApiKey;
+            return "";
         }
 
         public void SetKey(string key)
         {
-            Properties.Settings.Default.ApiKey = key;
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.ApiKey = key;
+            //Properties.Settings.Default.Save();
         }
     }
 }

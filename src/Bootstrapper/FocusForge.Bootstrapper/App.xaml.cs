@@ -1,6 +1,7 @@
 ﻿using FocusForge.Desktop.Utils;
 using FocusForge.Desktop.Utils.UI.Navigation;
 using FocusForge.Desktop.ViewModels;
+using FocusForge.PomodoroTimer;
 using FocusForge.PomodoroTimer.UI;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -39,15 +40,12 @@ namespace Wachman
                     services.AddSingleton<CurrentDayViewModel>();
                     services.AddSingleton<SettingsViewModel>();
                     services.AddSingleton<ITimeTrackingService, DummyTrackingService>();
-                    services.AddSingleton<IApiKeyProvider, ApiKeyProvider>();
                     services.AddSingleton<INavigationService, NavigationService>();
-                    services.AddScoped<IConfigurationRepository, ConfigurationRepository>();
-                    services.AddScoped<WachmanDbContext>();
                 })
                 .Build();
 
-            AutomatedMigrations.Apply();
             _host.ConfigureNavigationService();
+            _host.ApplyMigrations();
             var mainWindow = _host.Services.GetService<MainWindow>();
             mainWindow.Show();
 

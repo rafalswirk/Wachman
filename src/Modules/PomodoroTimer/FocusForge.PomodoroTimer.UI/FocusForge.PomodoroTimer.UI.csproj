@@ -9,10 +9,13 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
+    <PackageReference Include="RestSharp" Version="112.1.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\FocusForge.UI\FocusForge.UI.csproj" />
     <ProjectReference Include="..\FocusForge.PomodoroTimer\FocusForge.PomodoroTimer.csproj" />
   </ItemGroup>
 

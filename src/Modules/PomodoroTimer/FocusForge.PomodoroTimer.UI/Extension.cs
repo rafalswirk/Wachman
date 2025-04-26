@@ -8,6 +8,7 @@ namespace FocusForge.PomodoroTimer.UI
     {
         public static void AddPomodoroTimer(this IServiceCollection services)
         {
+            services.AddPomodoroTimerCore();
             services.AddSingleton<PomodoroViewModel>();
         }
     }
