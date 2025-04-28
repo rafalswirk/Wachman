@@ -8,12 +8,18 @@
              xmlns:local="clr-namespace:FocusForge.PomodoroTimer.UI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="DarkOrange"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
-        <Grid Background="LightGray">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="149"/>
                 <ColumnDefinition/>
