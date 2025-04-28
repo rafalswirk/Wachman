@@ -32,6 +32,54 @@
                 <Setter Property="Foreground" Value="Gray"/>
             </Trigger>
         </Style.Triggers>
-        
     </Style>
+
+    <!-- Neon Color Resource -->
+    <Color x:Key="NeonOrangeColor">#FFFFA500</Color>
+    <Brush x:Key="NeonOrangeBrush">#FFFFA500</Brush>
+    <Brush x:Key="DarkNeonOrangeBrush">#FFFD6B3F</Brush>
+    <Color x:Key="NeonCyanColor">#FF00FFFF</Color>
+    <Color x:Key="NeonPinkColor">#FFFF00FF</Color>
+
+
+    <!-- Neon Glow Effect -->
+    <DropShadowEffect x:Key="NeonGlowEffect"
+                      Color="{StaticResource NeonOrangeColor}"
+                      BlurRadius="25"
+                      ShadowDepth="0"
+                      Opacity="1"/>
+
+    <!-- Neon TextBlock Style -->
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource NeonOrangeBrush}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Effect" Value="{StaticResource NeonGlowEffect}" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+    </Style>
+
+    <Style x:Key="NeonButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource NeonOrangeBrush}"/>
+        <Setter Property="FontFamily" Value="Consolas"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{StaticResource NeonOrangeBrush}"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Padding" Value="6,4"/>
+        <Setter Property="Margin" Value="5,2"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="4">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>
