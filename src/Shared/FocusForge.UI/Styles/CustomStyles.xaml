@@ -3,6 +3,13 @@
     xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
     xmlns:converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf">
 
+    <!-- Neon Color Resource -->
+    <Color x:Key="NeonOrangeColor">#FFFFA500</Color>
+    <Brush x:Key="NeonOrangeBrush">#FFFFA500</Brush>
+    <Brush x:Key="DarkNeonOrangeBrush">#FFFD6B3F</Brush>
+    <Color x:Key="NeonCyanColor">#FF00FFFF</Color>
+    <Color x:Key="NeonPinkColor">#FFFF00FF</Color>
+
     <Style x:Key="MenuToggle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MaterialDesignFlatButton}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
@@ -18,29 +25,26 @@
         <Setter Property="Content">
             <Setter.Value>
                 <WrapPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" >
-                    <wpf:PackIcon Kind="Alarm" VerticalAlignment="Center" HorizontalContentAlignment="Left"/>
+                    <wpf:PackIcon Kind="Alarm" VerticalAlignment="Center" VerticalContentAlignment="Center" Foreground="Gray" HorizontalContentAlignment="Left"/>
                     <TextBlock Text="123" />
                 </WrapPanel>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Foreground" Value="DarkCyan"/>
-                <Setter Property="Background" Value="WhiteSmoke"/>
+                <Setter Property="Foreground" Value="{StaticResource NeonOrangeBrush}"/>
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Opacity" Value="0.5"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="Foreground" Value="{StaticResource DarkNeonOrangeBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
-
-    <!-- Neon Color Resource -->
-    <Color x:Key="NeonOrangeColor">#FFFFA500</Color>
-    <Brush x:Key="NeonOrangeBrush">#FFFFA500</Brush>
-    <Brush x:Key="DarkNeonOrangeBrush">#FFFD6B3F</Brush>
-    <Color x:Key="NeonCyanColor">#FF00FFFF</Color>
-    <Color x:Key="NeonPinkColor">#FFFF00FF</Color>
-
 
     <!-- Neon Glow Effect -->
     <DropShadowEffect x:Key="NeonGlowEffect"
