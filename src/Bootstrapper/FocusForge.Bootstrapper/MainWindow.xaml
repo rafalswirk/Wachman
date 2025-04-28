@@ -79,9 +79,6 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Image Source="pack://application:,,,/FocusForge.UI;component/Images/FocusForgeLogo.png" Stretch="Uniform" Margin="0 0 5 5"/>
-                <!--<Viewbox Grid.Row="0" Grid.Column="0">
-                    <Label Content="FocusForge.Desktop" FontFamily="pack://application:,,,/FocusForge.UI;component/Fonts/#DIGITAL-7 Mono" Foreground="DarkOrange" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Viewbox>-->
                 <Border BorderBrush="DarkOrange" BorderThickness="2" Grid.Column="1" Grid.RowSpan="2" CornerRadius="10" Margin="1">
                     <ContentControl Content="{Binding NavigationService.ViewModel, UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>
