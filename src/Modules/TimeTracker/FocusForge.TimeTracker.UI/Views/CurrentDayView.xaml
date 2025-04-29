@@ -38,9 +38,6 @@
             <templateSelectors:JobRunningTemplateSelector x:Key="JobStatusTemplates" 
                                                           JobRunningTemplate="{StaticResource JobRunningTemplate}"
                                                           JobNotRunningTemplate="{StaticResource JobNotRunningTemplate}"/>
-            <Style TargetType="Label">
-                <Setter Property="Foreground" Value="{StaticResource NeonOrangeBrush}"/>
-            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
