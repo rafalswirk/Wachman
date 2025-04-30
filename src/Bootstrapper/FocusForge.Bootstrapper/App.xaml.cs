@@ -34,8 +34,8 @@ namespace FocusForge.Desktop
                 })
                 .Build();
 
-            _host.ConfigureNavigationService();
             _host.ApplyMigrations();
+            _host.ConfigureNavigationService();
             var mainWindow = _host.Services.GetService<MainWindow>();
             mainWindow.Show();
 
