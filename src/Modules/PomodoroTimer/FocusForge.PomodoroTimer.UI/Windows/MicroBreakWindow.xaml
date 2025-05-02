@@ -11,6 +11,8 @@
     <Window.Resources>
         <converters:VisibilityNegationConverter x:Key="visibilityNegation"/>
         <converters:BoolToPackIconConverter x:Key="bootToIcon" IsTrueIcon="Lock" IsFalseIcon="Unlocked"/>
+        <converters:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>

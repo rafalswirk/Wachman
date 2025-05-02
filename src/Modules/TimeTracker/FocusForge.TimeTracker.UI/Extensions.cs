@@ -8,6 +8,7 @@ namespace FocusForge.TimeTracker.UI
     {
         public static void AddTimeTracker(this IServiceCollection services)
         {
+            services.AddTimeTrackerCore();
             services.AddSingleton<CurrentDayViewModel>();
         }
     }
