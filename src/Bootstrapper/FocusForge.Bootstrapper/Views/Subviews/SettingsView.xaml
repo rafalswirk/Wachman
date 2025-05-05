@@ -6,6 +6,8 @@
              xmlns:local="clr-namespace:FocusForge.Desktop.Views.Subviews"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="FocusForge.Desktop.Views.Subviews.SettingsView"
              xmlns:converters="clr-namespace:FocusForge.UI.Converters;assembly=FocusForge.UI"
+             xmlns:timeTrackerViews="clr-namespace:FocusForge.TimeTracker.UI.Views;assembly=FocusForge.TimeTracker.UI"
+             xmlns:timeTrackerViewModels="clr-namespace:FocusForge.TimeTracker.UI.ViewModels;assembly=FocusForge.TimeTracker.UI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -26,7 +28,14 @@
                 <TextBlock Text="Settings" FontFamily="pack://application:,,,/FocusForge.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
             </Grid>
         </Border>
-        <GroupBox Header="TimeCamp integration" Grid.Row="1">
+        <ItemsControl ItemsSource="{Binding Settings}" Grid.Row="1">
+            <ItemsControl.Resources>
+                <DataTemplate DataType="{x:Type timeTrackerViewModels:TimeTrackerSettingsViewModel}">
+                    <timeTrackerViews:TimeTrackerSettingsView/>
+                </DataTemplate>
+            </ItemsControl.Resources>
+        </ItemsControl>
+        <!--<GroupBox Header="TimeCamp integration" Grid.Row="1">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <ToggleButton x:Name="tglEnabled" IsChecked="{Binding TimeCampIntegrationEnabled, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" />
@@ -39,6 +48,6 @@
                 <Button Content="Save" Command="{Binding SaveTimeCampSettings}" Width="200" HorizontalAlignment="Left" Margin="0 10"/>
                 <Label Content="Please restart application to load changes!" d:Visibility="Visible" Visibility="{Binding IsMessageVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             </StackPanel>
-        </GroupBox>
+        </GroupBox>-->
     </Grid>
 </UserControl>

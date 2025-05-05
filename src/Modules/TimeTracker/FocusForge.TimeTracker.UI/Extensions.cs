@@ -1,4 +1,5 @@
 
+using FocusForge.DataModels.Core.Settings;
 using FocusForge.TimeTracker.UI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,7 @@ namespace FocusForge.TimeTracker.UI
         {
             services.AddTimeTrackerCore();
             services.AddSingleton<CurrentDayViewModel>();
+            services.AddScoped<IModuleSettings, TimeTrackerSettingsViewModel>();
         }
     }
 

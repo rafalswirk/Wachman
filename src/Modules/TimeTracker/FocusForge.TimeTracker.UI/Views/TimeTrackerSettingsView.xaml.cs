@@ -18,9 +18,9 @@ namespace FocusForge.TimeTracker.UI.Views
     /// <summary>
     /// Interaction logic for TimeTrackerSettings.xaml
     /// </summary>
-    public partial class TimeTrackerSettings : UserControl
+    public partial class TimeTrackerSettingsView : UserControl
     {
-        public TimeTrackerSettings()
+        public TimeTrackerSettingsView()
         {
             InitializeComponent();
         }
