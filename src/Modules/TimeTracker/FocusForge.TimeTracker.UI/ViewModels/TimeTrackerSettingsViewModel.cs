@@ -1,4 +1,4 @@
-﻿using FocusForge.DataModels.Core.Interfaces;
+﻿using FocusForge.DataModels.Core.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;

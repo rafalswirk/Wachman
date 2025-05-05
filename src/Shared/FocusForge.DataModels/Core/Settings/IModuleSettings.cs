@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.DataModels.Core.Interfaces
+namespace FocusForge.DataModels.Core.Settings
 {
     public interface IModuleSettings
     {
