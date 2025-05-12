@@ -10,6 +10,12 @@ namespace FocusForge.TimeTracker.DAL
 {
     public class TimeTrackerDbContext : DbContext
     {
+        public TimeTrackerDbContext() {}
+
+        public TimeTrackerDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
         public DbSet<AppSetting> Settings { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

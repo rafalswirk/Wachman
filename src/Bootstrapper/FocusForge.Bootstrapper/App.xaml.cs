@@ -34,7 +34,8 @@ namespace FocusForge.Desktop
                 })
                 .Build();
 
-            _host.ApplyMigrations();
+            _host.ApplyPomodoroTimerMigrations();
+            _host.ApplyTimeTrackerMigrations();
             _host.ConfigureNavigationService();
             var mainWindow = _host.Services.GetService<MainWindow>();
             mainWindow.Show();

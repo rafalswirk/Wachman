@@ -2,7 +2,9 @@
 using FocusForge.TimeTracker.DAL.Respositories;
 using FocusForge.TimeTracker.DummyAPI;
 using FocusForge.TimeTracker.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,12 @@ namespace FocusForge.TimeTracker
             services.AddSingleton<ITimeTrackingService, DummyTrackingService>();
             services.AddScoped<ITimeTrackerSettingsRepository, TimeTrackerSettingsRepository>();
             services.AddScoped<TimeTrackerDbContext>();
+        }
+
+        public static void ApplyTimeTrackerMigrations(this IHost host)
+        {
+            var context = host.Services.GetRequiredService<TimeTrackerDbContext>();
+            context.Database.Migrate();
         }
     }
 }
