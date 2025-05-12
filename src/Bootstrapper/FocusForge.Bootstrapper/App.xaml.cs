@@ -4,7 +4,6 @@ using FocusForge.Desktop.ViewModels;
 using FocusForge.PomodoroTimer;
 using FocusForge.PomodoroTimer.UI;
 using FocusForge.TimeTracker;
-using FocusForge.TimeTracker.DummyAPI;
 using FocusForge.TimeTracker.UI;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
