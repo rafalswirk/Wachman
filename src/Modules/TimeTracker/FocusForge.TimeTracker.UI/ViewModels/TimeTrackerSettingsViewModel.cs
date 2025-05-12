@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FocusForge.DataModels.Core.Settings;
+using FocusForge.TimeTracker.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace FocusForge.TimeTracker.UI.ViewModels
 {
     public class TimeTrackerSettingsViewModel : ObservableObject, IModuleSettings
     {
-        //private IApiKeyProvider _keyProvider;
         private bool _isMessageVisible;
         private bool _timeCampIntegrationEnabled;
+        private readonly ITimeTrackerSettingsRepository _settingsRepository;
 
         public string ApiKey { get; set; }
         public bool TimeCampIntegrationEnabled
@@ -29,29 +30,29 @@ namespace FocusForge.TimeTracker.UI.ViewModels
             set => SetProperty(ref _isMessageVisible, value);
         }
 
-        public TimeTrackerSettingsViewModel()
+        public TimeTrackerSettingsViewModel(ITimeTrackerSettingsRepository settingsRepository)
         {
-            //_keyProvider = keyProvider;
+            _settingsRepository = settingsRepository;
             Initialize();
         }
 
         private void Initialize()
         {
-            //IsMessageVisible = false;
-            //ApiKey = _keyProvider.GetKey();
-            //TimeCampIntegrationEnabled = !string.IsNullOrEmpty(ApiKey);
-            //SaveTimeCampSettings = new RelayCommand(() =>
-            //{
-            //    if (!TimeCampIntegrationEnabled)
-            //    {
-            //        _keyProvider.SetKey("");
-            //    }
-            //    else
-            //    {
-            //        _keyProvider.SetKey(ApiKey);
-            //    }
-            //    IsMessageVisible = true;
-            //});
+            IsMessageVisible = false;
+            ApiKey = _settingsRepository.TimeCampApiKey;
+            TimeCampIntegrationEnabled = !string.IsNullOrEmpty(ApiKey);
+            SaveTimeCampSettings = new RelayCommand(() =>
+            {
+                if (!TimeCampIntegrationEnabled)
+                {
+                    _settingsRepository.SaveTimeCampApiKey("");
+                }
+                else
+                {
+                    _settingsRepository.SaveTimeCampApiKey(ApiKey);
+                }
+                IsMessageVisible = true;
+            });
         }
     }
 }

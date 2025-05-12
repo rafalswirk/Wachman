@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FocusForge.TimeTracker.Repositories
 {
-    internal interface ITimeTrackerSettingsRepository
+    public interface ITimeTrackerSettingsRepository
     {
         string TimeCampApiKey { get; }
         void SaveTimeCampApiKey(string timeCampApiKey);
