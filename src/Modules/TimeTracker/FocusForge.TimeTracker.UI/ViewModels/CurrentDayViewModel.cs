@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using FocusForge.DataModels.Jobs;
 using FocusForge.TimeTracker;
+using FocusForge.TimeTracker.TimeCampAPI;
 
 namespace FocusForge.TimeTracker.UI.ViewModels
 {
@@ -24,9 +25,9 @@ namespace FocusForge.TimeTracker.UI.ViewModels
 
         public IAsyncRelayCommand OnLoad { get; set; }
 
-        public CurrentDayViewModel(ITimeTrackingService timeTrackingService)
+        public CurrentDayViewModel(TimeCampApiFactory timeCampApiFactory)
         {
-            _timeTrackingService = timeTrackingService;
+            _timeTrackingService = timeCampApiFactory.Create();
             OnLoad = new AsyncRelayCommand(InitializeAsync);
         }
 

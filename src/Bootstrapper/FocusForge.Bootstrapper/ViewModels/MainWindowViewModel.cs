@@ -34,7 +34,7 @@ namespace FocusForge.Desktop.ViewModels
         public ICommand SwitchToSettings { get; set; }
         public IAsyncRelayCommand OnLoadCommand { get; set; }
 
-        public MainWindowViewModel(ITimeTrackingService timeTrackingService, IApiKeyProvider apiKeyProvider, INavigationService navigationService)
+        public MainWindowViewModel(INavigationService navigationService)
         {
             ChangeJobStatus = new RelayCommand<Job>(job =>
             {

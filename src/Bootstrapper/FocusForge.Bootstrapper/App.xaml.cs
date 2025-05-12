@@ -28,7 +28,6 @@ namespace FocusForge.Desktop
                     services.AddPomodoroTimer();
                     services.AddTimeTracker();
                     services.AddSingleton<SettingsViewModel>();
-                    services.AddSingleton<ITimeTrackingService, DummyTrackingService>();
                     services.AddSingleton<INavigationService, NavigationService>();
                 })
                 .Build();
