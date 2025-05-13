@@ -19,5 +19,15 @@ namespace FocusForge.TimeTracker.TimeCampAPI.DummyAPI
         });
 
         public Task<string> GetCurrentJobName() => Task.FromResult("Pet project development");
+
+        public Task StartNewJob()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task StopCurrentJob()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

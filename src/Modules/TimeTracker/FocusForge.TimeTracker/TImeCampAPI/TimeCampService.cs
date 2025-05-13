@@ -36,5 +36,15 @@ namespace FocusForge.TimeTracker.TImeCampAPI
             TimeCampApiClient.Initialize(_key);
             return Task.FromResult(true);
         }
+
+        public Task StartNewJob()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task StopCurrentJob()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
