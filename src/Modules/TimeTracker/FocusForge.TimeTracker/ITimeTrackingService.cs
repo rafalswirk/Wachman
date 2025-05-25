@@ -12,7 +12,8 @@ namespace FocusForge.TimeTracker
         Task<bool> InitializeAsync();
         Task<List<Job>?> GetDailyJobsAsync();
         Task<string> GetCurrentJobName();
-        Task StartNewJob();
+        Task StartNewJobAsync();
         Task StopCurrentJob();
+        Task<bool> IsJobRunningAsync();
     }
 }

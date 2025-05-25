@@ -23,12 +23,23 @@ namespace FocusForge.TimeTracker.UI.ViewModels
             set => SetProperty(ref _dailyJobs, value);
         }
 
+        public IRelayCommand CreateNewJob { get; set; }
+
         public IAsyncRelayCommand OnLoad { get; set; }
 
         public CurrentDayViewModel(TimeCampApiFactory timeCampApiFactory)
         {
             _timeTrackingService = timeCampApiFactory.Create();
             OnLoad = new AsyncRelayCommand(InitializeAsync);
+            InitializeCommands();
+        }
+
+        private void InitializeCommands()
+        {
+            CreateNewJob = new RelayCommand(() => 
+            {
+                _timeTrackingService.StartNewJobAsync();
+            });
         }
 
         internal async Task InitializeAsync()

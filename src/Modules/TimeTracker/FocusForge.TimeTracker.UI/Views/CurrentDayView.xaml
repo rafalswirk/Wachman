@@ -56,7 +56,7 @@
         </Border>
         <StackPanel Background="Transparent" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" >
             <DockPanel LastChildFill="True">
-                <Button DockPanel.Dock="Right" Margin="10" Background="Transparent" BorderBrush="{StaticResource NeonOrangeBrush}">
+                <Button Command="{Binding CreateNewJob}" DockPanel.Dock="Right" Margin="10" Background="Transparent" BorderBrush="{StaticResource NeonOrangeBrush}">
                     <DockPanel>
                         <materialDesign:PackIcon Kind="Plus" DockPanel.Dock="Left" VerticalAlignment="Center" Foreground="{StaticResource NeonOrangeBrush}"/>
                         <TextBlock Text="Create new" Margin="10 0 0 0"/>

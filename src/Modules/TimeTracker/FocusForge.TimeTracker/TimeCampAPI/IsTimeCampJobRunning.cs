@@ -1,5 +1,4 @@
 ﻿using FocusForge.TimeTracker.TimeCampAPI.DTO;
-using FocusForge.TimeTracker.TImeCampAPI.Client;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -9,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace FocusForge.TimeTracker.TimeCampAPI
 {
-    internal class TimeCampStartJobCommand
+    internal class IsTimeCampJobRunning
     {
         private readonly RestClient _apiClient;
 
-        public TimeCampStartJobCommand(RestClient apiClient)
+        public IsTimeCampJobRunning(RestClient apiClient)
         {
             _apiClient = apiClient;
         }
-        public async Task ExecuteAsync()
+        public async Task<bool> ExecuteAsync()
         {
             var request = new RestRequest
             {
@@ -26,11 +25,13 @@ namespace FocusForge.TimeTracker.TimeCampAPI
             };
             var requestBody = new
             {
-                action = "start"
+                action = "status"
             };
 
             request.AddBody(requestBody);
-            var response = await _apiClient.ExecuteAsync(request);
+            var response = await _apiClient.ExecuteAsync<TimerStatusDTO>(request);
+            return response.Data?.IsTimerRunning ?? false;
+
         }
     }
 }

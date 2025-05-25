@@ -1,5 +1,6 @@
 ﻿using FocusForge.DataModels.Jobs;
 using FocusForge.TimeTracker;
+using FocusForge.TimeTracker.TimeCampAPI;
 using FocusForge.TimeTracker.TImeCampAPI.Client;
 using RestSharp;
 using System;
@@ -37,9 +38,16 @@ namespace FocusForge.TimeTracker.TImeCampAPI
             return Task.FromResult(true);
         }
 
-        public Task StartNewJob()
+        public async Task StartNewJobAsync()
         {
-            throw new NotImplementedException();
+            var startJobCommand = new TimeCampStartJobCommand(TimeCampApiClient.Instance);
+            await startJobCommand.ExecuteAsync();
+        }
+
+        public async Task<bool> IsJobRunningAsync()
+        {
+            var statusReader = new IsTimeCampJobRunning(TimeCampApiClient.Instance);
+            return await statusReader.ExecuteAsync();
         }
 
         public Task StopCurrentJob()
