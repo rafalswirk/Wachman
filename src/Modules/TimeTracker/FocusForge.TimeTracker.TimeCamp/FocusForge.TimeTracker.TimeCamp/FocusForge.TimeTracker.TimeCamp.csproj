@@ -9,4 +9,12 @@
   <ItemGroup>
 	<InternalsVisibleTo Include="FocusForge.TimeTracker" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RestSharp" Version="112.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Shared\FocusForge.DataModels\FocusForge.DataModels.csproj" />
+  </ItemGroup>
 </Project>
