@@ -1,5 +1,5 @@
 ﻿using FocusForge.DataModels.Jobs;
-using FocusForge.TimeTracker.TImeCampAPI.DTO;
+using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
 using FocusForge.TimeTracker.TimeTrackingServiceCommand;
 using RestSharp;
 using RestSharp.Authenticators;

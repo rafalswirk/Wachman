@@ -1,4 +1,4 @@
-﻿using FocusForge.TimeTracker.TimeCampAPI.DTO;
+﻿using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
 using RestSharp;
 using System;
 using System.Collections.Generic;

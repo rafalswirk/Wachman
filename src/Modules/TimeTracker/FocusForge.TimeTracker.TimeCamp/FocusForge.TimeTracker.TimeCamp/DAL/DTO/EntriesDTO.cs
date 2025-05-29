@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.TimeTracker.TImeCampAPI.DTO
+namespace FocusForge.TimeTracker.TimeCamp.DAL.DTO
 {
     internal class EntriesDTO
     {

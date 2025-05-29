@@ -1,5 +1,5 @@
 using System;
-using FocusForge.TimeTracker.TImeCampAPI.DTO;
+using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
 using RestSharp;
 
 namespace FocusForge.TimeTracker.TImeCampAPI;

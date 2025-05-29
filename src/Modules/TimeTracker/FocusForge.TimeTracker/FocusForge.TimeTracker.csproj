@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <Folder Include="DAL\Migrations\" />
-    <Folder Include="TimeCampAPI\DTO\" />
   </ItemGroup>
 
 </Project>
