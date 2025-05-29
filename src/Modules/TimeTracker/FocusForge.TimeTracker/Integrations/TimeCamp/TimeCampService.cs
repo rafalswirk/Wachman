@@ -1,7 +1,6 @@
 ﻿using FocusForge.DataModels.Jobs;
-using FocusForge.TimeTracker;
+using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using FocusForge.TimeTracker.TimeCampAPI;
-using FocusForge.TimeTracker.TImeCampAPI.Client;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.TimeTracker.TImeCampAPI
+namespace FocusForge.TimeTracker.Integrations.TimeCamp
 {
     public class TimeCampService : ITimeTrackingService
     {

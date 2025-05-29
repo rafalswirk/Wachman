@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Wachman.Tests.TimeTrackingServiceTests.Mocks
+namespace FocusForge.UnitTests.TimeTrackingServiceTests.TimeCampTests.Mocks
 {
     public class RestClientMockTest
     {

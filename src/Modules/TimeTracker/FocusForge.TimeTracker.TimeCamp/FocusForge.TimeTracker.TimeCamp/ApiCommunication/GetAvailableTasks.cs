@@ -2,7 +2,7 @@ using System;
 using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
 using RestSharp;
 
-namespace FocusForge.TimeTracker.TImeCampAPI;
+namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication;
 
 public class GetAvailableTasks
 {

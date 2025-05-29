@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Wachman.Tests.TimeTrackingServiceTests.Mocks;
 using Xunit;
 
-namespace Wachman.Tests.TimeTrackingServiceTests.TimeCampTests
+namespace FocusForge.UnitTests.TimeTrackingServiceTests.TimeCampTests
 {
-    public  class CheckJsonParsingLogic
+    public class CheckJsonParsingLogic
     {
         [Fact]
         public async Task GetDailyJobsTest()

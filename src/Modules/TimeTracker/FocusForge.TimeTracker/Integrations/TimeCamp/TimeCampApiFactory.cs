@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.TimeTracker.TimeCampAPI
+namespace FocusForge.TimeTracker.Integrations.TimeCamp
 {
     public class TimeCampApiFactory
     {

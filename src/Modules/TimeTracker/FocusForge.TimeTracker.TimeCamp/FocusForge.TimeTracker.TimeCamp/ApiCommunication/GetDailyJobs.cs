@@ -1,6 +1,5 @@
 ﻿using FocusForge.DataModels.Jobs;
 using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
-using FocusForge.TimeTracker.TimeTrackingServiceCommand;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Authenticators.OAuth2;
@@ -13,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace FocusForge.TimeTracker.TImeCampAPI
+namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication
 {
     public class GetDailyJobs : ITimeTrackingCommand<List<Job>?>
     {

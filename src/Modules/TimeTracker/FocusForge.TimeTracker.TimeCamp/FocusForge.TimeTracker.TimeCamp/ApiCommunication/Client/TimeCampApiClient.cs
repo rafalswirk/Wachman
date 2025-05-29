@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.TimeTracker.TImeCampAPI.Client
+namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client
 {
     public class TimeCampApiClient
     {

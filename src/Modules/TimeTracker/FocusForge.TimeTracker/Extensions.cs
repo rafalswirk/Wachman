@@ -1,7 +1,7 @@
 ﻿using FocusForge.TimeTracker.DAL;
 using FocusForge.TimeTracker.DAL.Respositories;
+using FocusForge.TimeTracker.Integrations.TimeCamp;
 using FocusForge.TimeTracker.Repositories;
-using FocusForge.TimeTracker.TimeCampAPI;
 using FocusForge.TimeTracker.TimeCampAPI.DummyAPI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
