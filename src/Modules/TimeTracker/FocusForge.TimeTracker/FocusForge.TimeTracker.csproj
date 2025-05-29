@@ -16,10 +16,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\FocusForge.DataModels\FocusForge.DataModels.csproj" />
+    <ProjectReference Include="..\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="DAL\Migrations\" />
+    <Folder Include="TimeCampAPI\DTO\" />
   </ItemGroup>
 
 </Project>
