@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
-using FocusForge.TimeTracker.TImeCampAPI;
+using FocusForge.TimeTracker.TimeCamp.ApiCommunication;
+using FocusForge.UnitTests.TimeTrackingServiceTests.TimeCampTests.Mocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wachman.Tests.TimeTrackingServiceTests.Mocks;
 using Xunit;
 
 namespace FocusForge.UnitTests.TimeTrackingServiceTests.TimeCampTests

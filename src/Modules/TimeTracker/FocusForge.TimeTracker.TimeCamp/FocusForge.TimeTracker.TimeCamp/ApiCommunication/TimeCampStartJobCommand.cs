@@ -1,5 +1,4 @@
-﻿using FocusForge.TimeTracker.TImeCampAPI.Client;
-using RestSharp;
+﻿using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
