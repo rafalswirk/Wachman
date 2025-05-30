@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using FocusForge.DataModels.Core.Settings;
 using FocusForge.TimeTracker.Repositories;
+using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
