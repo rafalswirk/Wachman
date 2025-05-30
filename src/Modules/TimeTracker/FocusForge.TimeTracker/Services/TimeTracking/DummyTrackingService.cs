@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.TimeTracker.TimeCampAPI.DummyAPI
+namespace FocusForge.TimeTracker.Services.TimeTracking
 {
     public class DummyTrackingService : ITimeTrackingService
     {

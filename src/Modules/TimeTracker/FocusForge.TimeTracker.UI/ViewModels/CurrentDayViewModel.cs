@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using FocusForge.DataModels.Jobs;
-using FocusForge.TimeTracker;
 using FocusForge.TimeTracker.Integrations.TimeCamp;
+using FocusForge.TimeTracker.Services.TimeTracking;
 
 namespace FocusForge.TimeTracker.UI.ViewModels
 {

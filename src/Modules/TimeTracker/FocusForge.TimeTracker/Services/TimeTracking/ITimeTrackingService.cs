@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.TimeTracker
+namespace FocusForge.TimeTracker.Services.TimeTracking
 {
     public interface ITimeTrackingService
     {
