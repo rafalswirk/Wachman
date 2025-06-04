@@ -30,10 +30,12 @@ namespace FocusForge.TimeTracker.UI.ViewModels
             get => _isMessageVisible;
             set => SetProperty(ref _isMessageVisible, value);
         }
+        public SyncTasksViewModel SyncTasksViewModel { get; }
 
-        public TimeTrackerSettingsViewModel(ITimeTrackerSettingsRepository settingsRepository)
+        public TimeTrackerSettingsViewModel(ITimeTrackerSettingsRepository settingsRepository, SyncTasksViewModel syncTasksViewModel)
         {
             _settingsRepository = settingsRepository;
+            SyncTasksViewModel = syncTasksViewModel;
             Initialize();
         }
 

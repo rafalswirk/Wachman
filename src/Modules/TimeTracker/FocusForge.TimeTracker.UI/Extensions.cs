@@ -11,6 +11,7 @@ namespace FocusForge.TimeTracker.UI
         {
             services.AddTimeTrackerCore();
             services.AddSingleton<CurrentDayViewModel>();
+            services.AddSingleton<SyncTasksViewModel>();
             services.AddScoped<IModuleSettings, TimeTrackerSettingsViewModel>();
         }
     }

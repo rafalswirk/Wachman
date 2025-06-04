@@ -11,9 +11,9 @@
             <RowDefinition Height="55"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="Load tasks" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="Import selected" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top"/>
-        <ListBox Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <Button Content="Load tasks" Command="{Binding LoadTasksCommand}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Button Content="Import selected" Command="{Binding ImportSelected}" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top"/>
+        <ListBox Grid.Row="1"  d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
