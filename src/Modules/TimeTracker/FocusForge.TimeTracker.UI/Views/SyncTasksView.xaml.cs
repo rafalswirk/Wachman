@@ -18,9 +18,9 @@ namespace FocusForge.TimeTracker.UI.Views
     /// <summary>
     /// Interaction logic for SyncJobsView.xaml
     /// </summary>
-    public partial class SyncJobsView : UserControl
+    public partial class SyncTasksView : UserControl
     {
-        public SyncJobsView()
+        public SyncTasksView()
         {
             InitializeComponent();
         }
