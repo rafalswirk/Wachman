@@ -2,6 +2,7 @@
 using FocusForge.TimeTracker.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FocusForge.TimeTracker.DAL.Migrations
 {
     [DbContext(typeof(TimeTrackerDbContext))]
-    partial class TimeTrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250620143515_TimeTrackerTasks")]
+    partial class TimeTrackerTasks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
