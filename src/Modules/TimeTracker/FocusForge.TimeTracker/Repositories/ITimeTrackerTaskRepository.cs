@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace FocusForge.TimeTracker.Repositories
 {
-    internal interface ITimeTrackerTaskRepository
+    public interface ITimeTrackerTaskRepository
     {
         Task<TimeTrackerTask> CreateTaskAsync(TimeTrackerTask task);
 
-        Task<TimeTrackerTask> GetTaskByIdAsync(string taskId);
+        Task<TimeTrackerTask> GetTaskByIdAsync(int taskId);
 
         Task<TimeTrackerTask> UpdateTaskAsync(TimeTrackerTask task);
 
-        Task<bool> DeleteTaskAsync(string taskId);
+        Task<bool> DeleteTaskAsync(int taskId);
 
         Task<IEnumerable<TimeTrackerTask>> GetAllTasksAsync();
     }

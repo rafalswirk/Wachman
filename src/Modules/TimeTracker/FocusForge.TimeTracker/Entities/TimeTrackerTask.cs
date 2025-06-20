@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FocusForge.TimeTracker.Entities
 {
-    internal class TimeTrackerTask
+    public class TimeTrackerTask
     {
         public int Id { get; set; }
         public int ExternalId { get; set; }

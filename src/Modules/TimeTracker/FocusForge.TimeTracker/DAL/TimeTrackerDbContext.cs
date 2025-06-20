@@ -1,4 +1,5 @@
 ﻿using FocusForge.DataModels.Entities;
+using FocusForge.TimeTracker.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,14 @@ namespace FocusForge.TimeTracker.DAL
 {
     public class TimeTrackerDbContext : DbContext
     {
+        public DbSet<TimeTrackerTask> TimeTrackerTasks { get; internal set; }
+        public DbSet<AppSetting> Settings { get; set; } = null!;
+        
         public TimeTrackerDbContext() {}
 
         public TimeTrackerDbContext(DbContextOptions options) : base(options)
         {
         }
-
-        public DbSet<AppSetting> Settings { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
