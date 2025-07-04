@@ -29,12 +29,22 @@
             </Grid>
         </Border>
         <ItemsControl ItemsSource="{Binding Settings}" Grid.Row="1">
-            <ItemsControl.Resources>
-                <DataTemplate DataType="{x:Type timeTrackerViewModels:TimeTrackerSettingsViewModel}">
-                    <timeTrackerViews:TimeTrackerSettingsView/>
-                </DataTemplate>
+                <ItemsControl.Resources>
+                    <DataTemplate DataType="{x:Type timeTrackerViewModels:TimeTrackerSettingsViewModel}">
+                        <timeTrackerViews:TimeTrackerSettingsView/>
+                    </DataTemplate>
             </ItemsControl.Resources>
+            <ItemsControl.Template>
+                <ControlTemplate TargetType="ItemsControl">
+                    <Border>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" Background="Transparent">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </ItemsControl.Template>
         </ItemsControl>
+        
         <!--<GroupBox Header="TimeCamp integration" Grid.Row="1">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">

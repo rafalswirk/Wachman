@@ -28,6 +28,15 @@ public class GetAvailableTasks
 
         var response = await _apiClient.ExecuteAsync<Dictionary<string, TaskInfoDTO>>(request);
 
+        if(response.IsSuccessful && response.Data != null)
+        {
+            result = response.Data.Select(x => new TaskInfoDTO(x.Value.task_id, x.Value.name)).ToList();
+        }
+        else
+        {
+            throw new Exception($"Failed to retrieve tasks: {response.ErrorMessage}");
+        }
+
         return result;
     }
 }

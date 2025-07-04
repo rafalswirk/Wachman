@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FocusForge.TimeTracker.Services.TimeTracking
 {
-    internal interface ITasksWriter
+    public interface ITasksWriter
     {
         Task SaveTasksAsync(List<TimeTrackerTask> tasks);
     }

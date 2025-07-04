@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FocusForge.TimeTracker.Services.TimeTracking
 {
-    internal interface ITasksLoader
+    public interface ITasksLoader
     {
         Task<List<Entities.TimeTrackerTask>> LoadTasksAsync();
     }

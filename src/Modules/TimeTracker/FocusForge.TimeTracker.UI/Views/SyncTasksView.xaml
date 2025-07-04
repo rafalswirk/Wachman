@@ -13,21 +13,15 @@
         </Grid.RowDefinitions>
         <Button Content="Load tasks" Command="{Binding LoadTasksCommand}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Button Content="Import selected" Command="{Binding ImportSelected}" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top"/>
-        <ListBox Grid.Row="1"  d:ItemsSource="{d:SampleData ItemCount=5}">
-            <ListBox.ItemTemplate>
+        <ListView Grid.Row="1" MaxHeight="300"  d:ItemsSource="{d:SampleData ItemCount=50}" ItemsSource="{Binding Tasks}" Margin="0,17,0,10" Background="Transparent">
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox IsChecked="{Binding Import}" Margin="5"/>
-                        <TextBlock VerticalAlignment="Center" Text="{Binding Name}" Margin="5"/>
+                    <StackPanel Orientation="Horizontal" Background="Transparent">
+                        <CheckBox IsChecked="{Binding Import}" Content="{Binding Task.Name}" Foreground="WhiteSmoke" Margin="5" Background="Orange"/>
                     </StackPanel>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
-        </ListBox>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 </UserControl>
