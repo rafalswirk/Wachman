@@ -11,19 +11,25 @@
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </UserControl.Resources>
     <GroupBox Header="TimeCamp integration" Grid.Row="1">
-        <StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <ToggleButton x:Name="tglEnabled" IsChecked="{Binding TimeCampIntegrationEnabled, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" />
-                <Label Name="lblTimeCampIntegration" Content="Enable TimeCamp integration"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="10 0 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton x:Name="tglEnabled" IsChecked="{Binding TimeCampIntegrationEnabled, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" />
+                    <Label Name="lblTimeCampIntegration" Content="Enable TimeCamp integration"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" IsEnabled="{Binding ElementName=tglEnabled, Path=IsChecked}">
+                    <Label Content="Api key:"/>
+                    <TextBox Text="{Binding ApiKey}" Width="400" Foreground="WhiteSmoke"/>
+                </StackPanel>
+                <Button Content="Save" Command="{Binding SaveTimeCampSettings}" Width="200" HorizontalAlignment="Left" Margin="0 10"/>
+                <Label Content="Please restart application to load changes!" d:Visibility="Visible" Visibility="{Binding IsMessageVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <Border BorderThickness="0 1 0 0" BorderBrush="LightGray"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" IsEnabled="{Binding ElementName=tglEnabled, Path=IsChecked}">
-                <Label Content="Api key:"/>
-                <TextBox Text="{Binding ApiKey}" Width="400" Foreground="WhiteSmoke"/>
-            </StackPanel>
-            <Button Content="Save" Command="{Binding SaveTimeCampSettings}" Width="200" HorizontalAlignment="Left" Margin="0 10"/>
-            <Label Content="Please restart application to load changes!" d:Visibility="Visible" Visibility="{Binding IsMessageVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-            <Border BorderThickness="0 1 0 0" BorderBrush="LightGray"/>
-            <local:SyncTasksView DataContext="{Binding SyncTasksViewModel}"/>
-        </StackPanel>
+            <local:SyncTasksView Grid.Row="1" DataContext="{Binding SyncTasksViewModel}"/>
+        </Grid>
     </GroupBox>
 </UserControl>

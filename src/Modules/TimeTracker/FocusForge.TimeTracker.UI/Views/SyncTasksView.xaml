@@ -8,17 +8,15 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="55"/>
+            <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="Load tasks" Command="{Binding LoadTasksCommand}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="Import selected" Command="{Binding ImportSelected}" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top"/>
-        <ListView Grid.Row="1" MaxHeight="300"  d:ItemsSource="{d:SampleData ItemCount=50}" ItemsSource="{Binding Tasks}" Margin="0,17,0,10" Background="Transparent">
+        <Button Content="Load tasks" Command="{Binding LoadTasksCommand}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="32" Width="98"/>
+        <Button Content="Import selected" Command="{Binding ImportSelected}" HorizontalAlignment="Left" Margin="113,0,0,0" VerticalAlignment="Center" Height="32" Width="132"/>
+        <ListView Grid.Row="1" MaxHeight="300"  d:ItemsSource="{d:SampleData ItemCount=50}" ItemsSource="{Binding Tasks}" Background="Transparent">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Background="Transparent">
-                        <CheckBox IsChecked="{Binding Import}" Content="{Binding Task.Name}" Foreground="WhiteSmoke" Margin="5" Background="Orange"/>
-                    </StackPanel>
+                    <CheckBox IsChecked="{Binding Import}" Content="{Binding Task.Name}" Foreground="WhiteSmoke" Margin="5" Background="Orange"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
