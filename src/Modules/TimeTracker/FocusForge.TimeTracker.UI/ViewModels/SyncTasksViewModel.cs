@@ -26,6 +26,13 @@ namespace FocusForge.TimeTracker.UI.ViewModels
             set { SetProperty(ref _tasks, value); }
         }
 
+        private bool _isExpanded;
+        public bool IsExpanded
+        {
+            get { return _isExpanded; }
+            set { SetProperty(ref _isExpanded, value); }
+        }
+
 
         public SyncTasksViewModel(ITasksLoader tasksLoader, ITasksWriter tasksWriter)
         {
@@ -40,6 +47,7 @@ namespace FocusForge.TimeTracker.UI.ViewModels
             {
                 var tasks = await _tasksLoader.LoadTasksAsync();
                 Tasks = tasks.Select(t => new SyncTaskItem { Task = t, Import = false }).ToList();
+                IsExpanded = true;
             });
         }
     }
