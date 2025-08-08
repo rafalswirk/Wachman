@@ -2,12 +2,14 @@
 using CommunityToolkit.Mvvm.Input;
 using FocusForge.TimeTracker.Services.TimeTracking;
 using FocusForge.TimeTracker.UI.Models;
+using FocusForge.UI.Dialogs;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FocusForge.TimeTracker.UI.ViewModels
 {
@@ -15,6 +17,7 @@ namespace FocusForge.TimeTracker.UI.ViewModels
     {
         private readonly ITasksLoader _tasksLoader;
         private readonly ITasksWriter _tasksWriter;
+        private readonly IDialog _dialog;
 
         public IAsyncRelayCommand LoadTasksCommand { get; set; }
         public RelayCommand ImportSelected { get; set; }
@@ -35,11 +38,12 @@ namespace FocusForge.TimeTracker.UI.ViewModels
         }
 
 
-        public SyncTasksViewModel(ITasksLoader tasksLoader, ITasksWriter tasksWriter)
+        public SyncTasksViewModel(ITasksLoader tasksLoader, ITasksWriter tasksWriter, IDialog dialog)
         {
-            InitializeCommands();
             _tasksLoader = tasksLoader;
             _tasksWriter = tasksWriter;
+            _dialog = dialog;
+            InitializeCommands();
         }
 
         private void InitializeCommands()
@@ -57,6 +61,7 @@ namespace FocusForge.TimeTracker.UI.ViewModels
                 if (selectedTasks.Any())
                 {
                     await _tasksWriter.SaveTasksAsync(selectedTasks);
+                    _dialog.Show(new DialogData("Import completed"));
                 }
             });
         }
