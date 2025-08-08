@@ -18,6 +18,7 @@ namespace FocusForge.TimeTracker.UI.ViewModels
 
         public IAsyncRelayCommand LoadTasksCommand { get; set; }
         public RelayCommand ImportSelected { get; set; }
+
         private List<SyncTaskItem> _tasks;
 
         public List<SyncTaskItem> Tasks
@@ -48,6 +49,15 @@ namespace FocusForge.TimeTracker.UI.ViewModels
                 var tasks = await _tasksLoader.LoadTasksAsync();
                 Tasks = tasks.Select(t => new SyncTaskItem { Task = t, Import = false }).ToList();
                 IsExpanded = true;
+            });
+
+            ImportSelected = new RelayCommand(async () =>
+            {
+                var selectedTasks = Tasks.Where(t => t.Import).Select(t => t.Task).ToList();
+                if (selectedTasks.Any())
+                {
+                    await _tasksWriter.SaveTasksAsync(selectedTasks);
+                }
             });
         }
     }
