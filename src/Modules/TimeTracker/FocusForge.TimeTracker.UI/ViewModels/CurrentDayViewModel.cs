@@ -8,6 +8,7 @@ using CommunityToolkit.Mvvm.Input;
 using FocusForge.DataModels.Jobs;
 using FocusForge.TimeTracker.Integrations.TimeCamp;
 using FocusForge.TimeTracker.Services.TimeTracking;
+using FocusForge.TimeTracker.Entities;
 
 namespace FocusForge.TimeTracker.UI.ViewModels
 {
@@ -17,19 +18,25 @@ namespace FocusForge.TimeTracker.UI.ViewModels
 
 
         private List<Job> _dailyJobs;
+        private readonly ITasksReader _tasksReader;
+
         public List<Job> DailyJobs
         {
             get => _dailyJobs;
             set => SetProperty(ref _dailyJobs, value);
         }
-
+        
+        private IReadOnlyCollection<TimeTrackerTask> _tasks;
+        public IReadOnlyCollection<TimeTrackerTask> Tasks { get => _tasks; private set => SetProperty(ref _tasks, value); }
+        
         public IRelayCommand CreateNewJob { get; set; }
 
         public IAsyncRelayCommand OnLoad { get; set; }
 
-        public CurrentDayViewModel(TimeCampApiFactory timeCampApiFactory)
+        public CurrentDayViewModel(TimeCampApiFactory timeCampApiFactory, ITasksReader tasksReader)
         {
             _timeTrackingService = timeCampApiFactory.Create();
+            _tasksReader = tasksReader;
             OnLoad = new AsyncRelayCommand(InitializeAsync);
             InitializeCommands();
         }
@@ -46,6 +53,7 @@ namespace FocusForge.TimeTracker.UI.ViewModels
         {
             await _timeTrackingService.InitializeAsync();
             DailyJobs = await _timeTrackingService.GetDailyJobsAsync();
+            Tasks = await _tasksReader.ReadAsync();
         }
     }
 }

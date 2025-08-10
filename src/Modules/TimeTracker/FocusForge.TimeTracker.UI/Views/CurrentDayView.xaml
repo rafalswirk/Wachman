@@ -63,7 +63,7 @@
                     </DockPanel>
                 </Button>
                 <Border CornerRadius="5" BorderBrush="White" Background="Transparent" Margin="10" BorderThickness="1">
-                    <TextBox Text="" materialDesign:HintAssist.Hint="ToDo" Foreground="{StaticResource NeonOrangeBrush}" Margin="10 0 10 5" Background="Transparent" IsHitTestVisible="True" VerticalContentAlignment="Center" />
+                    <ComboBox ItemsSource="{Binding Tasks}" Foreground="{StaticResource NeonOrangeBrush}" DisplayMemberPath="Name" Margin="10" VerticalContentAlignment="Center"/>
                 </Border>
             </DockPanel>
             <DataGrid Name="dataGrid" ItemsSource="{Binding DailyJobs}" Foreground="{StaticResource NeonOrangeBrush}" d:ItemsSource="{d:SampleData}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
