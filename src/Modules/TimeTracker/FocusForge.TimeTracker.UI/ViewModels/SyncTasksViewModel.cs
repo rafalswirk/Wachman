@@ -17,6 +17,7 @@ namespace FocusForge.TimeTracker.UI.ViewModels
     {
         private readonly ITasksLoader _tasksLoader;
         private readonly ITasksWriter _tasksWriter;
+        private readonly ITasksReader _tasksReader;
         private readonly IDialog _dialog;
 
         public IAsyncRelayCommand LoadTasksCommand { get; set; }
@@ -38,10 +39,11 @@ namespace FocusForge.TimeTracker.UI.ViewModels
         }
 
 
-        public SyncTasksViewModel(ITasksLoader tasksLoader, ITasksWriter tasksWriter, IDialog dialog)
+        public SyncTasksViewModel(ITasksLoader tasksLoader, ITasksWriter tasksWriter, ITasksReader tasksReader, IDialog dialog)
         {
             _tasksLoader = tasksLoader;
             _tasksWriter = tasksWriter;
+            _tasksReader = tasksReader;
             _dialog = dialog;
             InitializeCommands();
         }
@@ -51,7 +53,8 @@ namespace FocusForge.TimeTracker.UI.ViewModels
             LoadTasksCommand = new AsyncRelayCommand(async () => 
             {
                 var tasks = await _tasksLoader.LoadTasksAsync();
-                Tasks = tasks.Select(t => new SyncTaskItem { Task = t, Import = false }).ToList();
+                var syncedTasks = await _tasksReader.ReadAsync();
+                Tasks = tasks.Select(t => new SyncTaskItem { Task = t, Import = syncedTasks.Any(s => s.ExternalId == t.ExternalId) }).ToList();
                 IsExpanded = true;
             });
 

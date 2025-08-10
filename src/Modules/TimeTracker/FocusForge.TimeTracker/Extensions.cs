@@ -24,6 +24,7 @@ namespace FocusForge.TimeTracker
             services.AddScoped<TimeTrackerDbContext>();
             services.AddScoped<ITasksWriter, TimeCampTasksDatabaseWriter>();
             services.AddScoped<ITasksLoader, TimeCampTasksLoader>();
+            services.AddScoped<ITasksReader, TimeCampTasksDatabaseReader>();
         }
 
         public static void ApplyTimeTrackerMigrations(this IHost host)
