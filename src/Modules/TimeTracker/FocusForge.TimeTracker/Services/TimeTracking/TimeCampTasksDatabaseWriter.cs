@@ -19,6 +19,8 @@ namespace FocusForge.TimeTracker.Services.TimeTracking
 
         public async Task SaveTasksAsync(List<TimeTrackerTask> tasks)
         {
+            _context.TimeTrackerTasks.RemoveRange(_context.TimeTrackerTasks);
+            await _context.SaveChangesAsync();
             _context.AddRange(tasks);
             await _context.SaveChangesAsync();
         }
