@@ -33,7 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.PomodoroTimer.UI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.TimeTracker.UI", "src\Modules\TimeTracker\FocusForge.TimeTracker.UI\FocusForge.TimeTracker.UI.csproj", "{796AA444-2F1E-41D5-BCCB-9001407881A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.TimeTracker.TimeCamp", "src\Modules\TimeTracker\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp.csproj", "{C21DB346-D460-4B38-9BE8-C5B5249B24A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.TimeTracker.TimeCamp", "src\Modules\TimeTracker\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp.csproj", "{C21DB346-D460-4B38-9BE8-C5B5249B24A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.Abstractions", "src\Shared\FocusForge.Abstractions\FocusForge.Abstractions.csproj", "{65B73AA2-5973-4523-BB49-6748BAC2D748}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{C21DB346-D460-4B38-9BE8-C5B5249B24A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C21DB346-D460-4B38-9BE8-C5B5249B24A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C21DB346-D460-4B38-9BE8-C5B5249B24A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65B73AA2-5973-4523-BB49-6748BAC2D748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65B73AA2-5973-4523-BB49-6748BAC2D748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65B73AA2-5973-4523-BB49-6748BAC2D748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65B73AA2-5973-4523-BB49-6748BAC2D748}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{B7D5E41E-6901-4B92-8B6B-82EACA27A61C} = {FFA737D4-9CEE-474A-8129-0394AD3C6111}
 		{796AA444-2F1E-41D5-BCCB-9001407881A6} = {7B0CB0B4-512F-48F5-A90A-BFB64D70D984}
 		{C21DB346-D460-4B38-9BE8-C5B5249B24A3} = {7B0CB0B4-512F-48F5-A90A-BFB64D70D984}
+		{65B73AA2-5973-4523-BB49-6748BAC2D748} = {A8579C92-6063-44FD-AC54-EC3CCCA8A2FF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {93FA2FE8-A639-4C6E-B20C-A66E4302F0D3}

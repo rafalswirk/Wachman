@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.DataModels.Commands
+namespace FocusForge.Abstractions.Commands
 {
     public interface ICommandHandler<in TCommand> where TCommand : class, ICommand
     {
