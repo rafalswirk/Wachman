@@ -28,7 +28,15 @@ namespace FocusForge.TimeTracker.UI.ViewModels
         
         private IReadOnlyCollection<TimeTrackerTask> _tasks;
         public IReadOnlyCollection<TimeTrackerTask> Tasks { get => _tasks; private set => SetProperty(ref _tasks, value); }
-        
+
+        private TimeTrackerTask _taskToStart;
+
+        public TimeTrackerTask TaskToStart
+        {
+            get { return _taskToStart; }
+            set { SetProperty(ref _taskToStart, value); }
+        }
+
         public IRelayCommand CreateNewJob { get; set; }
 
         public IAsyncRelayCommand OnLoad { get; set; }
