@@ -3,6 +3,7 @@ using FocusForge.TimeTracker.DAL.Respositories;
 using FocusForge.TimeTracker.Integrations.TimeCamp;
 using FocusForge.TimeTracker.Repositories;
 using FocusForge.TimeTracker.Services.TimeTracking;
+using FocusForge.TimeTracker.TimeCamp;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,7 @@ namespace FocusForge.TimeTracker
     {
         public static void AddTimeTrackerCore(this IServiceCollection services)
         {
+            services.AddCommands();
             services.AddScoped<TimeCampApiFactory>();
             services.AddScoped<ITimeTrackerSettingsRepository, TimeTrackerSettingsRepository>();
             services.AddScoped<TimeTrackerDbContext>();

@@ -6,6 +6,7 @@ using FocusForge.PomodoroTimer.UI;
 using FocusForge.TimeTracker;
 using FocusForge.TimeTracker.UI;
 using FocusForge.UI;
+using FocusForge.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
@@ -24,6 +25,7 @@ namespace FocusForge.Desktop
             _host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
+                    services.AddInfrastructure();
                     services.AddSharedUI();
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<MainWindowViewModel>();
