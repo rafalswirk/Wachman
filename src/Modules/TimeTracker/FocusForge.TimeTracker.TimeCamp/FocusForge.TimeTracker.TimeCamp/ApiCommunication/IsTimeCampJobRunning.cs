@@ -1,4 +1,5 @@
-﻿using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
+﻿using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
+using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication
 {
     internal class IsTimeCampJobRunning
     {
-        private readonly RestClient _apiClient;
+        private readonly ITimeCampApiClient _apiClient;
 
-        public IsTimeCampJobRunning(RestClient apiClient)
+        public IsTimeCampJobRunning(ITimeCampApiClient apiClient)
         {
             _apiClient = apiClient;
         }
@@ -29,7 +30,7 @@ namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication
             };
 
             request.AddBody(requestBody);
-            var response = await _apiClient.ExecuteAsync<TimerStatusDTO>(request);
+            var response = await _apiClient.Client.ExecuteAsync<TimerStatusDTO>(request);
             return response.Data?.IsTimerRunning ?? false;
 
         }

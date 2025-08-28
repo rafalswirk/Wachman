@@ -1,4 +1,5 @@
 ﻿using FocusForge.DataModels.Jobs;
+using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -16,11 +17,11 @@ namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication
 {
     public class GetDailyJobs : ITimeTrackingCommand<List<Job>?>
     {
-        private readonly RestClient _client;
+        private readonly ITimeCampApiClient _apiClient;
 
-        public GetDailyJobs(RestClient client)
+        public GetDailyJobs(ITimeCampApiClient apiClient)
         {
-            _client = client;
+            _apiClient = apiClient;
         }
         public async Task<List<Job>?> ExecuteAsync()
         {
@@ -34,7 +35,7 @@ namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication
                 var today = DateTime.Now.ToString("yyyy-MM-dd");
                 request.AddParameter("from", today);
                 request.AddParameter("to", today);
-                var response = await _client.ExecuteAsync<IEnumerable<EntriesDTO>>(request);
+                var response = await _apiClient.Client.ExecuteAsync<IEnumerable<EntriesDTO>>(request);
                 if (!response.IsSuccessful)
                     return null;
                 if (response.Data is null)

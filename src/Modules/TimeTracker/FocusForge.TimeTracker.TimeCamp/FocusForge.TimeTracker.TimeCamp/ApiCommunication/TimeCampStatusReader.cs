@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,11 @@ namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication
 {
     public class TimeCampStatusReader
     {
-        private readonly string apiKey;
-        private RestClient client;
-        public TimeCampStatusReader(string apiKey)
-        {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+        private readonly ITimeCampApiClient _apiClient;
 
-            this.apiKey = apiKey;
-            client = new RestClient(@"https://www.timecamp.com/third_party/api");
+        public TimeCampStatusReader(ITimeCampApiClient apiClient)
+        {
+            _apiClient = apiClient;
         }
 
         public async Task<string> GetCurrentJobAsync()
@@ -28,11 +26,10 @@ namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication
             {
                 var request = new RestRequest
                 {
-                    Resource = $"/timer/api_token/{apiKey}",
+                    Resource = $"/timer_running",
                     Method = Method.Get
                 };
-                request.AddParameter("action", "status", ParameterType.GetOrPost);
-                var response = await client.PostAsync(request);
+                var response = await _apiClient.Client.PostAsync(request);
                 XmlDocument xmldoc = new XmlDocument();
                 xmldoc.LoadXml(response.Content);
                 var status = xmldoc.GetElementsByTagName("name");

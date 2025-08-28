@@ -8,29 +8,23 @@ using System.Threading.Tasks;
 
 namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client
 {
-    public class TimeCampApiClient
+    public class TimeCampApiClient : ITimeCampApiClient
     {
-        private static RestClient? _instance;
-        private static string? _apiKey;
+        private RestClient _instance;
 
-        public static void Initialize(string apiKey)
+        public IRestClient Client
+            => _instance;
+
+        public void Initialize(string apiKey)
         {
-            _apiKey = apiKey;
-        }
-        public static RestClient Instance
-        {
-            get
+            if (_instance != null)
             {
-                if (_instance != null)
-                {
-                    return _instance;
-                }
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                _instance = new RestClient(@"https://app.timecamp.com/third_party/api");
-                _instance.AddDefaultHeader("Accept", "application/json");
-                _instance.AddDefaultHeader("Authorization", $"Bearer {_apiKey}");
-                return _instance;
+                return;
             }
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            _instance = new RestClient(@"https://app.timecamp.com/third_party/api");
+            _instance.AddDefaultHeader("Accept", "application/json");
+            _instance.AddDefaultHeader("Authorization", $"Bearer {apiKey}");
         }
     }
 }

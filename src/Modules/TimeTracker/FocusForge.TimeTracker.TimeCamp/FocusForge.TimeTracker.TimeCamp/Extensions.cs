@@ -1,4 +1,5 @@
 ﻿using FocusForge.Abstractions.Commands;
+using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using FocusForge.TimeTracker.TimeCamp.Commands;
 using FocusForge.TimeTracker.TimeCamp.Commands.Handlers;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,7 @@ namespace FocusForge.TimeTracker.TimeCamp
     {
         public static void AddCommands(this IServiceCollection services)
         {
+            services.AddSingleton<ITimeCampApiClient, TimeCampApiClient>();
             services.AddScoped<ICommandHandler<StartJobCommand>, StartJobCommandHandler>();
         }
     }

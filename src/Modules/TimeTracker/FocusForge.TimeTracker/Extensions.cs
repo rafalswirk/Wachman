@@ -38,8 +38,8 @@ namespace FocusForge.TimeTracker
         public static void InitializeTimeCampClient(this IHost host)
         {
             var settings = host.Services.GetRequiredService<ITimeTrackerSettingsRepository>();
-            TimeCampApiClient.Initialize(settings.TimeCampApiKey);
-
+            var apiClient = host.Services.GetRequiredService<ITimeCampApiClient>();
+            apiClient.Initialize(settings.TimeCampApiKey);
         }
     }
 }

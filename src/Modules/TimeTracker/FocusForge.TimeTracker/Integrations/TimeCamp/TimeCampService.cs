@@ -14,39 +14,40 @@ namespace FocusForge.TimeTracker.Integrations.TimeCamp
     public class TimeCampService : ITimeTrackingService
     {
         private readonly string _key;
+        private ITimeCampApiClient _apiClient;
 
-        public TimeCampService(string key)
+        public TimeCampService(ITimeCampApiClient apiClient)
         {
-            _key = key;
+            _apiClient = apiClient;
         }
 
         public async Task<string> GetCurrentJobName()
         {
-            var statusReader = new TimeCampStatusReader(_key);
+            var statusReader = new TimeCampStatusReader(_apiClient);
             return await statusReader.GetCurrentJobAsync();
         }
 
         public async Task<List<Job>?> GetDailyJobsAsync()
         {
-            var dailyJobsReader = new GetDailyJobs(TimeCampApiClient.Instance);
+            var dailyJobsReader = new GetDailyJobs(_apiClient);
             return await dailyJobsReader.ExecuteAsync();
         }
 
         public Task<bool> InitializeAsync()
         {
-            TimeCampApiClient.Initialize(_key);
+            _apiClient.Initialize(_key);
             return Task.FromResult(true);
         }
 
         public async Task StartNewJobAsync()
         {
-            var startJobCommand = new TimeCampStartJobCommand(TimeCampApiClient.Instance);
+            var startJobCommand = new TimeCampStartJobCommand(_apiClient);
             await startJobCommand.ExecuteAsync();
         }
 
         public async Task<bool> IsJobRunningAsync()
         {
-            var statusReader = new IsTimeCampJobRunning(TimeCampApiClient.Instance);
+            var statusReader = new IsTimeCampJobRunning(_apiClient);
             return await statusReader.ExecuteAsync();
         }
 

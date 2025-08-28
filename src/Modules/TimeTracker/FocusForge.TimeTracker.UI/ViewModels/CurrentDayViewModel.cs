@@ -9,6 +9,8 @@ using FocusForge.DataModels.Jobs;
 using FocusForge.TimeTracker.Integrations.TimeCamp;
 using FocusForge.TimeTracker.Services.TimeTracking;
 using FocusForge.TimeTracker.Entities;
+using FocusForge.Abstractions.Commands;
+using FocusForge.TimeTracker.TimeCamp.Commands;
 
 namespace FocusForge.TimeTracker.UI.ViewModels
 {
@@ -19,6 +21,7 @@ namespace FocusForge.TimeTracker.UI.ViewModels
 
         private List<Job> _dailyJobs;
         private readonly ITasksReader _tasksReader;
+        private readonly ICommandDispatcher _commandDispatcher;
 
         public List<Job> DailyJobs
         {
@@ -41,27 +44,35 @@ namespace FocusForge.TimeTracker.UI.ViewModels
 
         public IAsyncRelayCommand OnLoad { get; set; }
 
-        public CurrentDayViewModel(TimeCampApiFactory timeCampApiFactory, ITasksReader tasksReader)
+        public CurrentDayViewModel(TimeCampApiFactory timeCampApiFactory, ITasksReader tasksReader, ICommandDispatcher commandDispatcher)
         {
             _timeTrackingService = timeCampApiFactory.Create();
             _tasksReader = tasksReader;
+            _commandDispatcher = commandDispatcher;
             OnLoad = new AsyncRelayCommand(InitializeAsync);
             InitializeCommands();
         }
 
         private void InitializeCommands()
         {
-            CreateNewJob = new RelayCommand(() => 
+            CreateNewJob = new AsyncRelayCommand(async () => 
             {
-                _timeTrackingService.StartNewJobAsync();
+                await _commandDispatcher.SendAsync(new StartJobCommand(TaskToStart.ExternalId));
+                await RefreshDailyJobs();
+
             });
         }
 
         internal async Task InitializeAsync()
         {
             await _timeTrackingService.InitializeAsync();
-            DailyJobs = await _timeTrackingService.GetDailyJobsAsync();
+            await RefreshDailyJobs();
             Tasks = await _tasksReader.ReadAsync();
+        }
+
+        private async Task RefreshDailyJobs()
+        {
+            DailyJobs = await _timeTrackingService.GetDailyJobsAsync();
         }
     }
 }

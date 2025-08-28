@@ -11,9 +11,15 @@ namespace FocusForge.TimeTracker.Services.TimeTracking
 {
     internal class TimeCampTasksLoader : ITasksLoader
     {
+        private readonly ITimeCampApiClient _apiClient;
+
+        public TimeCampTasksLoader(ITimeCampApiClient apiClient)
+        {
+            _apiClient = apiClient;
+        }
         public async Task<List<TimeTrackerTask>> LoadTasksAsync()
         {
-            var reader = new GetAvailableTasks(TimeCampApiClient.Instance);
+            var reader = new GetAvailableTasks(_apiClient);
             var dtos = await reader.GetTasksAsync();
             return dtos.Select(d => new TimeTrackerTask
             {

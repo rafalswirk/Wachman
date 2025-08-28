@@ -1,4 +1,5 @@
 using System;
+using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
 using RestSharp;
 
@@ -6,9 +7,9 @@ namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication;
 
 public class GetAvailableTasks
 {
-    private readonly RestClient _apiClient;
+    private readonly ITimeCampApiClient _apiClient;
 
-    public GetAvailableTasks(RestClient apiClient)
+    public GetAvailableTasks(ITimeCampApiClient apiClient)
     {
         _apiClient = apiClient;
     }
@@ -26,7 +27,7 @@ public class GetAvailableTasks
         request.AddParameter("exclude_archived", 1);
         request.AddParameter("minimal", 1);
 
-        var response = await _apiClient.ExecuteAsync<Dictionary<string, TaskInfoDTO>>(request);
+        var response = await _apiClient.Client.ExecuteAsync<Dictionary<string, TaskInfoDTO>>(request);
 
         if(response.IsSuccessful && response.Data != null)
         {

@@ -1,4 +1,5 @@
 ﻿using FocusForge.Abstractions.Commands;
+using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace FocusForge.TimeTracker.TimeCamp.Commands.Handlers
 {
     public class StartJobCommandHandler : ICommandHandler<StartJobCommand>
     {
-        private readonly RestClient _apiClient;
+        private readonly ITimeCampApiClient _apiClient;
 
-        public StartJobCommandHandler(RestClient apiClient)
+        public StartJobCommandHandler(ITimeCampApiClient apiClient)
         {
             _apiClient = apiClient;
         }
@@ -31,7 +32,7 @@ namespace FocusForge.TimeTracker.TimeCamp.Commands.Handlers
             };
 
             request.AddBody(requestBody);
-            var response = await _apiClient.ExecuteAsync(request);
+            var response = await _apiClient.Client.ExecuteAsync(request);
         }
     }
 }

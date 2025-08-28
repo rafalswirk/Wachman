@@ -1,5 +1,6 @@
 ﻿using FocusForge.TimeTracker.Repositories;
 using FocusForge.TimeTracker.Services.TimeTracking;
+using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace FocusForge.TimeTracker.Integrations.TimeCamp
     public class TimeCampApiFactory
     {
         private readonly ITimeTrackerSettingsRepository _settingsRepository;
+        private readonly ITimeCampApiClient _apiClient;
 
-        public TimeCampApiFactory(ITimeTrackerSettingsRepository settingsRepository)
+        public TimeCampApiFactory(ITimeTrackerSettingsRepository settingsRepository, ITimeCampApiClient apiClient)
         {
             _settingsRepository = settingsRepository;
+            _apiClient = apiClient;
         }
 
         public ITimeTrackingService Create()
@@ -24,7 +27,7 @@ namespace FocusForge.TimeTracker.Integrations.TimeCamp
             {
                 return new DummyTrackingService();
             }
-            return new TimeCampService(apiKey);
+            return new TimeCampService(_apiClient);
         }
     }
 }
