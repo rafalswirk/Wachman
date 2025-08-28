@@ -1,6 +1,6 @@
-﻿using FluentAssertions;
-using RestSharp;
+﻿using RestSharp;
 using RichardSzalay.MockHttp;
+using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace FocusForge.UnitTests.TimeTrackingServiceTests.TimeCampTests.Mocks
 
             var response = await client.GetAsync(request);
 
-            response.Content.Should().Be("{'name' : 'Test McGee'}");
+            response.Content.ShouldBe("{'name' : 'Test McGee'}");
         }
     }
 }
