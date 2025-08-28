@@ -41,8 +41,7 @@ namespace FocusForge.TimeTracker.Integrations.TimeCamp
 
         public async Task StartNewJobAsync()
         {
-            var startJobCommand = new TimeCampStartJobCommand(_apiClient);
-            await startJobCommand.ExecuteAsync();
+            throw new NotImplementedException();
         }
 
         public async Task<bool> IsJobRunningAsync()
