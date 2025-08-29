@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using FocusForge.DataModels.Core.Settings;
+using FocusForge.Abstractions.Settings;
 using FocusForge.PomodoroTimer.DataStorage;
 using System;
 using System.Collections.Generic;

@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.Abstractions.Settings
+namespace FocusForge.Abstractions.Queries
 {
-    public interface IModuleSettings
+    public interface IQuery
+    {
+    }
+
+    public interface IQuery<T> : IQuery
     {
     }
 }

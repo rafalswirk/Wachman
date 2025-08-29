@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using FocusForge.DataModels.Core.Settings;
+using FocusForge.Abstractions.Settings;
 using FocusForge.TimeTracker.Repositories;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using System;
