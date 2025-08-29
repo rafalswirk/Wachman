@@ -1,5 +1,7 @@
 ﻿using FocusForge.Abstractions.Commands;
+using FocusForge.Abstractions.Queries;
 using FocusForge.Infrastructure.Commands;
+using FocusForge.Infrastructure.Queries;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,7 @@ namespace FocusForge.Infrastructure
         public static void AddInfrastructure(this IServiceCollection services)
         {
             services.AddScoped<ICommandDispatcher, CommandDispatcher>();
+            services.AddScoped<IQueryDispatcher, QueryDispatcher>();
         }
     }
 }

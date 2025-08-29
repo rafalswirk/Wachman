@@ -1,6 +1,8 @@
-﻿using FocusForge.TimeTracker.Entities;
+﻿using FocusForge.Abstractions.Queries;
+using FocusForge.TimeTracker.Entities;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
+using FocusForge.TimeTracker.TimeCamp.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +13,15 @@ namespace FocusForge.TimeTracker.Services.TimeTracking
 {
     internal class TimeCampTasksLoader : ITasksLoader
     {
-        private readonly ITimeCampApiClient _apiClient;
+        private readonly IQueryDispatcher _queryDispatcher;
 
-        public TimeCampTasksLoader(ITimeCampApiClient apiClient)
+        public TimeCampTasksLoader(IQueryDispatcher queryDispatcher)
         {
-            _apiClient = apiClient;
+            _queryDispatcher = queryDispatcher;
         }
         public async Task<List<TimeTrackerTask>> LoadTasksAsync()
         {
-            var reader = new GetAvailableTasks(_apiClient);
-            var dtos = await reader.GetTasksAsync();
+            var dtos = await _queryDispatcher.QueryAsync(new AvailableTaskaQuery());
             return dtos.Select(d => new TimeTrackerTask
             {
                 Name = d.name,
