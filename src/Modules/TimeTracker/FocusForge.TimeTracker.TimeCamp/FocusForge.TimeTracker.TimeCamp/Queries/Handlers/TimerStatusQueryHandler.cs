@@ -12,16 +12,16 @@ using System.Xml;
 
 namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
 {
-    public class TimeCampStatusReader : IQueryHandler<TimerStatusQuery, TimerStatusDTO>
+    public class TimerStatusQueryHandler : IQueryHandler<TimerStatusQueryHandler, TimerStatusDTO>
     {
         private readonly ITimeCampApiClient _apiClient;
 
-        public TimeCampStatusReader(ITimeCampApiClient apiClient)
+        public TimerStatusQueryHandler(ITimeCampApiClient apiClient)
         {
             _apiClient = apiClient;
         }
 
-        public async Task<TimerStatusDTO> HandleAsync(TimerStatusQuery query)
+        public async Task<TimerStatusDTO> HandleAsync(TimerStatusQueryHandler query)
         {
             try
             {

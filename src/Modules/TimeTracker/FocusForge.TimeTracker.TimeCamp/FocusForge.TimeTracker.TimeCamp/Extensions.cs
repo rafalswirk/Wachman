@@ -22,7 +22,7 @@ namespace FocusForge.TimeTracker.TimeCamp
             services.AddSingleton<ITimeCampApiClient, TimeCampApiClient>();
             services.AddScoped<ICommandHandler<StartJobCommand>, StartJobCommandHandler>();
             services.AddScoped<IQueryHandler<AvailableTaskaQuery, IEnumerable<TaskInfoDTO>>, AvailableTaskaQueryHandler>();
-            services.AddScoped<IQueryHandler<TimerStatusQuery, TimerStatusDTO>, TimeCampStatusReader>();
+            services.AddScoped<IQueryHandler<TimerStatusQuery, TimerStatusDTO>, TimerStatusQuery>();
         }
     }
 }
