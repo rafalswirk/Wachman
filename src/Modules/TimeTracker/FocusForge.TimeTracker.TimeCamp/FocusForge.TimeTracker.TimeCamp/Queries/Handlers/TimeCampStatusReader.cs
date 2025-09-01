@@ -1,7 +1,6 @@
 ﻿using FocusForge.Abstractions.Queries;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
-using FocusForge.TimeTracker.TimeCamp.Queries;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication
+namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
 {
     public class TimeCampStatusReader : IQueryHandler<TimerStatusQuery, TimerStatusDTO>
     {
