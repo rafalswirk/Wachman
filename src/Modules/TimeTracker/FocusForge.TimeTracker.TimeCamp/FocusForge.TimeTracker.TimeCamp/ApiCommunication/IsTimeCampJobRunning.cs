@@ -21,18 +21,15 @@ namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication
         {
             var request = new RestRequest
             {
-                Resource = $"/timer",
-                Method = Method.Post
+                Resource = $"/timer_running",
+                Method = Method.Get
             };
-            var requestBody = new
-            {
-                action = "status"
-            };
+            var response = await _apiClient.Client.GetAsync<List<TimerStatusDTO>>(request);
 
-            request.AddBody(requestBody);
-            var response = await _apiClient.Client.ExecuteAsync<TimerStatusDTO>(request);
-            return response.Data?.IsTimerRunning ?? false;
+            if (response?.Count > 0)
+                return true;
 
+            return false;
         }
     }
 }

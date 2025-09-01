@@ -1,5 +1,6 @@
 ﻿using FocusForge.Abstractions.Commands;
 using FocusForge.Abstractions.Queries;
+using FocusForge.TimeTracker.TimeCamp.ApiCommunication;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using FocusForge.TimeTracker.TimeCamp.Commands;
 using FocusForge.TimeTracker.TimeCamp.Commands.Handlers;
@@ -22,6 +23,7 @@ namespace FocusForge.TimeTracker.TimeCamp
             services.AddSingleton<ITimeCampApiClient, TimeCampApiClient>();
             services.AddScoped<ICommandHandler<StartJobCommand>, StartJobCommandHandler>();
             services.AddScoped<IQueryHandler<AvailableTaskaQuery, IEnumerable<TaskInfoDTO>>, AvailableTaskaQueryHandler>();
+            services.AddScoped<IQueryHandler<TimerStatusQuery, TimerStatusDTO>, TimeCampStatusReader>();
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿using FocusForge.DataModels.Jobs;
+﻿using FocusForge.Abstractions.Queries;
+using FocusForge.DataModels.Jobs;
 using FocusForge.TimeTracker.Services.TimeTracking;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
+using FocusForge.TimeTracker.TimeCamp.Queries;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -15,16 +17,18 @@ namespace FocusForge.TimeTracker.Integrations.TimeCamp
     {
         private readonly string _key;
         private ITimeCampApiClient _apiClient;
+        private readonly IQueryDispatcher _queryDispatcher;
 
-        public TimeCampService(ITimeCampApiClient apiClient)
+        public TimeCampService(ITimeCampApiClient apiClient, IQueryDispatcher queryDispatcher)
         {
             _apiClient = apiClient;
+            _queryDispatcher = queryDispatcher;
         }
 
         public async Task<string> GetCurrentJobName()
         {
-            var statusReader = new TimeCampStatusReader(_apiClient);
-            return await statusReader.GetCurrentJobAsync();
+            var result = await _queryDispatcher.QueryAsync(new TimerStatusQuery());
+            return result.Name;
         }
 
         public async Task<List<Job>?> GetDailyJobsAsync()

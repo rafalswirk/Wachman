@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace FocusForge.TimeTracker.TimeCamp.DAL.DTO
 {
-    public record TimerStatusDTO(bool IsTimerRunning, long Elapsed);
+    public record TimerStatusDTO(string Name);
 }
