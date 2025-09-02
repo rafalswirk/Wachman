@@ -23,17 +23,17 @@ namespace FocusForge.UnitTests.TimeTrackingServiceTests.TimeCampTests
             var client = new RestClientMock();
             var getDailyJobs = new DailyJobsQueryHandler(apiClient);
 
-            var jobs = await getDailyJobs.ExecuteAsync();
+            var result = await getDailyJobs.HandleAsync(new TimeTracker.TimeCamp.Queries.DailyJobsQuery());
 
-            jobs.ShouldNotBeNull();
-            jobs.Count.ShouldBe(11);
-            jobs.First().GetType().GetProperties().Count().ShouldBe(6);
-            jobs.First().Name.ShouldBe("Wachman");
-            jobs.First().Description.ShouldBe("Demo");
-            jobs.First().Duration.ShouldBe(new TimeSpan(1, 0, 26));
-            jobs.First().Start.ShouldBe(new DateTime(2022, 5, 26, 5, 19, 34));
-            jobs.First().Stop.ShouldBe(new DateTime(2022, 5, 26, 6, 20, 0));
-            jobs.First().IsRunning.ShouldBe(false);
+            result.ShouldNotBeNull();
+            result.Jobs.Count.ShouldBe(11);
+            result.Jobs.First().GetType().GetProperties().Count().ShouldBe(6);
+            result.Jobs.First().Name.ShouldBe("Wachman");
+            result.Jobs.First().Description.ShouldBe("Demo");
+            result.Jobs.First().Duration.ShouldBe(new TimeSpan(1, 0, 26));
+            result.Jobs.First().Start.ShouldBe(new DateTime(2022, 5, 26, 5, 19, 34));
+            result.Jobs.First().Stop.ShouldBe(new DateTime(2022, 5, 26, 6, 20, 0));
+            result.Jobs.First().IsRunning.ShouldBe(false);
         }
     }
 }

@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace FocusForge.TimeTracker.TimeCamp.DAL.DTO
 {
-    public record JobTimerRunningDTO();
+    public record JobTimerRunningDTO(bool IsRunning);
 }

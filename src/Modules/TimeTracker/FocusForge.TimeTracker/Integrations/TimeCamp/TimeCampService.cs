@@ -32,10 +32,10 @@ namespace FocusForge.TimeTracker.Integrations.TimeCamp
             return result.Name;
         }
 
-        public async Task<List<Job>?> GetDailyJobsAsync()
+        public async Task<List<Job>> GetDailyJobsAsync()
         {
-            var dailyJobsReader = new DailyJobsQueryHandler(_apiClient);
-            return await dailyJobsReader.ExecuteAsync();
+            var result = await _queryDispatcher.QueryAsync(new DailyJobsQuery());
+            return result.Jobs;
         }
 
         public Task<bool> InitializeAsync()
@@ -51,8 +51,8 @@ namespace FocusForge.TimeTracker.Integrations.TimeCamp
 
         public async Task<bool> IsJobRunningAsync()
         {
-            var statusReader = new JobTimerRunningQueryHandler(_apiClient);
-            return await statusReader.ExecuteAsync();
+            var result = await _queryDispatcher.QueryAsync(new JobTimerRunningQuery());
+            return result.IsRunning;
         }
 
         public Task StopCurrentJob()

@@ -23,6 +23,8 @@ namespace FocusForge.TimeTracker.TimeCamp
             services.AddScoped<ICommandHandler<StartJobCommand>, StartJobCommandHandler>();
             services.AddScoped<IQueryHandler<AvailableTaskaQuery, IEnumerable<TaskInfoDTO>>, AvailableTaskaQueryHandler>();
             services.AddScoped<IQueryHandler<TimerStatusQuery, TimerStatusDTO>, TimerStatusQueryHandler>();
+            services.AddScoped<IQueryHandler<DailyJobsQuery, DailyJobsDTO>, DailyJobsQueryHandler>();
+            services.AddScoped<IQueryHandler<JobTimerRunningQuery, JobTimerRunningDTO>, JobTimerRunningQueryHandler>();
         }
     }
 }

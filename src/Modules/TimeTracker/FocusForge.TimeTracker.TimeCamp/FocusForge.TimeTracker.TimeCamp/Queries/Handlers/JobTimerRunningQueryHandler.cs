@@ -1,4 +1,5 @@
-﻿using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
+﻿using FocusForge.Abstractions.Queries;
+using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
 using RestSharp;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
 {
-    internal class JobTimerRunningQueryHandler
+    internal class JobTimerRunningQueryHandler : IQueryHandler<JobTimerRunningQuery, JobTimerRunningDTO>
     {
         private readonly ITimeCampApiClient _apiClient;
 
@@ -17,7 +18,8 @@ namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
         {
             _apiClient = apiClient;
         }
-        public async Task<bool> ExecuteAsync()
+
+        public async Task<JobTimerRunningDTO> HandleAsync(JobTimerRunningQuery query)
         {
             var request = new RestRequest
             {
@@ -27,9 +29,9 @@ namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
             var response = await _apiClient.Client.GetAsync<List<TimerStatusDTO>>(request);
 
             if (response?.Count > 0)
-                return true;
+                return new JobTimerRunningDTO(true);
 
-            return false;
+            return new JobTimerRunningDTO(false);
         }
     }
 }

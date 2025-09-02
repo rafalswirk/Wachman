@@ -1,4 +1,5 @@
-﻿using FocusForge.DataModels.Jobs;
+﻿using FocusForge.Abstractions.Queries;
+using FocusForge.DataModels.Jobs;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
@@ -16,7 +17,7 @@ using System.Xml;
 
 namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
 {
-    public class DailyJobsQueryHandler : ITimeTrackingCommand<List<Job>?>
+    public class DailyJobsQueryHandler : IQueryHandler<DailyJobsQuery, DailyJobsDTO>
     {
         private readonly ITimeCampApiClient _apiClient;
 
@@ -24,7 +25,8 @@ namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
         {
             _apiClient = apiClient;
         }
-        public async Task<List<Job>?> ExecuteAsync()
+
+        public async Task<DailyJobsDTO> HandleAsync(DailyJobsQuery query)
         {
             try
             {
@@ -38,9 +40,9 @@ namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
                 request.AddParameter("to", today);
                 var response = await _apiClient.Client.ExecuteAsync<IEnumerable<EntriesDTO>>(request);
                 if (!response.IsSuccessful)
-                    return null;
+                    return new DailyJobsDTO(new List<Job>());
                 if (response.Data is null)
-                    return new List<Job>();
+                    return new DailyJobsDTO(new List<Job>());
                 var result = new List<Job>();
                 foreach (var dto in response.Data)
                 {
@@ -59,11 +61,11 @@ namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
                     result.Add(job);
                 }
 
-                return result;
+                return new DailyJobsDTO(result);
             }
             catch (Exception)
             {
-                return null;
+                return new DailyJobsDTO(new List<Job>());
             }
         }
     }
