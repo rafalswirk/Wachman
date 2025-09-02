@@ -4,6 +4,7 @@ using FocusForge.TimeTracker.Services.TimeTracking;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using FocusForge.TimeTracker.TimeCamp.Queries;
+using FocusForge.TimeTracker.TimeCamp.Queries.Handlers;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace FocusForge.TimeTracker.Integrations.TimeCamp
 
         public async Task<List<Job>?> GetDailyJobsAsync()
         {
-            var dailyJobsReader = new GetDailyJobs(_apiClient);
+            var dailyJobsReader = new DailyJobsQueryHandler(_apiClient);
             return await dailyJobsReader.ExecuteAsync();
         }
 
@@ -50,7 +51,7 @@ namespace FocusForge.TimeTracker.Integrations.TimeCamp
 
         public async Task<bool> IsJobRunningAsync()
         {
-            var statusReader = new IsTimeCampJobRunning(_apiClient);
+            var statusReader = new JobTimerRunningQueryHandler(_apiClient);
             return await statusReader.ExecuteAsync();
         }
 

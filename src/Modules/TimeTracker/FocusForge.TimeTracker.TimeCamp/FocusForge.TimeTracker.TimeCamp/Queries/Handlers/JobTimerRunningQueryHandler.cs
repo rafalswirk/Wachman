@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication
+namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
 {
-    internal class IsTimeCampJobRunning
+    internal class JobTimerRunningQueryHandler
     {
         private readonly ITimeCampApiClient _apiClient;
 
-        public IsTimeCampJobRunning(ITimeCampApiClient apiClient)
+        public JobTimerRunningQueryHandler(ITimeCampApiClient apiClient)
         {
             _apiClient = apiClient;
         }

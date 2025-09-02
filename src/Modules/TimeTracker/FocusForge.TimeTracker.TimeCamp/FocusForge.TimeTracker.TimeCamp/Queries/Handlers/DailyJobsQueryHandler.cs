@@ -1,4 +1,5 @@
 ﻿using FocusForge.DataModels.Jobs;
+using FocusForge.TimeTracker.TimeCamp.ApiCommunication;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using FocusForge.TimeTracker.TimeCamp.DAL.DTO;
 using RestSharp;
@@ -13,13 +14,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace FocusForge.TimeTracker.TimeCamp.ApiCommunication
+namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
 {
-    public class GetDailyJobs : ITimeTrackingCommand<List<Job>?>
+    public class DailyJobsQueryHandler : ITimeTrackingCommand<List<Job>?>
     {
         private readonly ITimeCampApiClient _apiClient;
 
-        public GetDailyJobs(ITimeCampApiClient apiClient)
+        public DailyJobsQueryHandler(ITimeCampApiClient apiClient)
         {
             _apiClient = apiClient;
         }

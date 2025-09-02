@@ -1,6 +1,7 @@
 ﻿using FakeItEasy;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
+using FocusForge.TimeTracker.TimeCamp.Queries.Handlers;
 using FocusForge.UnitTests.TimeTrackingServiceTests.TimeCampTests.Mocks;
 using Shouldly;
 using System;
@@ -20,7 +21,7 @@ namespace FocusForge.UnitTests.TimeTrackingServiceTests.TimeCampTests
             var apiClient = A.Fake<ITimeCampApiClient>();
             A.CallTo(() => apiClient.Client).Returns(new RestClientMock().GetRestClient());
             var client = new RestClientMock();
-            var getDailyJobs = new GetDailyJobs(apiClient);
+            var getDailyJobs = new DailyJobsQueryHandler(apiClient);
 
             var jobs = await getDailyJobs.ExecuteAsync();
 
