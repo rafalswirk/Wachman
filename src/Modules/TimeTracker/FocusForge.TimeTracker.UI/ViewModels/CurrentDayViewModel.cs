@@ -41,6 +41,8 @@ namespace FocusForge.TimeTracker.UI.ViewModels
         }
 
         public IRelayCommand CreateNewJob { get; set; }
+        public IAsyncRelayCommand<Job> RestartJob { get; set; }
+        public IAsyncRelayCommand<Job> StopJob { get; set; }
 
         public IAsyncRelayCommand OnLoad { get; set; }
 
@@ -60,6 +62,19 @@ namespace FocusForge.TimeTracker.UI.ViewModels
                 await _commandDispatcher.SendAsync(new StartJobCommand(TaskToStart.ExternalId));
                 await RefreshDailyJobs();
 
+            });
+
+            RestartJob = new AsyncRelayCommand<Job>(async (x) => 
+            {
+                
+                await _commandDispatcher.SendAsync(new StartJobCommand(x.Id));
+                await RefreshDailyJobs();
+            });
+            
+            StopJob = new AsyncRelayCommand<Job>(async (x) =>
+            {
+                //await _commandDispatcher.SendAsync(new StopJobCommand());
+                await RefreshDailyJobs();
             });
         }
 

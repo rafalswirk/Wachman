@@ -14,5 +14,6 @@ namespace FocusForge.DataModels.Jobs
         public DateTime Stop { get; set; }
         public TimeSpan Duration { get; set; }
         public bool IsRunning { get; set; } = false;
+        public long Id { get; set; }
     }
 }
