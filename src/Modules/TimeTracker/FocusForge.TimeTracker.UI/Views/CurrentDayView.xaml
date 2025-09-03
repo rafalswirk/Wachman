@@ -54,7 +54,11 @@
                 <TextBlock Text="Time Tracker" FontFamily="pack://application:,,,/FocusForge.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
             </Grid>
         </Border>
-        <StackPanel Background="Transparent" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" >
+        <Grid Background="Transparent" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <DockPanel LastChildFill="True">
                 <Button Command="{Binding CreateNewJob}" DockPanel.Dock="Right" Margin="10" Background="Transparent" BorderBrush="{StaticResource NeonOrangeBrush}">
                     <DockPanel>
@@ -66,7 +70,7 @@
                     <ComboBox ItemsSource="{Binding Tasks}" SelectedItem="{Binding TaskToStart}" Foreground="{StaticResource NeonOrangeBrush}" DisplayMemberPath="Name" Margin="10" VerticalContentAlignment="Center"/>
                 </Border>
             </DockPanel>
-            <DataGrid Name="dataGrid" ItemsSource="{Binding DailyJobs}" Foreground="{StaticResource NeonOrangeBrush}" d:ItemsSource="{d:SampleData}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
+            <DataGrid Name="dataGrid" Grid.Row="1" ItemsSource="{Binding DailyJobs}" VerticalScrollBarVisibility="Auto" Foreground="{StaticResource NeonOrangeBrush}" d:ItemsSource="{d:SampleData ItemCount=20}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Name}" Header="Task name" MinWidth="100" />
                     <DataGridTextColumn Binding="{Binding Description}" Header="Description" />
@@ -76,7 +80,7 @@
                     <DataGridTemplateColumn Header="" MinWidth="60" MaxWidth="85" CellTemplateSelector="{StaticResource JobStatusTemplates}"/>
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
+        </Grid>
         <StackPanel  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" >
             <Label Content="Daily progress:" Margin="5 10 0 0"/>
             <ProgressBar Foreground="{StaticResource DarkNeonOrangeBrush}" Background="Transparent" BorderBrush="{StaticResource NeonOrangeBrush}" Margin="10" Height="10" IsIndeterminate="True"/>
