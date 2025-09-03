@@ -31,7 +31,7 @@
                 </DataTemplate.Triggers>
             </DataTemplate>
             <DataTemplate x:Key="JobRunningTemplate">
-                <Button Name="btnJobAction" Command="{Binding RestartJob}" CommandParameter="{Binding .}" Background="Red" BorderBrush="Transparent" Height="20" Padding="0">
+                <Button Name="btnJobAction" Command="{Binding DataContext.StopJob, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" Background="Red" BorderBrush="Transparent" Height="20" Padding="0">
                     <materialDesign:PackIcon Kind="Stop" />
                 </Button>
             </DataTemplate>
