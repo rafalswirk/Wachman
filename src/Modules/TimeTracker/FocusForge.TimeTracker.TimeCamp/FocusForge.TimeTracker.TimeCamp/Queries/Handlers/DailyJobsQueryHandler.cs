@@ -54,9 +54,16 @@ namespace FocusForge.TimeTracker.TimeCamp.Queries.Handlers
                         Stop = DateTime.ParseExact($"{dto.Date.ToString("yyyy-MM-dd")} {dto.End_Time}", "yyyy-MM-dd HH:mm:ss", null),
                         Id = dto.Task_Id
                     };
-                    job.Duration = job.Stop - job.Start;
                     if (dto == response.Data.Last() && job.Duration == TimeSpan.Zero)
+                    {
                         job.IsRunning = true;
+                        job.Duration = DateTime.Now - job.Start;
+                        job.Stop = null;
+                    }
+                    else
+                    {
+                        job.Duration = job.Stop.Value - job.Start;
+                    }
 
 
                     result.Add(job);

@@ -11,7 +11,7 @@ namespace FocusForge.Shared.DataModels.Jobs
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public DateTime Start { get; set; }
-        public DateTime Stop { get; set; }
+        public DateTime? Stop { get; set; }
         public TimeSpan Duration { get; set; }
         public bool IsRunning { get; set; } = false;
         public long Id { get; set; }
