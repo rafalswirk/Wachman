@@ -1,4 +1,4 @@
-﻿using FocusForge.UI.Dialogs;
+﻿using FocusForge.Shared.UI.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Services.Description;
 
-namespace FocusForge.UI
+namespace FocusForge.Shared.UI
 {
     public static class Extensions
     {

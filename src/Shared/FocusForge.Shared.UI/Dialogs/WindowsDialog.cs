@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace FocusForge.UI.Dialogs
+namespace FocusForge.Shared.UI.Dialogs
 {
     public class WindowsDialog : IDialog
     {

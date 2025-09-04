@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace FocusForge.DataModels.Entities;
+namespace FocusForge.Shared.DataModels.Entities;
 
 public class AppSetting
 {

@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FocusForge.UI
+namespace FocusForge.Shared.UI
 {
     public class ToggleImageButton : RadioButton
     {

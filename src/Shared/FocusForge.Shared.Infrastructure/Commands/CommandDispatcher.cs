@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FocusForge.Infrastructure.Commands
+namespace FocusForge.Shared.Infrastructure.Commands
 {
     public sealed class CommandDispatcher : ICommandDispatcher
     {

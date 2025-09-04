@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.Infrastructure.Queries
+namespace FocusForge.Shared.Infrastructure.Queries
 {
     public sealed class QueryDispatcher : IQueryDispatcher
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace FocusForge.UI.Converters
+namespace FocusForge.Shared.UI.Converters
 {
     public class BooleanToVisibilityConverter : IValueConverter
     {

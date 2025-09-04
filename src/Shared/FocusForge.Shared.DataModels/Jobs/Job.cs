@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.DataModels.Jobs
+namespace FocusForge.Shared.DataModels.Jobs
 {
     public class Job
     {
