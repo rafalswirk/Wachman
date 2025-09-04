@@ -1,4 +1,4 @@
-﻿using FocusForge.Abstractions.Commands;
+﻿using FocusForge.Shared.Abstractions.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -17,13 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{46ED950F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.TimeTracker", "src\Modules\TimeTracker\FocusForge.TimeTracker\FocusForge.TimeTracker.csproj", "{A0FB2A35-98DA-4E45-BFD9-0948596A4293}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.DataModels", "src\Shared\FocusForge.Shared.DataModels\FocusForge.Shared.DataModels.csproj", "{3F76BA57-FA9F-4237-B022-2AE4EFE8B66C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.Shared.DataModels", "src\Shared\FocusForge.Shared.DataModels\FocusForge.Shared.DataModels.csproj", "{3F76BA57-FA9F-4237-B022-2AE4EFE8B66C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.UnitTests", "src\Tests\FocusForge.UnitTests\FocusForge.UnitTests.csproj", "{9DAC3144-8DED-4817-B10B-094E6ED43854}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.UI", "src\Shared\FocusForge.Shared.UI\FocusForge.Shared.UI.csproj", "{A427B83B-A1F5-4B67-B7EB-1DCC70E6BD2A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.PomodoroTimer", "src\Modules\PomodoroTimer\FocusForge.PomodoroTimer\FocusForge.PomodoroTimer.csproj", "{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.Shared.PomodoroTimer", "src\Modules\PomodoroTimer\FocusForge.PomodoroTimer\FocusForge.PomodoroTimer.csproj", "{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PomodoroTimer", "PomodoroTimer", "{FFA737D4-9CEE-474A-8129-0394AD3C6111}"
 EndProject
@@ -35,9 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.TimeTracker.UI",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.TimeTracker.TimeCamp", "src\Modules\TimeTracker\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp.csproj", "{C21DB346-D460-4B38-9BE8-C5B5249B24A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.Abstractions", "src\Shared\FocusForge.Shared.Shared.Abstractions\FocusForge.Shared.Abstractions.csproj", "{65B73AA2-5973-4523-BB49-6748BAC2D748}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.Shared.Abstractions", "src\Shared\FocusForge.Shared.Abstractions\FocusForge.Shared.Abstractions.csproj", "{65B73AA2-5973-4523-BB49-6748BAC2D748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.Infrastructure", "src\Shared\FocusForge.Shared.Infrastructure\FocusForge.Shared.Infrastructure.csproj", "{1AAE499D-173B-4014-B757-EBCF42BCACA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.Shared.Infrastructure", "src\Shared\FocusForge.Shared.Infrastructure\FocusForge.Shared.Infrastructure.csproj", "{1AAE499D-173B-4014-B757-EBCF42BCACA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\FocusForge.Abstractions\FocusForge.Abstractions.csproj" />
-    <ProjectReference Include="..\..\..\Shared\FocusForge.UI\FocusForge.UI.csproj" />
+    <ProjectReference Include="..\..\..\Shared\FocusForge.Shared.Abstractions\FocusForge.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Shared\FocusForge.Shared.UI\FocusForge.Shared.UI.csproj" />
     <ProjectReference Include="..\FocusForge.TimeTracker\FocusForge.TimeTracker.csproj" />
   </ItemGroup>
 

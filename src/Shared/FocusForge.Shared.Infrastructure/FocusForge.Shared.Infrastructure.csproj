@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FocusForge.Abstractions\FocusForge.Abstractions.csproj" />
+    <ProjectReference Include="..\FocusForge.Shared.Abstractions\FocusForge.Shared.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using FocusForge.DataModels.Jobs;
+﻿using FocusForge.Shared.DataModels.Jobs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

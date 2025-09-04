@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FocusForge.Desktop.Views.Subviews"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="FocusForge.Desktop.Views.Subviews.SettingsView"
-             xmlns:converters="clr-namespace:FocusForge.UI.Converters;assembly=FocusForge.UI"
+             xmlns:converters="clr-namespace:FocusForge.Shared.UI.Converters;assembly=FocusForge.Shared.UI"
              xmlns:timeTrackerViews="clr-namespace:FocusForge.TimeTracker.UI.Views;assembly=FocusForge.TimeTracker.UI"
              xmlns:timeTrackerViewModels="clr-namespace:FocusForge.TimeTracker.UI.ViewModels;assembly=FocusForge.TimeTracker.UI"
              mc:Ignorable="d" 
@@ -13,7 +13,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/FocusForge.UI;component/Styles/CustomStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/FocusForge.Shared.UI;component/Styles/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         </ResourceDictionary>
@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="DarkOrange" BorderThickness="0 0 0 2" Padding="10 0 10 0">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <TextBlock Text="Settings" FontFamily="pack://application:,,,/FocusForge.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
+                <TextBlock Text="Settings" FontFamily="pack://application:,,,/FocusForge.Shared.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
             </Grid>
         </Border>
         <ItemsControl ItemsSource="{Binding Settings}" Grid.Row="1">

@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using FocusForge.TimeTracker.Services.TimeTracking;
 using FocusForge.TimeTracker.UI.Models;
-using FocusForge.UI.Dialogs;
+using FocusForge.Shared.UI.Dialogs;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;

@@ -1,5 +1,5 @@
-﻿using FocusForge.Abstractions.Commands;
-using FocusForge.Abstractions.Queries;
+﻿using FocusForge.Shared.Abstractions.Commands;
+using FocusForge.Shared.Abstractions.Queries;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using FocusForge.TimeTracker.TimeCamp.Commands;
 using FocusForge.TimeTracker.TimeCamp.Commands.Handlers;

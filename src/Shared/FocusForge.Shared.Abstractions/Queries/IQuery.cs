@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.Abstractions.Queries
+namespace FocusForge.Shared.Abstractions.Queries
 {
     public interface IQuery
     {

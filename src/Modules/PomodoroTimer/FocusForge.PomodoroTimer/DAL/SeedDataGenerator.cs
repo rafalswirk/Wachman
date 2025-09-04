@@ -1,4 +1,4 @@
-﻿using FocusForge.DataModels.Entities;
+﻿using FocusForge.Shared.DataModels.Entities;
 using FocusForge.PomodoroTimer.Models;
 using System;
 using System.Collections.Generic;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.Abstractions.Settings
+namespace FocusForge.Shared.Abstractions.Settings
 {
     public interface IModuleSettings
     {

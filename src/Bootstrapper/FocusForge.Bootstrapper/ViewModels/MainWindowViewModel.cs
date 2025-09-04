@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using FocusForge.DataModels.Jobs;
+using FocusForge.Shared.DataModels.Jobs;
 using FocusForge.Desktop.Utils.UI.Navigation;
 using FocusForge.PomodoroTimer.DataStorage;
 using FocusForge.PomodoroTimer.UI.ViewModels;

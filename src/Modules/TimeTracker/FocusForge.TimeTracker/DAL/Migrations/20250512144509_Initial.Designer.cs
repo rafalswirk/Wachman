@@ -19,7 +19,7 @@ namespace FocusForge.TimeTracker.DAL.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
 
-            modelBuilder.Entity("FocusForge.DataModels.Entities.AppSetting", b =>
+            modelBuilder.Entity("FocusForge.Shared.DataModels.Entities.AppSetting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

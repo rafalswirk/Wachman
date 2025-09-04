@@ -1,4 +1,4 @@
-﻿using FocusForge.Abstractions.Commands;
+﻿using FocusForge.Shared.Abstractions.Commands;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;
 using RestSharp;
 using System;

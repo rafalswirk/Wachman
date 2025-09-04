@@ -1,5 +1,5 @@
-﻿using FocusForge.Abstractions.Commands;
-using FocusForge.Abstractions.Queries;
+﻿using FocusForge.Shared.Abstractions.Commands;
+using FocusForge.Shared.Abstractions.Queries;
 using FocusForge.Shared.Infrastructure.Commands;
 using FocusForge.Shared.Infrastructure.Queries;
 using Microsoft.Extensions.DependencyInjection;

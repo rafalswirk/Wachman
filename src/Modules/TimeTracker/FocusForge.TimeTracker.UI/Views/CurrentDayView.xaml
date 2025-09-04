@@ -17,7 +17,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/FocusForge.UI;component/Styles/CustomStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/FocusForge.Shared.UI;component/Styles/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Key="JobNotRunningTemplate">
                 <Button Name="btnJobAction" Command="{Binding DataContext.RestartJob, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" 
@@ -51,7 +51,7 @@
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="DarkOrange" BorderThickness="0 0 0 2" Padding="10 0 10 0">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <TextBlock Text="Time Tracker" FontFamily="pack://application:,,,/FocusForge.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
+                <TextBlock Text="Time Tracker" FontFamily="pack://application:,,,/FocusForge.Shared.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
             </Grid>
         </Border>
         <Grid Background="Transparent" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" >

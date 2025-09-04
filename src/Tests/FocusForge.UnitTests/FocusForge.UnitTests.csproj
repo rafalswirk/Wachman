@@ -25,9 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Modules\FocusForge.TimeTracker\FocusForge.TimeTracker.csproj" />
     <ProjectReference Include="..\..\Modules\TimeTracker\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp.csproj" />
     <ProjectReference Include="..\..\Modules\TimeTracker\FocusForge.TimeTracker\FocusForge.TimeTracker.csproj" />
+    <ProjectReference Include="..\..\Shared\FocusForge.Shared.DataModels\FocusForge.Shared.DataModels.csproj" />
   </ItemGroup>
 
 </Project>

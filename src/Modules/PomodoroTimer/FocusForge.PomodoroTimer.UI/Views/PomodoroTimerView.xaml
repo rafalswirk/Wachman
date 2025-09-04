@@ -11,7 +11,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/FocusForge.UI;component/Styles/CustomStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/FocusForge.Shared.UI;component/Styles/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="Label">
                 <Setter Property="Foreground" Value="{StaticResource NeonOrangeBrush}"/>
@@ -30,7 +30,7 @@
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="DarkOrange" BorderThickness="0 0 0 2" Padding="10 0 10 0">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <TextBlock Text="Pomodoro Timer" FontFamily="pack://application:,,,/FocusForge.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
+                <TextBlock Text="Pomodoro Timer" FontFamily="pack://application:,,,/FocusForge.Shared.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
                 <Button Command="{Binding RunTimer}" Style="{StaticResource NeonButtonStyle}" Content="Start work" HorizontalAlignment="Right" Width="115" Margin="0,10,0,10"/>
             </Grid>
         </Border>

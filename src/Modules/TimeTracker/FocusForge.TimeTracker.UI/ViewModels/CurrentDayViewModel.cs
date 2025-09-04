@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
-using FocusForge.DataModels.Jobs;
+using FocusForge.Shared.DataModels.Jobs;
 using FocusForge.TimeTracker.Integrations.TimeCamp;
 using FocusForge.TimeTracker.Services.TimeTracking;
 using FocusForge.TimeTracker.Entities;
-using FocusForge.Abstractions.Commands;
 using FocusForge.TimeTracker.TimeCamp.Commands;
+using FocusForge.Shared.Abstractions.Commands;
 
 namespace FocusForge.TimeTracker.UI.ViewModels
 {

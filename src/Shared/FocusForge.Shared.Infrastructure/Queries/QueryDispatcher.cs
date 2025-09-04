@@ -1,4 +1,4 @@
-﻿using FocusForge.Abstractions.Queries;
+﻿using FocusForge.Shared.Abstractions.Queries;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

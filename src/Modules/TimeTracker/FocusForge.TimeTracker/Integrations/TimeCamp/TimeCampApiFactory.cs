@@ -1,4 +1,4 @@
-﻿using FocusForge.Abstractions.Queries;
+﻿using FocusForge.Shared.Abstractions.Queries;
 using FocusForge.TimeTracker.Repositories;
 using FocusForge.TimeTracker.Services.TimeTracking;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;

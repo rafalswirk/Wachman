@@ -1,4 +1,5 @@
-﻿using FocusForge.TimeTracker.Repositories;
+﻿using FocusForge.Shared.DataModels.Entities;
+using FocusForge.TimeTracker.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace FocusForge.TimeTracker.DAL.Respositories
         {
             var apiKey = _timeTrackerDbContext.Settings.SingleOrDefault(s => s.SettingsKey == nameof(TimeCampApiKey));
             if(apiKey == null) 
-                _timeTrackerDbContext.Settings.Add(new DataModels.Entities.AppSetting { SettingsKey = nameof(TimeCampApiKey), SettingsValue = timeCampApiKey });
+                _timeTrackerDbContext.Settings.Add(new AppSetting { SettingsKey = nameof(TimeCampApiKey), SettingsValue = timeCampApiKey });
             else
                 apiKey.SettingsValue = timeCampApiKey;
 

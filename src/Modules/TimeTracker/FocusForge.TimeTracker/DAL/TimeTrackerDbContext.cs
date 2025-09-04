@@ -1,4 +1,4 @@
-﻿using FocusForge.DataModels.Entities;
+﻿using FocusForge.Shared.DataModels.Entities;
 using FocusForge.TimeTracker.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;

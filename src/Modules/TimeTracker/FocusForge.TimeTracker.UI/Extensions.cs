@@ -1,5 +1,4 @@
-
-using FocusForge.Abstractions.Settings;
+using FocusForge.Shared.Abstractions.Settings;
 using FocusForge.TimeTracker.UI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,5 +1,6 @@
-﻿using FocusForge.Abstractions.Queries;
-using FocusForge.DataModels.Jobs;
+﻿using FocusForge.Shared.Abstractions.Queries;
+using FocusForge.Shared.DataModels.Jobs;
+using FocusForge.Shared.Infrastructure.Queries;
 using FocusForge.TimeTracker.Services.TimeTracking;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication;
 using FocusForge.TimeTracker.TimeCamp.ApiCommunication.Client;

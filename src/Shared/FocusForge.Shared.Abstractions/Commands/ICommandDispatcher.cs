@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FocusForge.Abstractions.Commands
+namespace FocusForge.Shared.Abstractions.Commands
 {
     public interface ICommandDispatcher
     {
