@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:FocusForge.TimeTracker.UI.Views"
              xmlns:templateSelectors="clr-namespace:FocusForge.TimeTracker.UI.DataTemplateSelectors"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:converters="clr-namespace:FocusForge.Shared.UI.Converters;assembly=FocusForge.Shared.UI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <i:Interaction.Triggers>
@@ -38,6 +39,7 @@
             <templateSelectors:JobRunningTemplateSelector x:Key="JobStatusTemplates" 
                                                           JobRunningTemplate="{StaticResource JobRunningTemplate}"
                                                           JobNotRunningTemplate="{StaticResource JobNotRunningTemplate}"/>
+            <converters:NotNullToBool x:Key="NotNullToBoolConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -60,23 +62,23 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <DockPanel LastChildFill="True">
-                <Button Command="{Binding CreateNewJob}" DockPanel.Dock="Right" Margin="10" Background="Transparent" BorderBrush="{StaticResource NeonOrangeBrush}">
+                <Button Command="{Binding CreateNewJob}" IsEnabled="{Binding ElementName=cmbTimeTrackerTasks, Path=SelectedItem, Converter={StaticResource NotNullToBoolConverter}}" DockPanel.Dock="Right" Margin="10" Background="Transparent" BorderBrush="{StaticResource NeonOrangeBrush}">
                     <DockPanel>
                         <materialDesign:PackIcon Kind="Plus" DockPanel.Dock="Left" VerticalAlignment="Center" Foreground="{StaticResource NeonOrangeBrush}"/>
                         <TextBlock Text="Create new" Margin="10 0 0 0"/>
                     </DockPanel>
                 </Button>
                 <Border CornerRadius="5" BorderBrush="White" Background="Transparent" Margin="10" BorderThickness="1">
-                    <ComboBox ItemsSource="{Binding Tasks}" SelectedItem="{Binding TaskToStart}" Foreground="{StaticResource NeonOrangeBrush}" DisplayMemberPath="Name" Margin="10" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="cmbTimeTrackerTasks" ItemsSource="{Binding Tasks}" SelectedItem="{Binding TaskToStart}" Foreground="{StaticResource NeonOrangeBrush}" DisplayMemberPath="Name" Margin="10" VerticalContentAlignment="Center"/>
                 </Border>
             </DockPanel>
-            <DataGrid Name="dataGrid" Grid.Row="1" ItemsSource="{Binding DailyJobs}" VerticalScrollBarVisibility="Auto" Foreground="{StaticResource NeonOrangeBrush}" d:ItemsSource="{d:SampleData ItemCount=20}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
+            <DataGrid Name="dataGrid" Grid.Row="1"  ItemsSource="{Binding DailyJobs}" VerticalScrollBarVisibility="Auto" Foreground="{StaticResource NeonOrangeBrush}" d:ItemsSource="{d:SampleData ItemCount=20}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Name}" Header="Task name" MinWidth="100" />
-                    <DataGridTextColumn Binding="{Binding Description}" Header="Description" />
-                    <DataGridTextColumn Binding="{Binding Start, StringFormat=hh\\:mm}" Header="Start" MinWidth="60" MaxWidth="350" />
-                    <DataGridTextColumn Binding="{Binding Stop, StringFormat=hh\\:mm}" Header="Stop" MinWidth="60" MaxWidth="350" />
-                    <DataGridTextColumn Binding="{Binding Duration, StringFormat=hh\\:mm}" Header="Duration" MinWidth="60" MaxWidth="350" />
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Task name" MinWidth="100" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Header="Description" IsReadOnly="True" />
+                    <DataGridTextColumn Binding="{Binding Start, StringFormat=hh\\:mm}" IsReadOnly="True" Header="Start" MinWidth="60" MaxWidth="350" />
+                    <DataGridTextColumn Binding="{Binding Stop, StringFormat=hh\\:mm}" IsReadOnly="True" Header="Stop" MinWidth="60" MaxWidth="350" />
+                    <DataGridTextColumn Binding="{Binding Duration, StringFormat=hh\\:mm}" IsReadOnly="True" Header="Duration" MinWidth="60" MaxWidth="350" />
                     <DataGridTemplateColumn Header="" MinWidth="60" MaxWidth="85" CellTemplateSelector="{StaticResource JobStatusTemplates}"/>
                 </DataGrid.Columns>
             </DataGrid>
