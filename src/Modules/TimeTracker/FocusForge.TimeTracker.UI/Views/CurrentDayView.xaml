@@ -76,9 +76,9 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Name}" Header="Task name" MinWidth="100" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Description}" Header="Description" IsReadOnly="True" />
-                    <DataGridTextColumn Binding="{Binding Start, StringFormat=hh\\:mm}" IsReadOnly="True" Header="Start" MinWidth="60" MaxWidth="350" />
-                    <DataGridTextColumn Binding="{Binding Stop, StringFormat=hh\\:mm}" IsReadOnly="True" Header="Stop" MinWidth="60" MaxWidth="350" />
-                    <DataGridTextColumn Binding="{Binding Duration, StringFormat=hh\\:mm}" IsReadOnly="True" Header="Duration" MinWidth="60" MaxWidth="350" />
+                    <DataGridTextColumn Binding="{Binding Start, StringFormat=HH\\:mm}" IsReadOnly="True" Header="Start" MinWidth="60" MaxWidth="350" />
+                    <DataGridTextColumn Binding="{Binding Stop, StringFormat=HH\\:mm}" IsReadOnly="True" Header="Stop" MinWidth="60" MaxWidth="350" />
+                    <DataGridTextColumn Binding="{Binding Duration, StringFormat=HH\\:mm}" IsReadOnly="True" Header="Duration" MinWidth="60" MaxWidth="350" />
                     <DataGridTemplateColumn Header="" MinWidth="60" MaxWidth="85" CellTemplateSelector="{StaticResource JobStatusTemplates}"/>
                 </DataGrid.Columns>
             </DataGrid>
