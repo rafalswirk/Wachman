@@ -7,11 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.4" />
     <PackageReference Include="RestSharp" Version="112.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\FocusForge.DataModels\FocusForge.DataModels.csproj" />
+    <ProjectReference Include="..\..\..\Shared\FocusForge.Shared.Abstractions\FocusForge.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Shared\FocusForge.Shared.DataModels\FocusForge.Shared.DataModels.csproj" />
+    <ProjectReference Include="..\..\..\Shared\FocusForge.Shared.Infrastructure\FocusForge.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DAL\Migrations\" />
   </ItemGroup>
 
 </Project>

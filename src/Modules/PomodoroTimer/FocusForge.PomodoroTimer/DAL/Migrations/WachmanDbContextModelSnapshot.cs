@@ -16,16 +16,18 @@ namespace Wachman.DAL.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
 
-            modelBuilder.Entity("Wachman.Entities.AppSetting", b =>
+            modelBuilder.Entity("FocusForge.Shared.DataModels.Entities.AppSetting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SettingsKey")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SettingsValue")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

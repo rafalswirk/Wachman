@@ -19,10 +19,10 @@ namespace FocusForge.PomodoroTimer
             
         }
 
-        public static void ApplyMigrations(this IHost host)
+        public static void ApplyPomodoroTimerMigrations(this IHost host)
         {
             var context = host.Services.GetRequiredService<WachmanDbContext>();
-            //context.Database.Migrate();
+            context.Database.Migrate();
         }
     }
 

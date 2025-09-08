@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wachman.Tests.TimeTrackingServiceTests.Mocks
+namespace FocusForge.UnitTests.TimeTrackingServiceTests.TimeCampTests.Mocks
 {
     internal static class MockResponses
     {

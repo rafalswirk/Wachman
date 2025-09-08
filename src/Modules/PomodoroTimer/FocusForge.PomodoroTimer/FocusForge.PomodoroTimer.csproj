@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\FocusForge.DataModels\FocusForge.DataModels.csproj" />
+    <ProjectReference Include="..\..\..\Shared\FocusForge.Shared.DataModels\FocusForge.Shared.DataModels.csproj" />
   </ItemGroup>
 
 </Project>

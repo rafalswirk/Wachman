@@ -4,8 +4,9 @@ using FocusForge.Desktop.ViewModels;
 using FocusForge.PomodoroTimer;
 using FocusForge.PomodoroTimer.UI;
 using FocusForge.TimeTracker;
-using FocusForge.TimeTracker.DummyAPI;
 using FocusForge.TimeTracker.UI;
+using FocusForge.Shared.UI;
+using FocusForge.Shared.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
@@ -24,18 +25,21 @@ namespace FocusForge.Desktop
             _host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
+                    services.AddInfrastructure();
+                    services.AddSharedUI();
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<MainWindowViewModel>();
                     services.AddPomodoroTimer();
                     services.AddTimeTracker();
                     services.AddSingleton<SettingsViewModel>();
-                    services.AddSingleton<ITimeTrackingService, DummyTrackingService>();
                     services.AddSingleton<INavigationService, NavigationService>();
                 })
                 .Build();
 
+            _host.ApplyPomodoroTimerMigrations();
+            _host.ApplyTimeTrackerMigrations();
             _host.ConfigureNavigationService();
-            _host.ApplyMigrations();
+            _host.InitializeTimeCampClient();
             var mainWindow = _host.Services.GetService<MainWindow>();
             mainWindow.Show();
 

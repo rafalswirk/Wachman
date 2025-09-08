@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FocusForge.PomodoroTimer.DataStorage;
+using FocusForge.Shared.Abstractions.Settings;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +30,13 @@ namespace FocusForge.Desktop.ViewModels
             get => _isMessageVisible;
             set => SetProperty(ref _isMessageVisible, value);
         }
-        public SettingsViewModel(IApiKeyProvider keyProvider)
+
+        public IEnumerable<IModuleSettings> Settings { get; set; }
+
+        public SettingsViewModel(IModuleSettings timeTrackerSettings, IApiKeyProvider keyProvider)
         {
             _keyProvider = keyProvider;
+            Settings = new List<IModuleSettings>() { timeTrackerSettings };
             Initialize();
         }
 

@@ -20,7 +20,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/FocusForge.UI;component/Styles/CustomStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/FocusForge.Shared.UI;component/Styles/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type timeTrackerViewModels:CurrentDayViewModel}">
                 <timeTrackerViews:CurrentDayView/>
@@ -78,7 +78,7 @@
                     <ColumnDefinition Width="155"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Image Source="pack://application:,,,/FocusForge.UI;component/Images/FocusForgeLogo.png" Stretch="Uniform" Margin="0 0 5 5"/>
+                <Image Source="pack://application:,,,/FocusForge.Shared.UI;component/Images/FocusForgeLogo.png" Stretch="Uniform" Margin="0 0 5 5"/>
                 <Border BorderBrush="DarkOrange" BorderThickness="2" Grid.Column="1" Grid.RowSpan="2" CornerRadius="10" Margin="1">
                     <ContentControl Content="{Binding NavigationService.ViewModel, UpdateSourceTrigger=PropertyChanged}"/>
                 </Border>

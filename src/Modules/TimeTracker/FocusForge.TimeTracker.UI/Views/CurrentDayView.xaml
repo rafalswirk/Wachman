@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:FocusForge.TimeTracker.UI.Views"
              xmlns:templateSelectors="clr-namespace:FocusForge.TimeTracker.UI.DataTemplateSelectors"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:converters="clr-namespace:FocusForge.Shared.UI.Converters;assembly=FocusForge.Shared.UI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <i:Interaction.Triggers>
@@ -17,11 +18,11 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/FocusForge.UI;component/Styles/CustomStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/FocusForge.Shared.UI;component/Styles/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Key="JobNotRunningTemplate">
-                <Button Name="btnJobAction" Command="{Binding DataContext.ChangeJobStatus, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" 
-                         CommandParameter="{Binding}" BorderBrush="Transparent" Height="20" Padding="0" Visibility="Hidden">
+                <Button Name="btnJobAction" Command="{Binding DataContext.RestartJob, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" 
+                         CommandParameter="{Binding .}" BorderBrush="Transparent" Height="20" Padding="0" Visibility="Hidden">
                     <materialDesign:PackIcon Kind="Play" />
                 </Button>
                 <DataTemplate.Triggers>
@@ -31,13 +32,14 @@
                 </DataTemplate.Triggers>
             </DataTemplate>
             <DataTemplate x:Key="JobRunningTemplate">
-                <Button Name="btnJobAction" Command="{Binding ChangeJobStatus}" CommandParameter="{Binding}" Background="Red" BorderBrush="Transparent" Height="20" Padding="0">
+                <Button Name="btnJobAction" Command="{Binding DataContext.StopJob, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" Background="Red" BorderBrush="Transparent" Height="20" Padding="0">
                     <materialDesign:PackIcon Kind="Stop" />
                 </Button>
             </DataTemplate>
             <templateSelectors:JobRunningTemplateSelector x:Key="JobStatusTemplates" 
                                                           JobRunningTemplate="{StaticResource JobRunningTemplate}"
                                                           JobNotRunningTemplate="{StaticResource JobNotRunningTemplate}"/>
+            <converters:NotNullToBool x:Key="NotNullToBoolConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -51,32 +53,36 @@
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="DarkOrange" BorderThickness="0 0 0 2" Padding="10 0 10 0">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <TextBlock Text="Time Tracker" FontFamily="pack://application:,,,/FocusForge.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
+                <TextBlock Text="Time Tracker" FontFamily="pack://application:,,,/FocusForge.Shared.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
             </Grid>
         </Border>
-        <StackPanel Background="Transparent" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" >
+        <Grid Background="Transparent" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <DockPanel LastChildFill="True">
-                <Button DockPanel.Dock="Right" Margin="10" Background="Transparent" BorderBrush="{StaticResource NeonOrangeBrush}">
+                <Button Command="{Binding CreateNewJob}" IsEnabled="{Binding ElementName=cmbTimeTrackerTasks, Path=SelectedItem, Converter={StaticResource NotNullToBoolConverter}}" DockPanel.Dock="Right" Margin="10" Background="Transparent" BorderBrush="{StaticResource NeonOrangeBrush}">
                     <DockPanel>
                         <materialDesign:PackIcon Kind="Plus" DockPanel.Dock="Left" VerticalAlignment="Center" Foreground="{StaticResource NeonOrangeBrush}"/>
                         <TextBlock Text="Create new" Margin="10 0 0 0"/>
                     </DockPanel>
                 </Button>
                 <Border CornerRadius="5" BorderBrush="White" Background="Transparent" Margin="10" BorderThickness="1">
-                    <TextBox Text="" materialDesign:HintAssist.Hint="ToDo" Foreground="{StaticResource NeonOrangeBrush}" Margin="10 0 10 5" Background="Transparent" IsHitTestVisible="True" VerticalContentAlignment="Center" />
+                    <ComboBox x:Name="cmbTimeTrackerTasks" ItemsSource="{Binding Tasks}" SelectedItem="{Binding TaskToStart}" Foreground="{StaticResource NeonOrangeBrush}" DisplayMemberPath="Name" Margin="10" VerticalContentAlignment="Center"/>
                 </Border>
             </DockPanel>
-            <DataGrid Name="dataGrid" ItemsSource="{Binding DailyJobs}" Foreground="{StaticResource NeonOrangeBrush}" d:ItemsSource="{d:SampleData}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
+            <DataGrid Name="dataGrid" Grid.Row="1"  ItemsSource="{Binding DailyJobs}" VerticalScrollBarVisibility="Auto" Foreground="{StaticResource NeonOrangeBrush}" d:ItemsSource="{d:SampleData ItemCount=20}" Style="{StaticResource MaterialDesignDataGrid}" CanUserAddRows="False" Background="Transparent" AutoGenerateColumns="False" ColumnWidth="*" Margin="10 0 10 10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Name}" Header="Task name" MinWidth="100" />
-                    <DataGridTextColumn Binding="{Binding Description}" Header="Description" />
-                    <DataGridTextColumn Binding="{Binding Start, StringFormat=hh\\:mm}" Header="Start" MinWidth="60" MaxWidth="350" />
-                    <DataGridTextColumn Binding="{Binding Stop, StringFormat=hh\\:mm}" Header="Stop" MinWidth="60" MaxWidth="350" />
-                    <DataGridTextColumn Binding="{Binding Duration, StringFormat=hh\\:mm}" Header="Duration" MinWidth="60" MaxWidth="350" />
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Task name" MinWidth="100" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Header="Description" IsReadOnly="True" />
+                    <DataGridTextColumn Binding="{Binding Start, StringFormat=HH\\:mm}" IsReadOnly="True" Header="Start" MinWidth="60" MaxWidth="350" />
+                    <DataGridTextColumn Binding="{Binding Stop, StringFormat=HH\\:mm}" IsReadOnly="True" Header="Stop" MinWidth="60" MaxWidth="350" />
+                    <DataGridTextColumn Binding="{Binding Duration, StringFormat=HH\\:mm}" IsReadOnly="True" Header="Duration" MinWidth="60" MaxWidth="350" />
                     <DataGridTemplateColumn Header="" MinWidth="60" MaxWidth="85" CellTemplateSelector="{StaticResource JobStatusTemplates}"/>
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
+        </Grid>
         <StackPanel  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" >
             <Label Content="Daily progress:" Margin="5 10 0 0"/>
             <ProgressBar Foreground="{StaticResource DarkNeonOrangeBrush}" Background="Transparent" BorderBrush="{StaticResource NeonOrangeBrush}" Margin="10" Height="10" IsIndeterminate="True"/>

@@ -15,8 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\PomodoroTimer\FocusForge.PomodoroTimer.UI\FocusForge.PomodoroTimer.UI.csproj" />
     <ProjectReference Include="..\..\Modules\TimeTracker\FocusForge.TimeTracker.UI\FocusForge.TimeTracker.UI.csproj" />
-    <ProjectReference Include="..\..\Shared\FocusForge.DataModels\FocusForge.DataModels.csproj" />
-    <ProjectReference Include="..\..\Shared\FocusForge.UI\FocusForge.UI.csproj" />
+    <ProjectReference Include="..\..\Shared\FocusForge.Shared.DataModels\FocusForge.Shared.DataModels.csproj" />
+    <ProjectReference Include="..\..\Shared\FocusForge.Shared.UI\FocusForge.Shared.UI.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />

@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\FocusForge.UI\FocusForge.UI.csproj" />
+    <ProjectReference Include="..\..\..\Shared\FocusForge.Shared.UI\FocusForge.Shared.UI.csproj" />
     <ProjectReference Include="..\FocusForge.PomodoroTimer\FocusForge.PomodoroTimer.csproj" />
   </ItemGroup>
 

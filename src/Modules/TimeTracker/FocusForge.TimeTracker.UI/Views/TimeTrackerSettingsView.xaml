@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="FocusForge.TimeTracker.UI.Views.TimeTrackerSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FocusForge.TimeTracker.UI.Views"
+             xmlns:converters="clr-namespace:FocusForge.Shared.UI.Converters;assembly=FocusForge.Shared.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    <GroupBox Header="TimeCamp integration" Grid.Row="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="10 0 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton x:Name="tglEnabled" IsChecked="{Binding TimeCampIntegrationEnabled, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" />
+                    <Label Name="lblTimeCampIntegration" Content="Enable TimeCamp integration"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" IsEnabled="{Binding ElementName=tglEnabled, Path=IsChecked}">
+                    <Label Content="Api key:"/>
+                    <TextBox Text="{Binding ApiKey}" Width="400" Foreground="WhiteSmoke"/>
+                </StackPanel>
+                <Button Content="Save" Command="{Binding SaveTimeCampSettings}" Width="200" HorizontalAlignment="Left" Margin="0 10"/>
+                <Label Content="Please restart application to load changes!" d:Visibility="Visible" Visibility="{Binding IsMessageVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                <Border BorderThickness="0 1 0 0" BorderBrush="LightGray"/>
+            </StackPanel>
+            <local:SyncTasksView Grid.Row="1" DataContext="{Binding SyncTasksViewModel}"/>
+        </Grid>
+    </GroupBox>
+</UserControl>

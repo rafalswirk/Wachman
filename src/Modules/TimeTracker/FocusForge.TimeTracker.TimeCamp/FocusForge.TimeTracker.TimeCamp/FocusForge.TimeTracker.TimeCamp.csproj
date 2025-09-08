@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<InternalsVisibleTo Include="FocusForge.TimeTracker" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
+    <PackageReference Include="RestSharp" Version="112.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Shared\FocusForge.Shared.Abstractions\FocusForge.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\..\Shared\FocusForge.Shared.DataModels\FocusForge.Shared.DataModels.csproj" />
+  </ItemGroup>
+</Project>

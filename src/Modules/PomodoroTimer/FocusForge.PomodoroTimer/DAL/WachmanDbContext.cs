@@ -1,5 +1,5 @@
 using System;
-using FocusForge.DataModels.Entities;
+using FocusForge.Shared.DataModels.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FocusForge.PomodoroTimer.DAL;

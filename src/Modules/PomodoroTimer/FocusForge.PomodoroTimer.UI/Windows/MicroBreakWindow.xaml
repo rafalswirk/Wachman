@@ -6,11 +6,13 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:local="clr-namespace:FocusForge.PomodoroTimer.UI.Windows"
         mc:Ignorable="d" AllowsTransparency="True"
-        xmlns:converters="clr-namespace:FocusForge.UI.Converters;assembly=FocusForge.UI"
+        xmlns:converters="clr-namespace:FocusForge.Shared.UI.Converters;assembly=FocusForge.Shared.UI"
         Title="Break time!" WindowStyle="None" Height="450" Width="800" Background="Transparent" WindowStartupLocation="CenterScreen" Topmost="{Binding IsTopmost}" Loaded="Window_Loaded">
     <Window.Resources>
         <converters:VisibilityNegationConverter x:Key="visibilityNegation"/>
         <converters:BoolToPackIconConverter x:Key="bootToIcon" IsTrueIcon="Lock" IsFalseIcon="Unlocked"/>
+        <converters:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
