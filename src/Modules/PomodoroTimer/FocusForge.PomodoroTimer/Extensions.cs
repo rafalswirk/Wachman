@@ -1,7 +1,6 @@
 
 using FocusForge.PomodoroTimer.DAL;
 using FocusForge.PomodoroTimer.DAL.Respositories;
-using FocusForge.PomodoroTimer.DataStorage;
 using FocusForge.PomodoroTimer.Events.External.Handlers;
 using FocusForge.PomodoroTimer.Repositories;
 using FocusForge.Shared.Abstractions.Events;
@@ -16,7 +15,6 @@ namespace FocusForge.PomodoroTimer
     {
         public static void AddPomodoroTimerCore(this IServiceCollection services)
         {
-            services.AddSingleton<IApiKeyProvider, ApiKeyProvider>();
             services.AddScoped<IConfigurationRepository, ConfigurationRepository>();
             services.AddScoped<ITimeCampIntegrationRepository, TimeCampIntegrationRepository>();
             services.AddScoped<WachmanDbContext>();

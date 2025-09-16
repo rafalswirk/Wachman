@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using FocusForge.PomodoroTimer.DataStorage;
 using FocusForge.Shared.Abstractions.Settings;
 using System;
 using System.Collections.Generic;
@@ -14,11 +13,9 @@ namespace FocusForge.Desktop.ViewModels
 {
     public class SettingsViewModel : ObservableObject
     {
-        private IApiKeyProvider _keyProvider;
         private bool _isMessageVisible;
         private bool _timeCampIntegrationEnabled;
 
-        public string ApiKey { get; set; }
         public bool TimeCampIntegrationEnabled
         {
             get => _timeCampIntegrationEnabled;
@@ -33,9 +30,8 @@ namespace FocusForge.Desktop.ViewModels
 
         public IEnumerable<IModuleSettings> Settings { get; set; }
 
-        public SettingsViewModel(IModuleSettings timeTrackerSettings, IApiKeyProvider keyProvider)
+        public SettingsViewModel(IModuleSettings timeTrackerSettings)
         {
-            _keyProvider = keyProvider;
             Settings = new List<IModuleSettings>() { timeTrackerSettings };
             Initialize();
         }
@@ -43,18 +39,8 @@ namespace FocusForge.Desktop.ViewModels
         private void Initialize()
         {
             IsMessageVisible = false;
-            ApiKey = _keyProvider.GetKey();
-            TimeCampIntegrationEnabled = !string.IsNullOrEmpty(ApiKey);
             SaveTimeCampSettings = new RelayCommand(() =>
             {
-                if (!TimeCampIntegrationEnabled)
-                {
-                    _keyProvider.SetKey("");
-                }
-                else
-                {
-                    _keyProvider.SetKey(ApiKey);
-                }
                 IsMessageVisible = true;
             });
         }

@@ -14,9 +14,9 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Threading;
 using FocusForge.PomodoroTimer.Services.Integrations.TimeCamp;
-using FocusForge.PomodoroTimer.DataStorage;
 using FocusForge.PomodoroTimer.CustomEventArgs;
 using FocusForge.PomodoroTimer.UI.Utils;
+using FocusForge.PomodoroTimer.Repositories;
 
 namespace FocusForge.PomodoroTimer.UI.Views
 {
@@ -34,16 +34,16 @@ namespace FocusForge.PomodoroTimer.UI.Views
         private double lastLeft;
         private DateTime pauseTime;
         private CancellationTokenSource cancellationTokenSource;
-        private readonly IApiKeyProvider _keyProvider;
+        private readonly ITimeCampIntegrationRepository _integrationRepository;
 
         public event EventHandler<OnSessionFinishedEventArgs> OnTimerFinished;
 
-        public MicroTimerView(int minutes, IApiKeyProvider keyProvider)
+        public MicroTimerView(int minutes, ITimeCampIntegrationRepository integrationRepository)
         {
             InitializeComponent();
-            _keyProvider = keyProvider;
 
             RunTimer(minutes);
+            _integrationRepository = integrationRepository;
         }
 
         public void RunTimer(int minutes)
@@ -53,7 +53,7 @@ namespace FocusForge.PomodoroTimer.UI.Views
 
             workingTime = TimeSpan.FromMinutes(minutes);
             lblTime.Content = $"{minutes}:00";
-            timeCampStatusReader = new TimeCampStatusReader(_keyProvider.GetKey());
+            timeCampStatusReader = new TimeCampStatusReader(_integrationRepository.TimeCampApiKey.ApiKey);
 
             timer = new DispatcherTimer()
             {

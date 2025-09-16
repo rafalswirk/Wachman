@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FocusForge.PomodoroTimer.Repositories
 {
-    internal interface ITimeCampIntegrationRepository
+    public interface ITimeCampIntegrationRepository
     {
         TimeCampIntegrationData TimeCampApiKey { get; }
         void SaveTimeCampIntegrationData(TimeCampIntegrationData integrationData);
