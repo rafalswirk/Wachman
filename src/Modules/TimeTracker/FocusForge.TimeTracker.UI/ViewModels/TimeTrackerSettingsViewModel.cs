@@ -24,7 +24,7 @@ namespace FocusForge.TimeTracker.UI.ViewModels
             get => _timeCampIntegrationEnabled;
             set => SetProperty(ref _timeCampIntegrationEnabled, value);
         }
-        public ICommand SaveTimeCampSettings { get; set; }
+        public IAsyncRelayCommand SaveTimeCampSettings { get; set; }
         public bool IsMessageVisible
         {
             get => _isMessageVisible;
@@ -44,15 +44,15 @@ namespace FocusForge.TimeTracker.UI.ViewModels
             IsMessageVisible = false;
             ApiKey = _settingsRepository.TimeCampApiKey;
             TimeCampIntegrationEnabled = !string.IsNullOrEmpty(ApiKey);
-            SaveTimeCampSettings = new RelayCommand(() =>
+            SaveTimeCampSettings = new AsyncRelayCommand(async () =>
             {
                 if (!TimeCampIntegrationEnabled)
                 {
-                    _settingsRepository.SaveTimeCampApiKey("");
+                    await _settingsRepository.SaveTimeCampApiKey("");
                 }
                 else
                 {
-                    _settingsRepository.SaveTimeCampApiKey(ApiKey);
+                    await _settingsRepository.SaveTimeCampApiKey(ApiKey);
                 }
                 IsMessageVisible = true;
             });

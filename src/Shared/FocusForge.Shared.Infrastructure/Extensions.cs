@@ -1,6 +1,7 @@
 ﻿using FocusForge.Shared.Abstractions.Commands;
 using FocusForge.Shared.Abstractions.Queries;
 using FocusForge.Shared.Infrastructure.Commands;
+using FocusForge.Shared.Infrastructure.Events;
 using FocusForge.Shared.Infrastructure.Queries;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -17,6 +18,7 @@ namespace FocusForge.Shared.Infrastructure
         {
             services.AddScoped<ICommandDispatcher, CommandDispatcher>();
             services.AddScoped<IQueryDispatcher, QueryDispatcher>();
+            services.AddEvents();
         }
     }
 }

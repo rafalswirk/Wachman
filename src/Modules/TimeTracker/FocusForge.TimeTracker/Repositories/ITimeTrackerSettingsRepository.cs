@@ -9,6 +9,6 @@ namespace FocusForge.TimeTracker.Repositories
     public interface ITimeTrackerSettingsRepository
     {
         string TimeCampApiKey { get; }
-        void SaveTimeCampApiKey(string timeCampApiKey);
+        Task SaveTimeCampApiKey(string timeCampApiKey);
     }
 }
