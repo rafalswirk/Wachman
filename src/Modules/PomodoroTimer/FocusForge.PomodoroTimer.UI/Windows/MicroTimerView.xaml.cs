@@ -41,9 +41,9 @@ namespace FocusForge.PomodoroTimer.UI.Views
         public MicroTimerView(int minutes, ITimeCampIntegrationRepository integrationRepository)
         {
             InitializeComponent();
+            _integrationRepository = integrationRepository;
 
             RunTimer(minutes);
-            _integrationRepository = integrationRepository;
         }
 
         public void RunTimer(int minutes)
