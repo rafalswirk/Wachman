@@ -14,9 +14,11 @@ namespace FocusForge.PomodoroTimer.DAL
         public static AppSetting[] Generate()
         {
             var configuration = new PomodoroConfiguration();
+            var integrationData = new TimeCampIntegrationData();
             var settings = new[] {new AppSetting { Id = 1, SettingsKey = nameof(configuration.WorkSessionDuration), SettingsValue = configuration.WorkSessionDuration.ToString() },
             new AppSetting { Id = 2, SettingsKey = nameof(configuration.BreakTimeDuration), SettingsValue = configuration.BreakTimeDuration.ToString() },
-            new AppSetting { Id = 3, SettingsKey = nameof(configuration.DisableBreaks), SettingsValue = configuration.DisableBreaks == true ? "1" : "0" } };
+            new AppSetting { Id = 3, SettingsKey = nameof(configuration.DisableBreaks), SettingsValue = configuration.DisableBreaks == true ? "1" : "0" },
+            new AppSetting { Id = 4, SettingsKey = nameof(integrationData.ApiKey), SettingsValue = integrationData.ApiKey } };
             return settings;
         }
     }

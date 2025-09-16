@@ -1,4 +1,6 @@
-﻿using FocusForge.Shared.DataModels.Entities;
+﻿using FocusForge.Shared.Abstractions.Events;
+using FocusForge.Shared.DataModels.Entities;
+using FocusForge.TimeTracker.Messages.Events;
 using FocusForge.TimeTracker.Repositories;
 using System;
 using System.Collections.Generic;
@@ -11,16 +13,18 @@ namespace FocusForge.TimeTracker.DAL.Respositories
     internal class TimeTrackerSettingsRepository : ITimeTrackerSettingsRepository
     {
         private readonly TimeTrackerDbContext _timeTrackerDbContext;
+        private readonly IEventDispatcher _eventDispatcher;
 
-        public TimeTrackerSettingsRepository(TimeTrackerDbContext timeTrackerDbContext)
+        public TimeTrackerSettingsRepository(TimeTrackerDbContext timeTrackerDbContext, IEventDispatcher eventDispatcher)
         {
             _timeTrackerDbContext = timeTrackerDbContext;
+            _eventDispatcher = eventDispatcher;
         }
 
         public string TimeCampApiKey
             => _timeTrackerDbContext.Settings.SingleOrDefault(s => s.SettingsKey == nameof(TimeCampApiKey))?.SettingsValue ?? string.Empty;
 
-        public void SaveTimeCampApiKey(string timeCampApiKey)
+        public async Task SaveTimeCampApiKey(string timeCampApiKey)
         {
             var apiKey = _timeTrackerDbContext.Settings.SingleOrDefault(s => s.SettingsKey == nameof(TimeCampApiKey));
             if(apiKey == null) 
@@ -29,6 +33,7 @@ namespace FocusForge.TimeTracker.DAL.Respositories
                 apiKey.SettingsValue = timeCampApiKey;
 
             _timeTrackerDbContext.SaveChanges();
+            await _eventDispatcher.PublishAsync(new TimeCampApiKeyProvided(timeCampApiKey));
         }
     }
 }

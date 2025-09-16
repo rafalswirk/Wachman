@@ -16,7 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\FocusForge.Shared.Abstractions\FocusForge.Shared.Abstractions.csproj" />
     <ProjectReference Include="..\..\..\Shared\FocusForge.Shared.DataModels\FocusForge.Shared.DataModels.csproj" />
+    <ProjectReference Include="..\..\TimeTracker\FocusForge.TimeTracker.Messages\FocusForge.TimeTracker.Messages.csproj" />
   </ItemGroup>
 
 </Project>

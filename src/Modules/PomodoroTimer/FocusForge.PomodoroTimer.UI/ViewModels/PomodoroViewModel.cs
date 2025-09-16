@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FocusForge.PomodoroTimer.CustomEventArgs;
-using FocusForge.PomodoroTimer.DataStorage;
 using FocusForge.PomodoroTimer.Models;
 using FocusForge.PomodoroTimer.Repositories;
 using FocusForge.PomodoroTimer.UI.Views;
@@ -22,7 +21,7 @@ namespace FocusForge.PomodoroTimer.UI.ViewModels
 
         private int _numberOfWorkingSessions;
         private readonly IConfigurationRepository _configurationRepository;
-        private readonly IApiKeyProvider _keyProvider;
+        private readonly ITimeCampIntegrationRepository _timeCampIntegration;
 
         public int NumberOfWorkingSessions
         {
@@ -35,10 +34,10 @@ namespace FocusForge.PomodoroTimer.UI.ViewModels
         public int BreakTimeDuration { get; set; } = 5;
         public ICommand RunTimer { get; set; }
 
-        public PomodoroViewModel(IConfigurationRepository configurationRepository, IApiKeyProvider keyProvider)
+        public PomodoroViewModel(IConfigurationRepository configurationRepository, ITimeCampIntegrationRepository timeCampIntegration)
         {
             _configurationRepository = configurationRepository;
-            _keyProvider = keyProvider;
+            _timeCampIntegration = timeCampIntegration;
             LoadSettings();
             NumberOfWorkingSessions = 0;
             InitializeCommands();
@@ -58,7 +57,7 @@ namespace FocusForge.PomodoroTimer.UI.ViewModels
                 {
                     _timerDialog.OnTimerFinished -= _dialog_OnTimerFinished;
                 }
-                _timerDialog = new MicroTimerView(WorkSessionDuration, _keyProvider);
+                _timerDialog = new MicroTimerView(WorkSessionDuration, _timeCampIntegration);
                 _timerDialog.OnTimerFinished += _dialog_OnTimerFinished;
                 _timerDialog.Show();
                 Application.Current.MainWindow.WindowState = WindowState.Minimized;

@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.Shared.DataModel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.UnitTests", "src\Tests\FocusForge.UnitTests\FocusForge.UnitTests.csproj", "{9DAC3144-8DED-4817-B10B-094E6ED43854}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.UI", "src\Shared\FocusForge.Shared.UI\FocusForge.Shared.UI.csproj", "{A427B83B-A1F5-4B67-B7EB-1DCC70E6BD2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.Shared.UI", "src\Shared\FocusForge.Shared.UI\FocusForge.Shared.UI.csproj", "{A427B83B-A1F5-4B67-B7EB-1DCC70E6BD2A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.Shared.PomodoroTimer", "src\Modules\PomodoroTimer\FocusForge.PomodoroTimer\FocusForge.PomodoroTimer.csproj", "{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FocusForge.PomodoroTimer", "src\Modules\PomodoroTimer\FocusForge.PomodoroTimer\FocusForge.PomodoroTimer.csproj", "{16BC46DD-49B2-42D6-8C81-E77DE4619AC9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PomodoroTimer", "PomodoroTimer", "{FFA737D4-9CEE-474A-8129-0394AD3C6111}"
 EndProject
@@ -38,6 +38,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.Shared.Abstractions", "src\Shared\FocusForge.Shared.Abstractions\FocusForge.Shared.Abstractions.csproj", "{65B73AA2-5973-4523-BB49-6748BAC2D748}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.Shared.Infrastructure", "src\Shared\FocusForge.Shared.Infrastructure\FocusForge.Shared.Infrastructure.csproj", "{1AAE499D-173B-4014-B757-EBCF42BCACA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.TimeTracker.Messages", "src\Modules\TimeTracker\FocusForge.TimeTracker.Messages\FocusForge.TimeTracker.Messages.csproj", "{61935F0A-54D5-4E9D-9FC4-298179F6F068}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,10 @@ Global
 		{1AAE499D-173B-4014-B757-EBCF42BCACA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AAE499D-173B-4014-B757-EBCF42BCACA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AAE499D-173B-4014-B757-EBCF42BCACA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61935F0A-54D5-4E9D-9FC4-298179F6F068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61935F0A-54D5-4E9D-9FC4-298179F6F068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61935F0A-54D5-4E9D-9FC4-298179F6F068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61935F0A-54D5-4E9D-9FC4-298179F6F068}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +117,7 @@ Global
 		{C21DB346-D460-4B38-9BE8-C5B5249B24A3} = {7B0CB0B4-512F-48F5-A90A-BFB64D70D984}
 		{65B73AA2-5973-4523-BB49-6748BAC2D748} = {A8579C92-6063-44FD-AC54-EC3CCCA8A2FF}
 		{1AAE499D-173B-4014-B757-EBCF42BCACA9} = {A8579C92-6063-44FD-AC54-EC3CCCA8A2FF}
+		{61935F0A-54D5-4E9D-9FC4-298179F6F068} = {7B0CB0B4-512F-48F5-A90A-BFB64D70D984}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {93FA2FE8-A639-4C6E-B20C-A66E4302F0D3}
