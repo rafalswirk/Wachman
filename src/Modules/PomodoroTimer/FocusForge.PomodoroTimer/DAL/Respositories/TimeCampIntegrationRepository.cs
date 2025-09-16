@@ -17,11 +17,24 @@ namespace FocusForge.PomodoroTimer.DAL.Respositories
             _context = context;
         }
         public TimeCampIntegrationData TimeCampApiKey
-            => throw new NotImplementedException();
+        {
+            get
+            {
+                var integrationData = new TimeCampIntegrationData();
+                var setting = _context.Settings.SingleOrDefault(s => s.SettingsKey == nameof(integrationData.ApiKey));
+                integrationData.ApiKey = setting?.SettingsValue ?? string.Empty;
+                return integrationData;
+            }
+        }
 
         public void SaveTimeCampIntegrationData(TimeCampIntegrationData timeCampApiKey)
         {
-            throw new NotImplementedException();
+            var data = _context.Settings.SingleOrDefault(s => s.SettingsKey == nameof(timeCampApiKey.ApiKey));
+            if(data == null)
+                _context.Settings.Add(new Shared.DataModels.Entities.AppSetting { SettingsKey = nameof(timeCampApiKey.ApiKey), SettingsValue = timeCampApiKey.ApiKey });
+            else
+                data.SettingsValue = timeCampApiKey.ApiKey;
+            _context.SaveChanges();
         }
     }
 }
