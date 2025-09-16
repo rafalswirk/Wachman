@@ -8,6 +8,6 @@ namespace FocusForge.PomodoroTimer.DAL
 {
     internal class ConnectionStringProvider
     {
-        public const string ConnectionString = "Data Source=Wachman.db";
+        public const string ConnectionString = "Data Source=FocusForge.PomodoroTimer.db";
     }
 }
