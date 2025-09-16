@@ -2,7 +2,10 @@
 using FocusForge.PomodoroTimer.DAL;
 using FocusForge.PomodoroTimer.DAL.Respositories;
 using FocusForge.PomodoroTimer.DataStorage;
+using FocusForge.PomodoroTimer.Events.External.Handlers;
 using FocusForge.PomodoroTimer.Repositories;
+using FocusForge.Shared.Abstractions.Events;
+using FocusForge.TimeTracker.Messages.Events;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,8 +18,9 @@ namespace FocusForge.PomodoroTimer
         {
             services.AddSingleton<IApiKeyProvider, ApiKeyProvider>();
             services.AddScoped<IConfigurationRepository, ConfigurationRepository>();
+            services.AddScoped<ITimeCampIntegrationRepository, TimeCampIntegrationRepository>();
             services.AddScoped<WachmanDbContext>();
-            
+            services.AddScoped<IEventHandler<TimeCampApiKeyProvided>, TimeCampApiKeyProvidedHandler>();
         }
 
         public static void ApplyPomodoroTimerMigrations(this IHost host)
