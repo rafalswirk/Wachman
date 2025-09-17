@@ -41,6 +41,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.Shared.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.TimeTracker.Messages", "src\Modules\TimeTracker\FocusForge.TimeTracker.Messages\FocusForge.TimeTracker.Messages.csproj", "{61935F0A-54D5-4E9D-9FC4-298179F6F068}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Activities", "Activities", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FocusForge.Activities.Core", "src\Modules\Activities\FocusForge.Activities.Core\FocusForge.Activities.Core.csproj", "{52BC1FF2-B2B5-4DA0-B432-D8203F089E1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +99,10 @@ Global
 		{61935F0A-54D5-4E9D-9FC4-298179F6F068}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61935F0A-54D5-4E9D-9FC4-298179F6F068}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61935F0A-54D5-4E9D-9FC4-298179F6F068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52BC1FF2-B2B5-4DA0-B432-D8203F089E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52BC1FF2-B2B5-4DA0-B432-D8203F089E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52BC1FF2-B2B5-4DA0-B432-D8203F089E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52BC1FF2-B2B5-4DA0-B432-D8203F089E1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +126,8 @@ Global
 		{65B73AA2-5973-4523-BB49-6748BAC2D748} = {A8579C92-6063-44FD-AC54-EC3CCCA8A2FF}
 		{1AAE499D-173B-4014-B757-EBCF42BCACA9} = {A8579C92-6063-44FD-AC54-EC3CCCA8A2FF}
 		{61935F0A-54D5-4E9D-9FC4-298179F6F068} = {7B0CB0B4-512F-48F5-A90A-BFB64D70D984}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {2F17EE01-4244-4683-9EC6-4C09E1B93DAF}
+		{52BC1FF2-B2B5-4DA0-B432-D8203F089E1D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {93FA2FE8-A639-4C6E-B20C-A66E4302F0D3}
