@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:FocusForge.Activities.UI.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Label Content="Empty template"/>    
-    </Grid>
+    <StackPanel>
+        <Label Content="Empty template"/>
+        <Label Content="{Binding CurrentActivity}"/>
+    </StackPanel>
 </UserControl>
