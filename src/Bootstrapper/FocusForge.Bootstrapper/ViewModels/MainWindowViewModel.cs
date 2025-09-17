@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using FocusForge.Activities.UI.ViewModels;
 
 namespace FocusForge.Desktop.ViewModels
 {
@@ -31,6 +32,7 @@ namespace FocusForge.Desktop.ViewModels
         public ICommand SwitchToCurrentDay { get; set; }
         public ICommand SwitchPomodoroTimer { get; set; }
         public ICommand SwitchToSettings { get; set; }
+        public ICommand SwitchToActivities { get; set; }
         public IAsyncRelayCommand OnLoadCommand { get; set; }
 
         public MainWindowViewModel(INavigationService navigationService)
@@ -42,6 +44,7 @@ namespace FocusForge.Desktop.ViewModels
             SwitchToCurrentDay = new RelayCommand(() => _navigationService.NavigateTo<CurrentDayViewModel>());
             SwitchPomodoroTimer = new RelayCommand(() => _navigationService.NavigateTo<PomodoroViewModel>());
             SwitchToSettings = new RelayCommand(() => _navigationService.NavigateTo<SettingsViewModel>());
+            SwitchToActivities = new RelayCommand(() => _navigationService.NavigateTo<ActivitiesViewModel>());
             _navigationService = navigationService;
         }
     }

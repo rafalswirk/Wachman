@@ -12,6 +12,8 @@
         xmlns:pomodoroViewModels="clr-namespace:FocusForge.PomodoroTimer.UI.ViewModels;assembly=FocusForge.PomodoroTimer.UI"
         xmlns:timeTrackerViews="clr-namespace:FocusForge.TimeTracker.UI.Views;assembly=FocusForge.TimeTracker.UI"
         xmlns:timeTrackerViewModels="clr-namespace:FocusForge.TimeTracker.UI.ViewModels;assembly=FocusForge.TimeTracker.UI"
+        xmlns:activitiesViews="clr-namespace:FocusForge.Activities.UI.Views;assembly=FocusForge.Activities.UI"
+        xmlns:activitiesViewModels="clr-namespace:FocusForge.Activities.UI.ViewModels;assembly=FocusForge.Activities.UI"
         Background="{DynamicResource MaterialDesignPaper}"
         Name="dashboard"
         mc:Ignorable="d"
@@ -30,6 +32,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModels:SettingsViewModel}">
                 <subviews:SettingsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type activitiesViewModels:ActivitiesViewModel}">
+                <activitiesViews:ActivitiesView/>
             </DataTemplate>
             <!-- Pen for grid lines -->
             <Pen x:Key="GridLinePen" Thickness="0.5" Brush="#FF1B2E40"/>
@@ -98,10 +103,10 @@
                             <TextBlock Text="Time tracker" />
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton Style="{StaticResource MenuToggle}" IsEnabled="False" Margin="10 10 -1 0" materialDesign:ButtonAssist.CornerRadius="10 0 0 10">
+                    <RadioButton Style="{StaticResource MenuToggle}" Command="{Binding SwitchToActivities}" Margin="10 10 -1 0" materialDesign:ButtonAssist.CornerRadius="10 0 0 10">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                             <materialDesign:PackIcon Kind="FileChart" Margin="0 3 10 0" />
-                            <TextBlock Text="Reports" />
+                            <TextBlock Text="Activities" />
                         </StackPanel>
                     </RadioButton>
                 </StackPanel>

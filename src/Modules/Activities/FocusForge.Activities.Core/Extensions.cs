@@ -1,6 +1,6 @@
 ﻿namespace FocusForge.Activities.Core
 {
-    public class Class1
+    public class Extensions
     {
 
     }
