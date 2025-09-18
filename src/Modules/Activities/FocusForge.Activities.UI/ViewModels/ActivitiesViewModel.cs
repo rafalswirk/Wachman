@@ -12,7 +12,7 @@ namespace FocusForge.Activities.UI.ViewModels
     public class ActivitiesViewModel : ObservableObject
     {
         private string _currentActivity;
-        private StringBuilder _allActivitiesBuffer;
+        private HashSet<string> _allActivitiesBuffer;
         private System.Timers.Timer _timer;
 
         public string CurrentActivity
@@ -31,13 +31,16 @@ namespace FocusForge.Activities.UI.ViewModels
 
         public ActivitiesViewModel()
         {
-            _allActivitiesBuffer = new StringBuilder();
+            _allActivitiesBuffer = new HashSet<string>();
             _timer = new System.Timers.Timer(1000);
             _timer.Elapsed += (s, e) =>
             {
                 CurrentActivity = ActivityReader.GetActiveWindowTitle();
-                _allActivitiesBuffer.AppendLine(CurrentActivity);
-                AllActivities = _allActivitiesBuffer.ToString();
+                if(!_allActivitiesBuffer.Contains(CurrentActivity))
+                {
+                    _allActivitiesBuffer.Add(CurrentActivity);
+                    AllActivities = string.Join(Environment.NewLine, _allActivitiesBuffer.ToArray());
+                }
             };
             _timer.Start();
         }
