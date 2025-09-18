@@ -19,26 +19,37 @@ namespace FocusForge.Activities.Core.Monitoring
         [DllImport("user32.dll")]
         static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
-        public static string GetActiveWindowTitle()
+        public Activity ReadActivity()
         {
-            const int nChars = 256;
-            StringBuilder Buff = new StringBuilder(nChars);
-            IntPtr handle = GetForegroundWindow();
+            try
+            {
+                const int nChars = 256;
+                StringBuilder Buff = new StringBuilder(nChars);
+                IntPtr handle = GetForegroundWindow();
 
-            uint pid;
-            var id = GetWindowThreadProcessId(handle, out pid);
+                uint pid;
+                var id = GetWindowThreadProcessId(handle, out pid);
 
-            var proc = Process.GetProcessById((int)pid);
-            var exeName = proc.MainModule.ModuleName;
+                var proc = Process.GetProcessById((int)pid);
+                var exeName = proc.MainModule.ModuleName;
 
-            if (GetWindowText(handle, Buff, nChars) > 0)
+                if (GetWindowText(handle, Buff, nChars) > 0)
+                {
+
+                    return new Activity(exeName, Buff.ToString(), "");
+                }
+
+
+                return CreateEmpty();
+            }
+            catch (Exception)
             {
 
-                return $"{exeName}; {Buff.ToString()}";
+                return CreateEmpty();
             }
-            
-
-            return string.Empty;
         }
+
+        private Activity CreateEmpty() 
+            => new Activity("", "", "");
     }
 }

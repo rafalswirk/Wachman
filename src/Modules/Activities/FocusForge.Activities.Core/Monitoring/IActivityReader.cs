@@ -2,5 +2,6 @@
 {
     public interface IActivityReader
     {
+        Activity ReadActivity();
     }
 }

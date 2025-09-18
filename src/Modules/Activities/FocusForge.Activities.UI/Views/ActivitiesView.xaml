@@ -25,7 +25,7 @@
             </Grid>
         </Border>
         <DockPanel Grid.Row="1" LastChildFill="True">
-            <Label d:Content="Current activity" Content="{Binding CurrentActivity}" DockPanel.Dock="Top"/>
+            <Label d:Content="Current activity" Content="{Binding CurrentActivity.WindowTitle}" DockPanel.Dock="Top"/>
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <TextBlock d:Text="Lorem ipsum" Text="{Binding AllActivities}" TextWrapping="Wrap"/>
             </ScrollViewer>
