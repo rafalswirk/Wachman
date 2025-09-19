@@ -10,6 +10,7 @@ using FocusForge.Shared.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
+using FocusForge.Activities.UI;
 
 namespace FocusForge.Desktop
 {
@@ -31,6 +32,7 @@ namespace FocusForge.Desktop
                     services.AddSingleton<MainWindowViewModel>();
                     services.AddPomodoroTimer();
                     services.AddTimeTracker();
+                    services.AddActivities();
                     services.AddSingleton<SettingsViewModel>();
                     services.AddSingleton<INavigationService, NavigationService>();
                 })
