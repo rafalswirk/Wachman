@@ -2,6 +2,6 @@
 {
     public interface IActivityReader
     {
-        Activity ReadActivity();
+        ActiveProcessInfo ReadActivity();
     }
 }

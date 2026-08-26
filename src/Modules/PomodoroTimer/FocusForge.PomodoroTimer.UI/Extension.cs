@@ -1,6 +1,7 @@
 
 using FocusForge.PomodoroTimer.UI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace FocusForge.PomodoroTimer.UI
 {
@@ -10,6 +11,11 @@ namespace FocusForge.PomodoroTimer.UI
         {
             services.AddPomodoroTimerCore();
             services.AddSingleton<PomodoroViewModel>();
+        }
+
+        public static void InitializePomodoroTimerModule(this IHost host)
+        {
+            host.ApplyPomodoroTimerMigrations();
         }
     }
 

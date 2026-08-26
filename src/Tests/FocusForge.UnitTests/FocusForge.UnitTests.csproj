@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+	<TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
@@ -25,6 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Activities\FocusForge.Activities.Core\FocusForge.Activities.Core.csproj" />
+    <ProjectReference Include="..\..\Modules\Activities\FocusForge.Activities.UI\FocusForge.Activities.UI.csproj" />
     <ProjectReference Include="..\..\Modules\TimeTracker\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp\FocusForge.TimeTracker.TimeCamp.csproj" />
     <ProjectReference Include="..\..\Modules\TimeTracker\FocusForge.TimeTracker\FocusForge.TimeTracker.csproj" />
     <ProjectReference Include="..\..\Shared\FocusForge.Shared.DataModels\FocusForge.Shared.DataModels.csproj" />

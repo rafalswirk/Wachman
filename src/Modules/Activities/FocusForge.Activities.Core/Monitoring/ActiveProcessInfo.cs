@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace FocusForge.Activities.Core.Monitoring
 {
-    public record Activity(string ExecutableName, string WindowTitle, string Document);
+    public record ActiveProcessInfo(string ExecutableName, string WindowTitle);
 }

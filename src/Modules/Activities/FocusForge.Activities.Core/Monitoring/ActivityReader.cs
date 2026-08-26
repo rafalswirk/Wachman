@@ -19,7 +19,7 @@ namespace FocusForge.Activities.Core.Monitoring
         [DllImport("user32.dll")]
         static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
-        public Activity ReadActivity()
+        public ActiveProcessInfo ReadActivity()
         {
             try
             {
@@ -36,7 +36,7 @@ namespace FocusForge.Activities.Core.Monitoring
                 if (GetWindowText(handle, Buff, nChars) > 0)
                 {
 
-                    return new Activity(exeName, Buff.ToString(), "");
+                    return new ActiveProcessInfo(exeName, Buff.ToString());
                 }
 
 
@@ -49,7 +49,7 @@ namespace FocusForge.Activities.Core.Monitoring
             }
         }
 
-        private Activity CreateEmpty() 
-            => new Activity("", "", "");
+        private ActiveProcessInfo CreateEmpty() 
+            => new ActiveProcessInfo("", "");
     }
 }

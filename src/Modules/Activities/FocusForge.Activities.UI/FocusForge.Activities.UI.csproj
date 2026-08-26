@@ -19,5 +19,8 @@
     <ProjectReference Include="..\..\..\Shared\FocusForge.Shared.UI\FocusForge.Shared.UI.csproj" />
     <ProjectReference Include="..\FocusForge.Activities.Core\FocusForge.Activities.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+	<InternalsVisibleTo Include="FocusForge.UnitTests" />
+  </ItemGroup>
 
 </Project>

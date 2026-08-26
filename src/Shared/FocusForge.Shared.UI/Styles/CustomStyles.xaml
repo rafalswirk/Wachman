@@ -90,4 +90,130 @@
         <Setter Property="Foreground" Value="{StaticResource NeonOrangeBrush}"/>
     </Style>
 
+    <Style x:Key="ActivityViewContainerBorderStyle" TargetType="Border">
+        <Setter Property="Margin" Value="6"/>
+        <Setter Property="Padding" Value="12 10"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Background" Value="#12000000"/>
+        <Setter Property="BorderBrush" Value="#88FFA500"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="#FFFFA500" BlurRadius="10" ShadowDepth="0" Opacity="0.55"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ActivityViewCardBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="#00001600"/>
+        <Setter Property="BorderBrush" Value="#30FFFFFF"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="10 8"/>
+        <Setter Property="Margin" Value="0 0 0 10"/>
+    </Style>
+
+    <Style x:Key="ActivityViewTitleTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#FFF2F2F2"/>
+        <Setter Property="Effect" Value="{x:Null}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="ActivityViewValueTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#FFF5F5F5"/>
+        <Setter Property="Effect" Value="{x:Null}"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="ActivityViewSecondaryTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#FFD6D6D6"/>
+        <Setter Property="Effect" Value="{x:Null}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+
+    <Style x:Key="ActivityViewDataGridStyle" TargetType="DataGrid">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#FFEFEFEF"/>
+        <Setter Property="BorderBrush" Value="#88FFA500"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="RowHeight" Value="36"/>
+        <Setter Property="ColumnHeaderHeight" Value="40"/>
+        <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="#30FFFFFF"/>
+        <Setter Property="VerticalGridLinesBrush" Value="#30FFFFFF"/>
+        <Setter Property="RowBackground" Value="#12000000"/>
+        <Setter Property="AlternatingRowBackground" Value="#18000000"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="RowHeaderWidth" Value="0"/>
+        <Setter Property="RowStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Foreground" Value="#FFEFEFEF"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="#FFEFEFEF"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ActivityViewDataGridHeaderStyle" TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="#22000000"/>
+        <Setter Property="Foreground" Value="#FFF2F2F2"/>
+        <Setter Property="BorderBrush" Value="#55FFA500"/>
+        <Setter Property="BorderThickness" Value="0 0 1 1"/>
+        <Setter Property="Padding" Value="10 8"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style x:Key="ActivityViewDataGridCellStyle" TargetType="DataGridCell">
+        <Setter Property="Foreground" Value="#FFEFEFEF"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="#30FFFFFF"/>
+        <Setter Property="BorderThickness" Value="0 0 1 1"/>
+        <Setter Property="Padding" Value="8 0 6 0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+        <!--<Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>-->
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="#FFEFEFEF"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ActivityViewTreeStyle" TargetType="TreeView">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="#88FFA500"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="6"/>
+    </Style>
+
+    <Style x:Key="ActivityViewTreeItemStyle" TargetType="TreeViewItem">
+        <Setter Property="Foreground" Value="#FFEFEFEF"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+
 </ResourceDictionary>

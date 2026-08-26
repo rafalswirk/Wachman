@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FocusForge.Activities.Core.Monitoring;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FocusForge.Activities.Core
 {
@@ -6,7 +7,10 @@ namespace FocusForge.Activities.Core
     {
         public static void AddActivitiesCore(this IServiceCollection services)
         {
-            services.AddSingleton<Monitoring.IActivityReader, Monitoring.ActivityReader>();
+            services.AddScoped<Monitoring.IActivityReader, Monitoring.ActivityReader>();
+            services.AddScoped<ActivityMonitor>();
+            services.AddScoped<IActivityMonitorTrigger, TimerTrigger>();
+            //services.
         }
     }
 }

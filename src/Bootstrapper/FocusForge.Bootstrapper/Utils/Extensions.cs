@@ -12,6 +12,11 @@ namespace FocusForge.Desktop.Utils
 {
     internal static class Extensions
     {
+        public static void InitializeNavigationModule(this IHost host)
+        {
+            host.ConfigureNavigationService();
+        }
+
         public static void ConfigureNavigationService(this IHost host)
         {
             var navigationService = host.Services.GetRequiredService<INavigationService>();

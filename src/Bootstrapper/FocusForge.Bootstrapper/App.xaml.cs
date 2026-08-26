@@ -38,10 +38,10 @@ namespace FocusForge.Desktop
                 })
                 .Build();
 
-            _host.ApplyPomodoroTimerMigrations();
-            _host.ApplyTimeTrackerMigrations();
-            _host.ConfigureNavigationService();
-            _host.InitializeTimeCampClient();
+            _host.InitializeNavigationModule();
+            _host.InitializePomodoroTimerModule();
+            _host.InitializeTimeTrackerModule();
+            _host.Services.InitializeActivitiesModule();
             var mainWindow = _host.Services.GetService<MainWindow>();
             mainWindow.Show();
 

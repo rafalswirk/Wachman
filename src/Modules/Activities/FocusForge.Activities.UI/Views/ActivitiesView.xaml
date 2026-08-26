@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FocusForge.Activities.UI.Views"
+             xmlns:viewModels="clr-namespace:FocusForge.Activities.UI.ViewModels"
              xmlns:converters="clr-namespace:FocusForge.Shared.UI.Converters;assembly=FocusForge.Shared.UI"
+             xmlns:data="FocusForge.Activities.Core.Monitoring.ProcessAnalyse;assembly=FocusForge.Activities.Core"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -12,6 +14,127 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/FocusForge.Shared.UI;component/Styles/CustomStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="TodayStatsGroupBoxStyle" TargetType="GroupBox">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Foreground" Value="#FFEDEDED"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="BorderBrush" Value="#55FFA500"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+
+            <Style x:Key="TodayStatsPanelBorderStyle" TargetType="Border">
+                <Setter Property="Margin" Value="6"/>
+                <Setter Property="Padding" Value="12 10"/>
+                <Setter Property="CornerRadius" Value="4"/>
+                <Setter Property="Background" Value="#12000000"/>
+                <Setter Property="BorderBrush" Value="#88FFA500"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="#FFFFA500" BlurRadius="10" ShadowDepth="0" Opacity="0.55"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="TodayStatsLabelTextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#FFD0D0D0"/>
+                <Setter Property="Effect" Value="{x:Null}"/>
+                <Setter Property="Opacity" Value="0.95"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="FontWeight" Value="Normal"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="TodayStatsValueTextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#FFF5F5F5"/>
+                <Setter Property="Effect" Value="{x:Null}"/>
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="TodayStatsSecondaryTextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#FFBEBEBE"/>
+                <Setter Property="Effect" Value="{x:Null}"/>
+                <Setter Property="FontWeight" Value="Normal"/>
+                <Setter Property="FontSize" Value="11"/>
+                <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="TodayStatsRowTitleTextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#FFF2F2F2"/>
+                <Setter Property="Effect" Value="{x:Null}"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="TodayStatsCompactValueTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TodayStatsValueTextStyle}">
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+
+            <Style x:Key="TodayStatsPanelSummaryTextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#FFD6D6D6"/>
+                <Setter Property="Effect" Value="{x:Null}"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="Margin" Value="0 0 0 12"/>
+            </Style>
+
+            <Style x:Key="TodayStatsRowBorderStyle" TargetType="Border">
+                <Setter Property="Background" Value="#00001600"/>
+                <Setter Property="BorderBrush" Value="#30FFFFFF"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="4"/>
+                <Setter Property="Padding" Value="10 8"/>
+                <Setter Property="Margin" Value="0 0 0 10"/>
+            </Style>
+
+            <Style x:Key="TodayStatsRankBadgeTextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#FFFFD9A0"/>
+                <Setter Property="Effect" Value="{x:Null}"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
+            <DataTemplate x:Key="TopApplicationItemTemplate">
+                <Border Style="{StaticResource TodayStatsRowBorderStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding ApplicationName}" Style="{StaticResource TodayStatsRowTitleTextStyle}"
+                                       ToolTip="Application with the most captured focus time today"/>
+                        <TextBlock Grid.Column="2" Text="{Binding TimeSpent, StringFormat={}{0:hh\\:mm\\:ss}}" Style="{StaticResource TodayStatsCompactValueTextStyle}" Margin="12 0 0 0"/>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+
+            <DataTemplate x:Key="TopActivityItemTemplate">
+                <Border Style="{StaticResource TodayStatsRowBorderStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding ActivityName}" Style="{StaticResource TodayStatsRowTitleTextStyle}" 
+                             ToolTip="Most repeated activity grouped by time spent"/>
+                        <TextBlock Grid.Column="2" Text="{Binding TimeSpent, StringFormat={}{0:hh\\:mm\\:ss}}" Style="{StaticResource TodayStatsCompactValueTextStyle}" Margin="12 0 0 0"/>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -21,14 +144,189 @@
         </Grid.RowDefinitions>
         <Border Grid.Column="0" Grid.Row="0" BorderBrush="DarkOrange" BorderThickness="0 0 0 2" Padding="10 0 10 0">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <TextBlock Text="Time Tracker" FontFamily="pack://application:,,,/FocusForge.Shared.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
+                <TextBlock Text="Activities" FontFamily="pack://application:,,,/FocusForge.Shared.UI;component/Fonts/#DIGITAL-7 Mono" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" FontWeight="Bold" />
             </Grid>
         </Border>
-        <DockPanel Grid.Row="1" LastChildFill="True">
-            <Label d:Content="Current activity" Content="{Binding CurrentActivity.WindowTitle}" DockPanel.Dock="Top"/>
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                <TextBlock d:Text="Lorem ipsum" Text="{Binding AllActivities}" TextWrapping="Wrap"/>
-            </ScrollViewer>
-        </DockPanel>
+        <TabControl Grid.Row="1" Margin="10">
+            <TabItem Header="Summary - today">
+                <TabItem.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="#FFEFEFEF"/>
+                        <Setter Property="Effect" Value="{x:Null}"/>
+                        <Setter Property="FontWeight" Value="Normal"/>
+                    </Style>
+                </TabItem.Resources>
+                <Border>
+                    <ScrollViewer>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <GroupBox Header="Total time captured" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource TodayStatsGroupBoxStyle}">
+                            <Border Style="{StaticResource TodayStatsPanelBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="A clean snapshot of how much time has been captured so far and how broadly that time is spread." Style="{StaticResource TodayStatsPanelSummaryTextStyle}"/>
+                                    <Border Style="{StaticResource TodayStatsRowBorderStyle}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="Total tracked time today" Style="{StaticResource TodayStatsRowTitleTextStyle}"
+                                                           ToolTip="All active time captured since midnight"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding TotalTrackedTimeToday, StringFormat={}{0:hh\\:mm\\:ss}}" Style="{StaticResource TodayStatsValueTextStyle}" Margin="12 0 0 0"/>
+                                        </Grid>
+                                    </Border>
+                                    <Border Style="{StaticResource TodayStatsRowBorderStyle}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="Applications seen today" Style="{StaticResource TodayStatsRowTitleTextStyle}"
+                                                ToolTip="Distinct apps that generated activity events"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding ActiveApplicationsCount}" Style="{StaticResource TodayStatsValueTextStyle}" Margin="12 0 0 0"/>
+                                        </Grid>
+                                    </Border>
+                                    <Border Style="{StaticResource TodayStatsRowBorderStyle}" Margin="0">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="Average time per application" Style="{StaticResource TodayStatsRowTitleTextStyle}"
+                                                            ToolTip="Typical share of captured time for each active app"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding AverageTimePerApplication, StringFormat={}{0:hh\\:mm\\:ss}}" Style="{StaticResource TodayStatsValueTextStyle}" Margin="12 0 0 0"/>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </GroupBox>
+                        <GroupBox Header="Top 3 applications" Grid.Column="1" Grid.Row="0" Style="{StaticResource TodayStatsGroupBoxStyle}">
+                                <Border Style="{StaticResource TodayStatsPanelBorderStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="The applications that took the largest share of your captured time today." Style="{StaticResource TodayStatsPanelSummaryTextStyle}"/>
+                                        <ItemsControl d:ItemsSource="{d:SampleData ItemCount=3}" ItemsSource="{Binding TopApplicationsByTimeToday}" ItemTemplate="{StaticResource TopApplicationItemTemplate}"/>
+                                    </StackPanel>
+                                </Border>
+                        </GroupBox>
+                        <GroupBox Header="Most common activities" Grid.Column="1" Grid.Row="1" Style="{StaticResource TodayStatsGroupBoxStyle}">
+                                <Border Style="{StaticResource TodayStatsPanelBorderStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="The activity labels that appear most often when grouped by time spent." Style="{StaticResource TodayStatsPanelSummaryTextStyle}"/>
+                                        <ItemsControl d:ItemsSource="{d:SampleData ItemCount=5}" ItemsSource="{Binding TopActivitiesByTimeToday}" ItemTemplate="{StaticResource TopActivityItemTemplate}"/>
+                                    </StackPanel>
+                                </Border>
+                        </GroupBox>
+                    </Grid>
+                    </ScrollViewer>
+                </Border>
+            </TabItem>
+            <TabItem Header="Flat grid view">
+
+                <DataGrid AutoGenerateColumns="False"
+                          ColumnWidth="*"
+                          d:ItemsSource="{d:SampleData ItemCount=5}"
+                          ItemsSource="{Binding FlatActivities}"
+                          IsManipulationEnabled="False"
+                          IsReadOnly="True"
+                          SelectionMode="Single"
+                          SelectionChanged="FlatActivitiesGrid_OnSelectionChanged"
+                          Style="{StaticResource ActivityViewDataGridStyle}"
+                          ColumnHeaderStyle="{StaticResource ActivityViewDataGridHeaderStyle}"
+                          VerticalAlignment="Top"
+                          VerticalContentAlignment="Center"
+                          CellStyle="{StaticResource ActivityViewDataGridCellStyle}"
+                          ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0 10 0 0">
+                    <DataGrid.Resources>
+                        <Style x:Key="gridTexBlockStyle" TargetType="{x:Type TextBlock}">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="10 0 0 0"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Application" Binding="{Binding ApplicationName}" MaxWidth="200" ElementStyle="{StaticResource gridTexBlockStyle}"/>
+                        <DataGridTextColumn Header="Activity" Binding="{Binding ActivityDescription}" Width="*" ElementStyle="{StaticResource gridTexBlockStyle}"/>
+                        <DataGridTextColumn Header="Inner activity" Binding="{Binding InnerActivityDescription}" Width="*" ElementStyle="{StaticResource gridTexBlockStyle}"/>
+                        <DataGridTextColumn Header="Time" Binding="{Binding ActivityTime}" MaxWidth="200" ElementStyle="{StaticResource gridTexBlockStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Tree view">
+                <Border Margin="5">
+                    <TreeView Width="Auto" Grid.IsSharedSizeScope="True"
+                                      d:ItemsSource="{d:SampleData ItemCount=3}"
+                                      ItemsSource="{Binding Activities}"
+                                      Style="{StaticResource ActivityViewTreeStyle}"
+                                      SelectedItemChanged="ActivitiesTree_OnSelectedItemChanged"
+                                      ItemContainerStyle="{StaticResource ActivityViewTreeItemStyle}">
+                        <TreeView.Resources>
+                            <HierarchicalDataTemplate DataType="{x:Type viewModels:ActivityViewModel}" ItemsSource="{Binding InnerActivities}">
+                                <Border>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" SharedSizeGroup="True"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock d:Text="Activity"
+                                                           Text="{Binding Activity}"
+                                                           Style="{StaticResource ActivityViewSecondaryTextStyle}"/>
+                                        <TextBlock Grid.Column="1"
+                                                           d:Text="00:00:00"
+                                                           Text="{Binding Time}"
+                                                           Style="{StaticResource ActivityViewSecondaryTextStyle}"
+                                                           Margin="12 0 0 0"/>
+                                    </Grid>
+                                </Border>
+                            </HierarchicalDataTemplate>
+                        </TreeView.Resources>
+                    </TreeView>
+                </Border>
+            </TabItem>
+            <TabItem Header="Raw view">
+                <Border Margin="5">
+                    <Border Style="{StaticResource ActivityViewContainerBorderStyle}">
+                        <DockPanel LastChildFill="True">
+                            <Border DockPanel.Dock="Top" Style="{StaticResource ActivityViewCardBorderStyle}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Current activity" Style="{StaticResource ActivityViewTitleTextStyle}"/>
+                                    <TextBlock Grid.Column="1"
+                                               d:Text="Some activity"
+                                               Text="{Binding CurrentActivityDisplay}"
+                                               Style="{StaticResource ActivityViewSecondaryTextStyle}"
+                                               VerticalAlignment="Center"
+                                               Margin="12 0 0 0"/>
+                                    <Button Grid.Column="2"
+                                            Content="Save raw log (.txt)"
+                                            Command="{Binding SaveRawLogCommand}"
+                                            Margin="12 0 0 0"
+                                            Padding="10 4"
+                                            VerticalAlignment="Center"
+                                            ToolTip="Export the full Raw view log to a text file"/>
+                                </Grid>
+                            </Border>
+                            <Border Style="{StaticResource ActivityViewCardBorderStyle}" Margin="0">
+                                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                    <TextBlock d:Text="Lorem ipsum"
+                                               Text="{Binding AllActivities}"
+                                               TextWrapping="Wrap"
+                                               Style="{StaticResource ActivityViewSecondaryTextStyle}"/>
+                                </ScrollViewer>
+                            </Border>
+                        </DockPanel>
+                    </Border>
+                </Border>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>

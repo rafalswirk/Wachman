@@ -27,7 +27,8 @@ namespace FocusForge.UnitTests.TimeTrackingServiceTests.TimeCampTests
 
             result.ShouldNotBeNull();
             result.Jobs.Count.ShouldBe(11);
-            result.Jobs.First().GetType().GetProperties().Count().ShouldBe(6);
+            result.Jobs.First().GetType().GetProperties().Count().ShouldBe(7);
+            result.Jobs.First().Id.ShouldBe(68568929);
             result.Jobs.First().Name.ShouldBe("Wachman");
             result.Jobs.First().Description.ShouldBe("Demo");
             result.Jobs.First().Duration.ShouldBe(new TimeSpan(1, 0, 26));
